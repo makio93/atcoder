@@ -41,15 +41,35 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 int main(){
     int n;
     cin >> n;
-    vi a(n);
-    rep(i, n) cin >> a[i];
+    vs s(n);
+    rep(i, n) cin >> s[i];
+    vector<pair<string, int>> t;
+    int tmax = 1;
     rep(i, n) {
-        if (a[i] % 2 == 0 && a[i] % 3 != 0 && a[i] % 5 != 0) {
-            puts("DENIED");
-            return 0;
+        int j;
+        for (j=0; j<int(t.size()); j++) {
+            if (s[i] == t[j].first) {
+                t[j].second++;
+                if (t[j].second > tmax) tmax++;
+                break;
+            }
+        }
+        if (j==int(t.size())) t.push_back(make_pair(s[i], 1));
+    }
+    vs d;
+    rep(i, t.size()) {
+        if (t[i].second == tmax) {
+            int j;
+            for (j=0; j<int(d.size()); j++) {
+                if (d[j] > t[i].first) {
+                    d.insert(d.begin() + j, t[i].first);
+                    break;
+                }
+            }
+            if (j == int(d.size())) d.push_back(t[i].first);
         }
     }
-    puts("APPROVED");
+    rep(i, d.size()) cout << d[i] << endl;
     return 0;
 }
 

@@ -38,18 +38,21 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+void func(long long N, std::vector<std::string> S){
+
+}
+
 int main(){
-    int n;
-    cin >> n;
-    vi a(n);
-    rep(i, n) cin >> a[i];
-    rep(i, n) {
-        if (a[i] % 2 == 0 && a[i] % 3 != 0 && a[i] % 5 != 0) {
-            puts("DENIED");
-            return 0;
-        }
+    // cout << fixed << setprecision(5);
+
+    long long N;
+    scanf("%lld",&N);
+    std::vector<std::string> S(N);
+    for(int i = 0 ; i < N ; i++){
+        std::cin >> S[i];
     }
-    puts("APPROVED");
+    func(N, std::move(S));
     return 0;
 }
 
