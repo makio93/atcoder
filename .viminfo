@@ -1,0 +1,439 @@
+# この viminfo ファイルは Vim 8.0 によって生成されました.
+# 変更する際には十分注意してください!
+
+# Viminfo version
+|1,4
+
+# このファイルが書かれた時の 'encoding' の値
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# 最後の 検索パターン:
+~MSle0~/q
+
+# コマンドライン 項目の履歴 (新しいものから古いものへ):
+:wq
+|2,0,1583491888,,"wq"
+:q!
+|2,0,1583491818,,"q!"
+:q
+|2,0,1583491769,,"q"
+:set paste
+|2,0,1583135476,,"set paste"
+
+# 検索文字列 項目の履歴 (新しいものから古いものへ):
+?/q
+|2,1,1583125192,47,"q"
+
+# 式 項目の履歴 (新しいものから古いものへ):
+
+# 入力行 項目の履歴 (新しいものから古いものへ):
+
+# デバッグ行 項目の履歴 (新しいものから古いものへ):
+
+# レジスタ:
+""1	LINE	0
+	
+|3,1,1,1,1,0,1583137494,""
+"2	LINE	0
+	EOL
+|3,0,2,1,1,0,1583137493,"EOL"
+"3	LINE	0
+	/var/log
+|3,0,3,1,1,0,1583137492,"/var/log"
+"4	LINE	0
+	/run
+|3,0,4,1,1,0,1583137492,"/run"
+"5	LINE	0
+	/sys
+|3,0,5,1,1,0,1583137492,"/sys"
+"6	LINE	0
+	/tmp
+|3,0,6,1,1,0,1583137491,"/tmp"
+"7	LINE	0
+	/proc
+|3,0,7,1,1,0,1583137491,"/proc"
+"8	LINE	0
+	/dev
+|3,0,8,1,1,0,1583137491,"/dev"
+"9	LINE	0
+	/mnt
+|3,0,9,1,1,0,1583137490,"/mnt"
+
+# ファイルマーク:
+'0  4  29  ~/atcodertools_oth.toml
+|4,48,4,29,1583491888,"~/atcodertools_oth.toml"
+'1  4  28  ~/atcodertools_agc.toml
+|4,49,4,28,1583491872,"~/atcodertools_agc.toml"
+'2  4  29  ~/atcodertools_arc.toml
+|4,50,4,29,1583491853,"~/atcodertools_arc.toml"
+'3  11  27  ~/atcodertools_arc.toml
+|4,51,11,27,1583491818,"~/atcodertools_arc.toml"
+'4  11  27  ~/atcodertools_arc.toml
+|4,52,11,27,1583491818,"~/atcodertools_arc.toml"
+'5  11  0  ~/atcodertools_arc.toml
+|4,53,11,0,1583491805,"~/atcodertools_arc.toml"
+'6  11  0  ~/atcodertools_arc.toml
+|4,54,11,0,1583491805,"~/atcodertools_arc.toml"
+'7  1  0  ~/atcodertools_arc.tom
+|4,55,1,0,1583491769,"~/atcodertools_arc.tom"
+'8  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,56,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+'9  2  65  ~/sh/atcodertools_gen_arc.sh
+|4,57,2,65,1583491595,"~/sh/atcodertools_gen_arc.sh"
+
+# ジャンプリスト (新しいものが先):
+-'  4  29  ~/atcodertools_oth.toml
+|4,39,4,29,1583491888,"~/atcodertools_oth.toml"
+-'  1  0  ~/atcodertools_oth.toml
+|4,39,1,0,1583491878,"~/atcodertools_oth.toml"
+-'  4  28  ~/atcodertools_agc.toml
+|4,39,4,28,1583491872,"~/atcodertools_agc.toml"
+-'  4  28  ~/atcodertools_agc.toml
+|4,39,4,28,1583491872,"~/atcodertools_agc.toml"
+-'  1  0  ~/atcodertools_agc.toml
+|4,39,1,0,1583491857,"~/atcodertools_agc.toml"
+-'  1  0  ~/atcodertools_agc.toml
+|4,39,1,0,1583491857,"~/atcodertools_agc.toml"
+-'  4  29  ~/atcodertools_arc.toml
+|4,39,4,29,1583491853,"~/atcodertools_arc.toml"
+-'  4  29  ~/atcodertools_arc.toml
+|4,39,4,29,1583491853,"~/atcodertools_arc.toml"
+-'  4  29  ~/atcodertools_arc.toml
+|4,39,4,29,1583491853,"~/atcodertools_arc.toml"
+-'  4  29  ~/atcodertools_arc.toml
+|4,39,4,29,1583491853,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491819,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491819,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491819,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491819,"~/atcodertools_arc.toml"
+-'  11  27  ~/atcodertools_arc.toml
+|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
+-'  11  27  ~/atcodertools_arc.toml
+|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
+-'  11  27  ~/atcodertools_arc.toml
+|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
+-'  11  27  ~/atcodertools_arc.toml
+|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
+-'  11  27  ~/atcodertools_arc.toml
+|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
+-'  11  27  ~/atcodertools_arc.toml
+|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
+-'  11  27  ~/atcodertools_arc.toml
+|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
+-'  11  27  ~/atcodertools_arc.toml
+|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491806,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491806,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491806,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491806,"~/atcodertools_arc.toml"
+-'  11  0  ~/atcodertools_arc.toml
+|4,39,11,0,1583491805,"~/atcodertools_arc.toml"
+-'  11  0  ~/atcodertools_arc.toml
+|4,39,11,0,1583491805,"~/atcodertools_arc.toml"
+-'  11  0  ~/atcodertools_arc.toml
+|4,39,11,0,1583491805,"~/atcodertools_arc.toml"
+-'  11  0  ~/atcodertools_arc.toml
+|4,39,11,0,1583491805,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491772,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491772,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491772,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.toml
+|4,39,1,0,1583491772,"~/atcodertools_arc.toml"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  0  ~/atcodertools_arc.tom
+|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  1  1  ~/sh/atcodertools_gen_oth.sh
+|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+
+# ファイル内マークの履歴 (新しいものから古いもの):
+
+> ~/atcodertools_oth.toml
+	*	1583491886	0
+	"	4	29
+	^	4	30
+	.	4	29
+	+	10	0
+	+	4	29
+
+> ~/atcodertools_agc.toml
+	*	1583491869	0
+	"	4	28
+	^	4	29
+	.	4	28
+	+	10	0
+	+	4	28
+
+> ~/atcodertools_arc.toml
+	*	1583491851	0
+	"	4	29
+	^	4	30
+	.	4	29
+	+	11	0
+	+	11	27
+	+	10	0
+	+	4	29
+
+> ~/atcodertools_arc.tom
+	*	1583491767	0
+	"	1	0
+
+> ~/sh/atcodertools_gen_oth.sh
+	*	1583491700	0
+	"	1	1
+	^	1	2
+	.	1	1
+	+	1	9
+	+	2	21
+	+	1	1
+	b	1	0
+
+> ~/sh/atcodertools_gen_arc.sh
+	*	1583491592	0
+	"	2	65
+	^	2	66
+	.	2	65
+	+	2	65
+
+> ~/sh/atcodertools_gen_agc.sh
+	*	1583491587	0
+	"	2	19
+	^	2	20
+	.	2	19
+	+	2	19
+
+> ~/.zshrc
+	*	1583491329	0
+	"	143	34
+	^	143	35
+	.	143	33
+	+	140	33
+	+	140	32
+	+	141	0
+	+	4	19
+	+	6	18
+	+	141	31
+	+	142	30
+	+	141	30
+	+	142	35
+	+	143	33
+
+> ~/atcodertools.toml
+	*	1583490972	0
+	"	10	0
+	.	11	0
+	+	10	0
+	+	4	22
+	+	6	21
+	+	11	0
+
+> ~/sh/atcodertools_submit.sh
+	*	1583237385	0
+	"	2	32
+	^	2	33
+	.	2	32
+	+	4	77
+	+	2	32
+
+> ~/backup2.sh
+	*	1583137498	0
+	"	10	0
+	.	10	0
+	+	10	0
+	+	10	45
+	+	10	0
+
+> ~/backup.sh
+	*	1583137427	0
+	"	10	14
+	^	33	17
+	.	11	12
+	+	36	56
+	+	1	9
+	+	36	0
+	+	11	6
+	+	7	4
+	+	11	12
+
+> /mnt/c/WSL_Ubuntu/bkup/exclude_list.txt
+	*	1583137408	0
+	"	7	7
+	^	7	8
+	.	7	0
+	+	7	0
+
+> /mnt/c/bkup/WSL/exclude_list.txt
+	*	1583135261	0
+	"	7	7
+	^	7	8
+	.	7	0
+	+	7	0
+
+> ~/sh/atcodertools_test.sh
+	*	1583129496	0
+	"	2	42
+	^	2	43
+	.	2	42
+	+	2	42
+
+> ~/sh/atcodertools_gen.sh
+	*	1583128335	0
+	"	2	46
+	^	2	47
+	.	2	46
+	+	2	46
+
+> ~/my_template.cpp
+	*	1583127994	0
+	"	68	0
+	^	68	0
+	.	67	1
+	+	68	1
+	+	67	1
+
+> /etc/passwd
+	*	1583125968	0
+	"	30	30
+	^	30	31
+	.	30	30
+	+	30	30
