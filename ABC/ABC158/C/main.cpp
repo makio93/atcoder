@@ -39,18 +39,15 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    set<int> st;
-    int n;
-    cin >> n;
-    rep(i, n) {
-        int a;
-        cin >> a;
-        if (st.count(a) == 1) {
-            cout << "NO" << endl;
+    int a, b;
+    cin >> a >> b;
+    rep1(i, 1010) {
+        if (int(i*0.08) == a and int(i*0.1) == b) {
+            cout << i << endl;
             return 0;
         }
-        st.insert(a);
     }
-    cout << "YES" << endl;
+    cout << -1 << endl;
     return 0;
 }
+
