@@ -38,23 +38,19 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const string YES = "YES";
-const string NO = "NO";
-
-void func(long long N, std::vector<long long> A){
-
-}
-
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    std::vector<long long> A(N);
-    for(int i = 0 ; i < N ; i++){
-        scanf("%lld",&A[i]);
+    int n;
+    cin >> n;
+    vi a(n);
+    rep(i, n) cin >> a[i];
+    sort(all(a));
+    rep(i, n-1) {
+        if (a[i] == a[i+1]) {
+            cout << "NO" << endl;
+            return 0;
+        }
     }
-    func(N, std::move(A));
+    cout << "YES" << endl;
     return 0;
 }
 

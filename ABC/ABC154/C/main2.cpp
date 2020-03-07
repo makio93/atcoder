@@ -39,15 +39,14 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    long long P;
-    scanf("%lld",&P);
-    long long S;
-    scanf("%lld",&S);
-    func(N, P, S);
+    int n;
+    cin >> n;
+    vi a(n);
+    rep(i, n) cin >> a[i];
+    sort(all(a));
+    a.erase(unique(all(a)), a.end());
+    if (int(a.size()) == n) cout << "YES" << endl;
+    else cout << "NO" << endl;
     return 0;
 }
 
