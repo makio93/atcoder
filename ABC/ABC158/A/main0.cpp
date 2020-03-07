@@ -38,19 +38,15 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const string YES = "Yes";
-const string NO = "No";
-
-void func(std::string S){
-
-}
-
 int main(){
-    // cout << fixed << setprecision(5);
-
-    std::string S;
-    std::cin >> S;
-    func(S);
+    string s;
+    cin >> s;
+    set<char> st;
+    rep(i, 3) {
+        st.insert(s[i]);
+    }
+    if (int(st.size()) == 2) cout << "Yes" << endl;
+    else cout << "No" << endl;
     return 0;
 }
 

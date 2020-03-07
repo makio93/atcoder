@@ -38,19 +38,21 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const string YES = "Yes";
-const string NO = "No";
 
-void func(std::string S){
+void func(long long N, long long P, long long S){
 
 }
 
 int main(){
     // cout << fixed << setprecision(5);
 
-    std::string S;
-    std::cin >> S;
-    func(S);
+    long long N;
+    scanf("%lld",&N);
+    long long P;
+    scanf("%lld",&P);
+    long long S;
+    scanf("%lld",&S);
+    func(N, P, S);
     return 0;
 }
 

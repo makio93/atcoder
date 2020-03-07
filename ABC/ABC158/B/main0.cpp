@@ -38,19 +38,12 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const string YES = "Yes";
-const string NO = "No";
-
-void func(std::string S){
-
-}
-
 int main(){
-    // cout << fixed << setprecision(5);
-
-    std::string S;
-    std::cin >> S;
-    func(S);
+    ll n, a, b;
+    cin >> n >> a >> b;
+    ll d;
+    d = n / (a + b) * a + min(n % (a + b), a);
+    cout << d << endl;
     return 0;
 }
 
