@@ -38,54 +38,58 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-vi graphf[100005], graphb[100005];
-vi label(100005, -1);
-vi sz;
+struct UnionFind {
+    vi v;
+    UnionFind(int n=0) : v(n, -1) {}
+    int find(int x) {
+        if (v[x] < 0) return x;
+        return (v[x] = find(v[x]));
+    }
+    bool unite(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) return false;
+        if (x > y) swap(x, y);
+        v[x] += v[y];
+        v[y] = x;
+        return true;
+    }
+    int size(int x) {
+        return abs(v[find(x)]);
+    }
+    bool same(int x, int y) {
+        if (find(x) == find(y)) return true;
+        else return false;
+    }
+};
+
+int d[100001];
+int blk[100001];
 
 int main(){
     int n, m, k;
     cin >> n >> m >> k;
+    UnionFind uf(n);
     rep(i, m) {
         int a, b;
         cin >> a >> b;
         a--; b--;
-        graphf[a].push_back(b);
-        graphf[b].push_back(a);
+        d[a]++; d[b]++;
+        uf.unite(a, b);
     }
     rep(i, k) {
         int a, b;
         cin >> a >> b;
         a--; b--;
-        graphb[a].push_back(b);
-        graphb[b].push_back(a);
-    }
-    int num = 0;
-    rep(i, n) {
-        if (label[i] >= 0) continue;
-        label[i] = num;
-        sz.push_back(1);
-        int p;
-        queue<int> todo;
-        todo.push(i);
-        while (!todo.empty()) {
-            p = todo.front();
-            todo.pop();
-            for (int j : graphf[p]) {
-                if (label[j] >= 0) continue;
-                label[j] = num;
-                todo.push(j);
-                sz[num]++;
-            }
+        if (uf.same(a, b)) {
+            blk[a]++; blk[b]++;
         }
-        num++;
     }
     rep(i, n) {
         int ans;
-        ans = sz[label[i]] - 1 - graphf[i].size();
-        for (int j : graphb[i]) {
-            if (label[j] == label[i]) ans--;
-        }
+        ans = uf.size(i) - 1 - d[i] - blk[i];
         printf("%d%c", ans, i==n-1?'\n':' ');
     }
     return 0;
 }
+

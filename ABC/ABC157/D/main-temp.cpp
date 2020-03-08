@@ -38,54 +38,33 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-vi graphf[100005], graphb[100005];
-vi label(100005, -1);
-vi sz;
+
+void func(long long N, long long M, long long K, std::vector<long long> A, std::vector<long long> B, std::vector<long long> C, std::vector<long long> D){
+
+}
 
 int main(){
-    int n, m, k;
-    cin >> n >> m >> k;
-    rep(i, m) {
-        int a, b;
-        cin >> a >> b;
-        a--; b--;
-        graphf[a].push_back(b);
-        graphf[b].push_back(a);
+    // cout << fixed << setprecision(5);
+
+    long long N;
+    scanf("%lld",&N);
+    long long M;
+    scanf("%lld",&M);
+    long long K;
+    scanf("%lld",&K);
+    std::vector<long long> A(M);
+    std::vector<long long> B(M);
+    for(int i = 0 ; i < M ; i++){
+        scanf("%lld",&A[i]);
+        scanf("%lld",&B[i]);
     }
-    rep(i, k) {
-        int a, b;
-        cin >> a >> b;
-        a--; b--;
-        graphb[a].push_back(b);
-        graphb[b].push_back(a);
+    std::vector<long long> C(K);
+    std::vector<long long> D(K);
+    for(int i = 0 ; i < K ; i++){
+        scanf("%lld",&C[i]);
+        scanf("%lld",&D[i]);
     }
-    int num = 0;
-    rep(i, n) {
-        if (label[i] >= 0) continue;
-        label[i] = num;
-        sz.push_back(1);
-        int p;
-        queue<int> todo;
-        todo.push(i);
-        while (!todo.empty()) {
-            p = todo.front();
-            todo.pop();
-            for (int j : graphf[p]) {
-                if (label[j] >= 0) continue;
-                label[j] = num;
-                todo.push(j);
-                sz[num]++;
-            }
-        }
-        num++;
-    }
-    rep(i, n) {
-        int ans;
-        ans = sz[label[i]] - 1 - graphf[i].size();
-        for (int j : graphb[i]) {
-            if (label[j] == label[i]) ans--;
-        }
-        printf("%d%c", ans, i==n-1?'\n':' ');
-    }
+    func(N, M, K, std::move(A), std::move(B), std::move(C), std::move(D));
     return 0;
 }
+

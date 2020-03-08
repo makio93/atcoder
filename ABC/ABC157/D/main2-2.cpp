@@ -65,10 +65,10 @@ int main(){
         label[i] = num;
         sz.push_back(1);
         int p;
-        queue<int> todo;
+        stack<int> todo;
         todo.push(i);
         while (!todo.empty()) {
-            p = todo.front();
+            p = todo.top();
             todo.pop();
             for (int j : graphf[p]) {
                 if (label[j] >= 0) continue;
