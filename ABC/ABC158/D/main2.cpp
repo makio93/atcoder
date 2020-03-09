@@ -42,7 +42,7 @@ int main(){
     string in;
     cin >> in;
     deque<char> s;
-    for (char c : in) s.push_back(c);
+    rep(i, in.size()) s.push_back(in[i]);
     bool flip = false;
     int q;
     cin >> q;
@@ -63,8 +63,8 @@ int main(){
     }
     if (flip) reverse(all(s));
     string ans;
-    for (char c : s) {
-        ans += c;
+    rep(i, s.size()) {
+        ans += s[i];
     }
     cout << ans << endl;
     return 0;

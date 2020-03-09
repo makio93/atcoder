@@ -39,33 +39,31 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    string in;
-    cin >> in;
-    deque<char> s;
-    for (char c : in) s.push_back(c);
-    bool flip = false;
+    string s, front;
+    cin >> s;
     int q;
     cin >> q;
     rep(i, q) {
         int t;
         cin >> t;
         if (t == 1) {
-            flip = !flip;
+            swap(s, front);
         }
         else {
             int f;
             char c;
             cin >> f >> c;
-            if (flip) f = 3 - f;
-            if (f == 1) s.push_front(c);
-            else s.push_back(c);
+            if (f == 1) {
+                front += c;
+            }
+            else {
+                s += c;
+            }
         }
     }
-    if (flip) reverse(all(s));
-    string ans;
-    for (char c : s) {
-        ans += c;
-    }
-    cout << ans << endl;
+    reverse(all(front));
+    front += s;
+    cout << front << endl;
     return 0;
 }
+

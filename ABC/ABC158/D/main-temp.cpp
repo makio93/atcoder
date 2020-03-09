@@ -38,34 +38,12 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+
 int main(){
-    string in;
-    cin >> in;
-    deque<char> s;
-    for (char c : in) s.push_back(c);
-    bool flip = false;
-    int q;
-    cin >> q;
-    rep(i, q) {
-        int t;
-        cin >> t;
-        if (t == 1) {
-            flip = !flip;
-        }
-        else {
-            int f;
-            char c;
-            cin >> f >> c;
-            if (flip) f = 3 - f;
-            if (f == 1) s.push_front(c);
-            else s.push_back(c);
-        }
-    }
-    if (flip) reverse(all(s));
-    string ans;
-    for (char c : s) {
-        ans += c;
-    }
-    cout << ans << endl;
+    // cout << fixed << setprecision(5);
+
+    // Failed to predict input format
     return 0;
 }
+
