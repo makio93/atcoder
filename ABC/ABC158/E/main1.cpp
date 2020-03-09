@@ -38,9 +38,30 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-
-
 int main(){
+    int n, p;
+    cin >> n >> p;
+    string s;
+    cin >> s;
+    ll ans = 0;
+    if (p == 2 || p == 5) {
+        repr(i, n) {
+            if ((s[i] - '0') % p == 0) ans += i + 1;
+        }
+        cout << ans << endl;
+        return 0;
+    }
+    vi sum(n+1);
+    int ten = 1;
+    repr(i, n) {
+        sum[i] = (sum[i+1] + (s[i] - '0') * ten) % p;
+        ten = ten * 10 % p;
+    }
+    vi r(p);
+    repr(i, n+1) {
+        ans += r[sum[i]];
+        r[sum[i]]++;
+    }
+    cout << ans << endl;
     return 0;
 }
-
