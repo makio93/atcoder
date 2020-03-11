@@ -38,8 +38,72 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-int main(){
-    
-    return 0;
+vi g[200005];
+int d[200005];
+
+void dfs(int c, int s=0, int p=-1) {
+    d[c] = s;
+    for (int a : g[c]) {
+        if (a == p) continue;
+        dfs(a, s^1, c);
+    }
 }
 
+int main(){
+    int n;
+    cin >> n;
+    rep(i, n-1) {
+        int a, b;
+        cin >> a >> b;
+        a--; b--;
+        g[a].push_back(b);
+        g[b].push_back(a);
+    }
+    dfs(0);
+    vi e, o;
+    rep(i, n) {
+        if (d[i]) e.push_back(i);
+        else o.push_back(i);
+    }
+    vector<vi> st(3);
+    rep1(i, n) st[i%3].push_back(i);
+    if (e.size() > o.size()) swap(e, o);
+    vi ans(n);
+    if (e.size() <= st[0].size()) {
+        for (int a : e) {
+            ans[a] = st[0].back();
+            st[0].pop_back();
+        }
+        for (int a : o) {
+            rep(i, 3) {
+                if (st[i].empty()) continue;
+                ans[a] = st[i].back();
+                st[i].pop_back();
+                break;
+            }
+        }
+    } 
+    else {
+        for (int a : e) {
+            repr(i, 2) {
+                if (st[i].empty()) continue;
+                ans[a] = st[i].back();
+                st[i].pop_back();
+                break;
+            }
+        }
+        for (int a : o) {
+            repr(i, 3) {
+                if (st[i].empty()) continue;
+                ans[a] = st[i].back();
+                st[i].pop_back();
+                break;
+            }
+        }
+    }
+    rep(i, n) {
+        cout << ans[i];
+        printf("%c", i<n-1?' ':'\n');
+    }
+    return 0;
+}
