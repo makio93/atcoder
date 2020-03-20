@@ -1,0 +1,25 @@
+[2020-03-21 05:34:34.194] [remoteagent] [info] 
+
+*
+* Visual Studio Code Server
+*
+* Reminder: You may only use this software with Visual Studio family products,
+* as described in the license https://aka.ms/vscode-remote/license
+*
+
+
+[2020-03-21 05:34:34.194] [remoteagent] [info] Extension host agent started.
+[2020-03-21 05:34:34.509] [remoteagent] [info] [::ffff:127.0.0.1][131af03d][ManagementConnection] New connection established.
+[2020-03-21 05:34:34.511] [remoteagent] [info] [::ffff:127.0.0.1][8092cced][ExtensionHostConnection] New connection established.
+[2020-03-21 05:34:35.305] [remoteagent] [info] [::ffff:127.0.0.1][8092cced][ExtensionHostConnection] <1262> Launched Extension Host Process.
+[2020-03-21 05:36:47.019] [remoteagent] [info] Installing extension: formulahendry.code-runner
+[2020-03-21 05:36:48.094] [remoteagent] [info] Downloaded extension: formulahendry.code-runner /tmp/6b063a65-ed3e-4b6e-b524-918d68d53e77
+[2020-03-21 05:36:48.655] [remoteagent] [info] Extracted extension to /mnt/c/pg/.vscode-server/extensions/.formulahendry.code-runner-0.9.17: formulahendry.code-runner
+[2020-03-21 05:36:48.656] [remoteagent] [info] Renamed to /mnt/c/pg/.vscode-server/extensions/formulahendry.code-runner-0.9.17
+[2020-03-21 05:36:48.659] [remoteagent] [info] Installation completed. formulahendry.code-runner
+[2020-03-21 05:36:48.669] [remoteagent] [info] Extensions installed successfully: formulahendry.code-runner
+[2020-03-21 05:36:50.864] [remoteagent] [info] [::ffff:127.0.0.1][131af03d][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[2020-03-21 05:36:51.930] [remoteagent] [info] [::ffff:127.0.0.1][8092cced][ExtensionHostConnection] <1262> Extension Host Process exited with code: 0, signal: null.
+[2020-03-21 05:36:53.352] [remoteagent] [info] [::ffff:127.0.0.1][21b0bf39][ManagementConnection] New connection established.
+[2020-03-21 05:36:53.353] [remoteagent] [info] [::ffff:127.0.0.1][e304bcaa][ExtensionHostConnection] New connection established.
+[2020-03-21 05:36:53.374] [remoteagent] [info] [::ffff:127.0.0.1][e304bcaa][ExtensionHostConnection] <1316> Launched Extension Host Process.
