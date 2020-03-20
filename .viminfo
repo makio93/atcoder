@@ -15,11 +15,13 @@
 
 # コマンドライン 項目の履歴 (新しいものから古いものへ):
 :wq
-|2,0,1583491888,,"wq"
+|2,0,1584640420,,"wq"
+:q
+|2,0,1584640392,,"q"
+:set enc?
+|2,0,1584639542,,"set enc?"
 :q!
 |2,0,1583491818,,"q!"
-:q
-|2,0,1583491769,,"q"
 :set paste
 |2,0,1583135476,,"set paste"
 
@@ -34,9 +36,9 @@
 # デバッグ行 項目の履歴 (新しいものから古いものへ):
 
 # レジスタ:
-""1	LINE	0
+"1	LINE	0
 	
-|3,1,1,1,1,0,1583137494,""
+|3,0,1,1,1,0,1583137494,""
 "2	LINE	0
 	EOL
 |3,0,2,1,1,0,1583137493,"EOL"
@@ -61,232 +63,270 @@
 "9	LINE	0
 	/mnt
 |3,0,9,1,1,0,1583137490,"/mnt"
+""-	CHAR	0
+	#
+|3,1,36,0,1,0,1584639534,"#"
 
 # ファイルマーク:
-'0  4  29  ~/atcodertools_oth.toml
-|4,48,4,29,1583491888,"~/atcodertools_oth.toml"
-'1  4  28  ~/atcodertools_agc.toml
-|4,49,4,28,1583491872,"~/atcodertools_agc.toml"
-'2  4  29  ~/atcodertools_arc.toml
-|4,50,4,29,1583491853,"~/atcodertools_arc.toml"
-'3  11  27  ~/atcodertools_arc.toml
-|4,51,11,27,1583491818,"~/atcodertools_arc.toml"
-'4  11  27  ~/atcodertools_arc.toml
-|4,52,11,27,1583491818,"~/atcodertools_arc.toml"
-'5  11  0  ~/atcodertools_arc.toml
-|4,53,11,0,1583491805,"~/atcodertools_arc.toml"
-'6  11  0  ~/atcodertools_arc.toml
-|4,54,11,0,1583491805,"~/atcodertools_arc.toml"
-'7  1  0  ~/atcodertools_arc.tom
-|4,55,1,0,1583491769,"~/atcodertools_arc.tom"
-'8  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,56,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
-'9  2  65  ~/sh/atcodertools_gen_arc.sh
-|4,57,2,65,1583491595,"~/sh/atcodertools_gen_arc.sh"
+'0  5  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,48,5,0,1584640420,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+'1  1  0  ~/reimu.cpp
+|4,49,1,0,1584640392,"~/reimu.cpp"
+'2  2  15  ~/.vimrc
+|4,50,2,15,1584640381,"~/.vimrc"
+'3  10  26  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,51,10,26,1584639741,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+'4  10  26  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,52,10,26,1584639741,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+'5  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,53,1,0,1584639581,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+'6  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,54,1,0,1584639581,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+'7  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,55,1,0,1584639581,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+'8  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,56,1,0,1584639581,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+'9  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,57,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
 
 # ジャンプリスト (新しいものが先):
--'  4  29  ~/atcodertools_oth.toml
-|4,39,4,29,1583491888,"~/atcodertools_oth.toml"
--'  1  0  ~/atcodertools_oth.toml
-|4,39,1,0,1583491878,"~/atcodertools_oth.toml"
--'  4  28  ~/atcodertools_agc.toml
-|4,39,4,28,1583491872,"~/atcodertools_agc.toml"
--'  4  28  ~/atcodertools_agc.toml
-|4,39,4,28,1583491872,"~/atcodertools_agc.toml"
--'  1  0  ~/atcodertools_agc.toml
-|4,39,1,0,1583491857,"~/atcodertools_agc.toml"
--'  1  0  ~/atcodertools_agc.toml
-|4,39,1,0,1583491857,"~/atcodertools_agc.toml"
--'  4  29  ~/atcodertools_arc.toml
-|4,39,4,29,1583491853,"~/atcodertools_arc.toml"
--'  4  29  ~/atcodertools_arc.toml
-|4,39,4,29,1583491853,"~/atcodertools_arc.toml"
--'  4  29  ~/atcodertools_arc.toml
-|4,39,4,29,1583491853,"~/atcodertools_arc.toml"
--'  4  29  ~/atcodertools_arc.toml
-|4,39,4,29,1583491853,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491819,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491819,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491819,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491819,"~/atcodertools_arc.toml"
--'  11  27  ~/atcodertools_arc.toml
-|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
--'  11  27  ~/atcodertools_arc.toml
-|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
--'  11  27  ~/atcodertools_arc.toml
-|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
--'  11  27  ~/atcodertools_arc.toml
-|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
--'  11  27  ~/atcodertools_arc.toml
-|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
--'  11  27  ~/atcodertools_arc.toml
-|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
--'  11  27  ~/atcodertools_arc.toml
-|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
--'  11  27  ~/atcodertools_arc.toml
-|4,39,11,27,1583491818,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491806,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491806,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491806,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491806,"~/atcodertools_arc.toml"
--'  11  0  ~/atcodertools_arc.toml
-|4,39,11,0,1583491805,"~/atcodertools_arc.toml"
--'  11  0  ~/atcodertools_arc.toml
-|4,39,11,0,1583491805,"~/atcodertools_arc.toml"
--'  11  0  ~/atcodertools_arc.toml
-|4,39,11,0,1583491805,"~/atcodertools_arc.toml"
--'  11  0  ~/atcodertools_arc.toml
-|4,39,11,0,1583491805,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491772,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491772,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491772,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.toml
-|4,39,1,0,1583491772,"~/atcodertools_arc.toml"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  0  ~/atcodertools_arc.tom
-|4,39,1,0,1583491769,"~/atcodertools_arc.tom"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
--'  1  1  ~/sh/atcodertools_gen_oth.sh
-|4,39,1,1,1583491702,"~/sh/atcodertools_gen_oth.sh"
+-'  5  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,5,0,1584640420,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584640407,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  ~/reimu.cpp
+|4,39,1,0,1584640392,"~/reimu.cpp"
+-'  1  0  ~/reimu.cpp
+|4,39,1,0,1584640392,"~/reimu.cpp"
+-'  2  15  ~/.vimrc
+|4,39,2,15,1584640381,"~/.vimrc"
+-'  2  15  ~/.vimrc
+|4,39,2,15,1584640381,"~/.vimrc"
+-'  2  15  ~/.vimrc
+|4,39,2,15,1584640381,"~/.vimrc"
+-'  2  15  ~/.vimrc
+|4,39,2,15,1584640381,"~/.vimrc"
+-'  1  0  ~/.vimrc
+|4,39,1,0,1584640350,"~/.vimrc"
+-'  1  0  ~/.vimrc
+|4,39,1,0,1584640350,"~/.vimrc"
+-'  1  0  ~/.vimrc
+|4,39,1,0,1584640350,"~/.vimrc"
+-'  1  0  ~/.vimrc
+|4,39,1,0,1584640350,"~/.vimrc"
+-'  10  26  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,10,26,1584639741,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  10  26  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,10,26,1584639741,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  10  26  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,10,26,1584639741,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  10  26  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,10,26,1584639741,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  10  26  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,10,26,1584639741,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584639652,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584639652,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584639652,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584639652,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584639581,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584639581,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584639581,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/reimu.cpp
+|4,39,1,0,1584639581,"/mnt/c/DATA/Cygwin/sns/reimu.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  8  38  /mnt/c/DATA/Cygwin/sns/test.cpp
+|4,39,8,38,1584639488,"/mnt/c/DATA/Cygwin/sns/test.cpp"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
+-'  1  0  /mnt/c/DATA/Cygwin/sns/test.out
+|4,39,1,0,1584639475,"/mnt/c/DATA/Cygwin/sns/test.out"
 
 # ファイル内マークの履歴 (新しいものから古いもの):
+
+> /mnt/c/DATA/Cygwin/sns/reimu.cpp
+	*	1584640419	0
+	"	5	0
+	^	5	0
+	.	5	0
+	+	1	0
+	+	10	27
+	+	11	0
+	+	5	0
+
+> ~/reimu.cpp
+	*	1584640389	0
+	"	1	0
+
+> ~/.vimrc
+	*	1584640380	0
+	"	2	15
+	^	2	16
+	.	2	15
+	+	2	15
+
+> /mnt/c/DATA/Cygwin/sns/test.cpp
+	*	1584639480	0
+	"	8	38
+	^	8	39
+	.	8	35
+	+	7	14
+	+	8	34
+	+	7	51
+	+	8	35
+
+> /mnt/c/DATA/Cygwin/sns/test.out
+	*	1584639471	0
+	"	1	0
 
 > ~/atcodertools_oth.toml
 	*	1583491886	0
