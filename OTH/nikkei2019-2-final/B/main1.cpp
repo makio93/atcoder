@@ -38,22 +38,40 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-int main(){
-    string s;
-    cin >> s;
-    ll ans = 0;
-    int n = (s.size() - 4) / 2;
-    rep1(i, n) {
-        unsigned pos = s.substr(1,n).find(s.substr(s.size()-i));
-        if (pos == string::npos) continue;
-        int m = (s.size() - 1 - pos - 2 * i) / 2;
-        rep1(j, m) {
-            if (s.substr(1+pos+i,j)==s.substr(i+pos+i+j,j)) {
-                ++ans;
-                printf("%d %u %d\n", i, pos, j);
+const int smax = 500;
+bool dub[smax][smax];
+
+int calc(string s)
+{
+    int ans = 0, n;
+    n = s.size();
+    rep(i, n) {
+        rep1(j, n) {
+            if (i+j*2>=n) continue;
+            bool same = true;
+            rep(k, j) {
+                if (s[i+k]!=s[i+j+k]) {
+                    same = false;
+                    break;
+                }
+            }
+            if (same) dub[i][i+j*2-1] = true;
+        }
+    }
+    for (int i=1; i<n; i++) {
+        for (int j1=i,j2=n-1; j1>=1; --j1,--j2) {
+            if (s[j1]!=s[j2]) break;
+            for (int k=i+1; k<j2-1; k++) {
+                if (dub[i+1][k]) ++ans;
             }
         }
     }
-    cout << ans << endl;
+    return ans;
+}
+
+int main(){
+    string s;
+    cin >> s;
+    cout << calc(s) << endl;
     return 0;
 }
