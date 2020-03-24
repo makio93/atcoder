@@ -38,18 +38,23 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+void func(long long A, long long B, long long C, long long X){
+
+}
+
 int main(){
-    int a, b, c, x;
-    cin >> a >> b >> c >> x;
-    int ans = 0;
-    for (int i=0; i<=a; i++) {
-        for (int j=0; j<=b; j++) {
-            for (int k=0; k<=c; k++) {
-                if (500*i+100*j+50*k==x) ++ans;
-            }
-        }
-    }
-    cout << ans << endl;
+    // cout << fixed << setprecision(5);
+
+    long long A;
+    scanf("%lld",&A);
+    long long B;
+    scanf("%lld",&B);
+    long long C;
+    scanf("%lld",&C);
+    long long X;
+    scanf("%lld",&X);
+    func(A, B, C, X);
     return 0;
 }
 
