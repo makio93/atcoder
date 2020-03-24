@@ -38,14 +38,12 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+
 int main(){
-    string s;
-    int ans = 0;
-    cin >> s;
-    for (char c : s) {
-        if (c=='1') ++ans;
-    }
-    cout << ans << endl;
+    // cout << fixed << setprecision(5);
+
+    // Failed to predict input format
     return 0;
 }
 

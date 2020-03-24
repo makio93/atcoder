@@ -39,10 +39,10 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    string s;
+    char c;
     int ans = 0;
-    cin >> s;
-    for (char c : s) {
+    for (int i=0; i<3; i++) {
+        cin >> c;
         if (c=='1') ++ans;
     }
     cout << ans << endl;
