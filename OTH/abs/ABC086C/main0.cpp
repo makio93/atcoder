@@ -44,15 +44,19 @@ const string NO = "No";
 int main(){
     int n;
     cin >> n;
-    int t[100005], x[100005], y[100005];
+    vi t(n+1), x(n+1), y(n+1);
     t[0] = 0; x[0] = 0; y[0] = 0;
     rep1(i, n) cin >> t[i] >> x[i] >> y[i];
     bool can = true;
     rep(i, n) {
         int td = t[i+1] - t[i];
         int dd = abs(x[i+1]-x[i])+abs(y[i+1]-y[i]);
-        if (dd>td || dd%2!=td%2) can = false;
+        if (dd>td || dd%2!=td%2) {
+            can = false;
+            break;
+        }
     }
     cout << (can?YES:NO) << endl;
     return 0;
 }
+

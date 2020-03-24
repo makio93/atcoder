@@ -41,18 +41,24 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 const string YES = "Yes";
 const string NO = "No";
 
+void func(long long N, std::vector<long long> t, std::vector<long long> x, std::vector<long long> y){
+
+}
+
 int main(){
-    int n;
-    cin >> n;
-    int t[100005], x[100005], y[100005];
-    t[0] = 0; x[0] = 0; y[0] = 0;
-    rep1(i, n) cin >> t[i] >> x[i] >> y[i];
-    bool can = true;
-    rep(i, n) {
-        int td = t[i+1] - t[i];
-        int dd = abs(x[i+1]-x[i])+abs(y[i+1]-y[i]);
-        if (dd>td || dd%2!=td%2) can = false;
+    // cout << fixed << setprecision(5);
+
+    long long N;
+    scanf("%lld",&N);
+    std::vector<long long> t(N);
+    std::vector<long long> x(N);
+    std::vector<long long> y(N);
+    for(int i = 0 ; i < N ; i++){
+        scanf("%lld",&t[i]);
+        scanf("%lld",&x[i]);
+        scanf("%lld",&y[i]);
     }
-    cout << (can?YES:NO) << endl;
+    func(N, std::move(t), std::move(x), std::move(y));
     return 0;
 }
+
