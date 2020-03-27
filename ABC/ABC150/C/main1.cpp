@@ -53,4 +53,3 @@ int main(){
     cout << abs(mp[p]-mp[q]) << endl;
     return 0;
 }
-

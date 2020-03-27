@@ -38,25 +38,40 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-
-void func(long long N, std::vector<long long> P, std::vector<long long> Q){
-
+int fact(int n)
+{
+    int ans = 1;
+    rep1r(i, n) ans *= i;
+    return ans;
 }
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    std::vector<long long> P(N);
-    for(int i = 0 ; i < N ; i++){
-        scanf("%lld",&P[i]);
+    int n, a = 0, b = 0;
+    cin >> n;
+    vi p, q;
+    rep(i, n) {
+        int d, s;
+        cin >> d;
+        p.push_back(d);
+        if (i == n-1) break;
+        s = d - 1;
+        rep(j, i) {
+            if (p[j] < d) s--;
+        }
+        a += s * fact(n-1-i);
     }
-    std::vector<long long> Q(N);
-    for(int i = 0 ; i < N ; i++){
-        scanf("%lld",&Q[i]);
+    rep(i, n) {
+        int d, s;
+        cin >> d;
+        q.push_back(d);
+        if (i == n-1) break;
+        s = d - 1;
+        rep(j, i) {
+            if (q[j] < d) s--;
+        }
+        b += s * fact(n-1-i);
     }
-    func(N, std::move(P), std::move(Q));
+    cout << abs(a-b) << endl;
     return 0;
 }
 

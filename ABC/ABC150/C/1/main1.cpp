@@ -44,15 +44,13 @@ int main(){
     vi p(n), q(n);
     rep(i, n) cin >> p[i];
     rep(i, n) cin >> q[i];
-    vi r(n);
-    rep(i, n) r[i] = i + 1;
-    int now = 1, a, b;
+    vi a(n);
+    rep(i, n) a[i] = i + 1;
+    map<vi, int> mp;
     do {
-        if (r == p) a = now;
-        if (r == q) b = now;
-        ++now;
-    } while (next_permutation(all(r)));
-    cout << abs(a-b) << endl;
+        mp[a] = mp.size();
+    } while (next_permutation(all(a)));
+    cout << abs(mp[p]-mp[q]) << endl;
     return 0;
 }
 
