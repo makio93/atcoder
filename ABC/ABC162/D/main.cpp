@@ -40,24 +40,19 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
     int n;
-    cin >> n;
     string s;
-    cin >> s;
-    vector<map<char, int>> mp(n);
-    rep1(i, n-1) {
-        rep(j, i) mp[j][s[i]]++;
+    cin >> n >> s;
+    int r = 0, g = 0, b = 0;
+    for (char c : s) {
+        if (c == 'R') ++r;
+        if (c == 'G') ++g;
+        if (c == 'B') ++b;
     }
-    ll ans = 0;
-    rep(i, n-2) for (int j=i+1; j<n-1; ++j) {
-        if (s[i]==s[j]) continue;
-        char k;
-        if (s[i]!='R'&&s[j]!='R') k = 'R';
-        if (s[i]!='G'&&s[j]!='G') k = 'G';
-        if (s[i]!='B'&&s[j]!='B') k = 'B';
-        ans += mp[j][k];
-        if (i+2*(j-i)<n) {
-            if (s[i+2*(j-i)]==k) --ans;
-        }
+    ll ans = ll(r) * g * b;
+    rep(i, n) for (int j=i+1; j<n; ++j) {
+        int k = i+2*(j-i);
+        if (k >= n) continue;
+        if (s[i]!=s[j]&&s[j]!=s[k]&&s[i]!=s[k]) --ans;
     }
     cout << ans << endl;
     return 0;
