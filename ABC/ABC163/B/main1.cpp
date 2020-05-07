@@ -39,14 +39,12 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    int n;
-    cin >> n;
-    vi ans(n);
-    rep(i, n-1) {
-        int a;
-        cin >> a;
-        ans[a-1]++;
-    }
-    rep(i, n) cout << ans[i] << endl;
+    int n, m;
+    cin >> n >> m;
+    vi a(m);
+    rep(i, m) cin >> a[i];
+    rep(i, m) n -= a[i];
+    if (n < 0) n = -1;
+    cout << n << endl;
     return 0;
 }
