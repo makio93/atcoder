@@ -3,7 +3,7 @@
  "judge": {
   "judge_type": "normal"
  },
- "lang": "cpp14",
+ "lang": "cpp",
  "problem": {
   "alphabet": "D",
   "contest": {
