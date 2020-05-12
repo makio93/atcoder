@@ -43,8 +43,9 @@ int main(){
     cin >> n;
     vi d(n);
     rep(i, n) cin >> d[i];
-    sort(d.begin(), d.end());
-    int ans = d[n/2] - d[n/2-1];
+    sort(all(d));
+    int c = (1 + n) / 2;
+    int ans = abs(d[c-1]-d[c]);
     cout << ans << endl;
     return 0;
 }
