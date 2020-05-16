@@ -41,38 +41,43 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 int main(){
     int h, w, n;
     cin >> h >> w >> n;
-    vs m(h);
-    rep(i, h) cin >> m[i];
+    vs s(h);
+    rep(i, h) cin >> s[i];
     int ans = 0;
-    const vi dy = { -1, 0, 1, 0 }, dx = { 0, 1, 0, -1 };
-    rep1(k, n) {
-        char f = (k==1)?'S':k-1+'0', t = k+'0';
+    rep(i0, n) {
+        char b = '0' + i0, e = '0' + (i0 + 1);
+        if (b == '0') b = 'S';
+        vs s2 = s;
         queue<pii> q;
-        vector<vi> dist(h, vi(w, INF));
+        vector<vi> d(h, vi(w, INF));
+        auto ps = [&] (int i, int j, int b) {
+            if (i<0||i>=h||j<0||j>=w) return;
+            if (s2[i][j]=='X'||s2[i][j]==' ') return;
+            q.push({i, j});
+            s2[i][j] = ' ';
+            d[i][j] = b;
+        };
+        int ib, jb, ie, je;
         rep(i, h) rep(j, w) {
-            if (m[i][j]==f) {
-                q.emplace(i, j);
-                dist[i][j] = 0;
+            if (s2[i][j] == b) {
+                ib = i; jb = j;
+            }
+            if (s2[i][j] == e) {
+                ie = i; je = j;
             }
         }
-        bool ok = false;
-        while (!ok) {
+        const int dx[] = {-1, 1, 0, 0}, dy[] = {0, 0, -1, 1};
+        ps(ib, jb, 0);
+        while (!q.empty()) {
             pii p = q.front(); q.pop();
             int y = p.first, x = p.second;
+            int b = d[y][x] + 1;
             rep(i, 4) {
-                int ny = y + dy[i], nx = x + dx[i];
-                if (ny<0||ny>=h||nx<0||nx>=w) continue;
-                if (m[ny][nx]=='X') continue;
-                if (dist[ny][nx]!=INF) continue;
-                if (m[ny][nx]==t) {
-                    ans += dist[y][x] + 1;
-                    ok = true;
-                    break;
-                }
-                q.emplace(ny, nx);
-                dist[ny][nx] = dist[y][x] + 1;
+                int nx = x + dx[i], ny = y + dy[i];
+                ps(ny, nx, b);
             }
         }
+        ans += d[ie][je];
     }
     cout << ans << endl;
     return 0;

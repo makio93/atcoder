@@ -39,41 +39,5 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    int h, w, n;
-    cin >> h >> w >> n;
-    vs m(h);
-    rep(i, h) cin >> m[i];
-    int ans = 0;
-    const vi dy = { -1, 0, 1, 0 }, dx = { 0, 1, 0, -1 };
-    rep1(k, n) {
-        char f = (k==1)?'S':k-1+'0', t = k+'0';
-        queue<pii> q;
-        vector<vi> dist(h, vi(w, INF));
-        rep(i, h) rep(j, w) {
-            if (m[i][j]==f) {
-                q.emplace(i, j);
-                dist[i][j] = 0;
-            }
-        }
-        bool ok = false;
-        while (!ok) {
-            pii p = q.front(); q.pop();
-            int y = p.first, x = p.second;
-            rep(i, 4) {
-                int ny = y + dy[i], nx = x + dx[i];
-                if (ny<0||ny>=h||nx<0||nx>=w) continue;
-                if (m[ny][nx]=='X') continue;
-                if (dist[ny][nx]!=INF) continue;
-                if (m[ny][nx]==t) {
-                    ans += dist[y][x] + 1;
-                    ok = true;
-                    break;
-                }
-                q.emplace(ny, nx);
-                dist[ny][nx] = dist[y][x] + 1;
-            }
-        }
-    }
-    cout << ans << endl;
     return 0;
 }
