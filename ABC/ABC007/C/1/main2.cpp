@@ -38,29 +38,31 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+typedef tuple<int, int> T;
+
 int main(){
     int r, c;
     cin >> r >> c;
     int sy, sx, gy, gx;
     cin >> sy >> sx >> gy >> gx;
     --sy; --sx; --gy; --gx;
-    vs cb(r);
-    rep(i, r) cin >> cb[i];
-    queue<pii> q;
-    vector<vi> dist(r, vi(c, INF));
-    const vi dy = { -1, 0, 1, 0 }, dx = { 0, 1, 0, -1 };
-    q.emplace(sy, sx);
-    dist[sy][sx] = 0;
+    vs cs(r);
+    rep(i, r) cin >> cs[i];
+    vector<vi> d(r, vi(c, INF));
+    vi dx = { -1, 1, 0, 0 }, dy = { 0, 0, -1, 1 };
+    queue<T> q;
+    q.push(make_tuple(sx, sy));
+    d[sy][sx] = 0;
     while (!q.empty()) {
-        pii p = q.front(); q.pop();
-        int y = p.first, x = p.second;
+        T t = q.front(); q.pop();
         rep(i, 4) {
-            int ny = y + dy[i], nx = x + dx[i];
-            if (cb[ny][nx]=='#' || dist[ny][nx]!=INF) continue;
-            q.emplace(ny, nx);
-            dist[ny][nx] = dist[y][x] + 1;
+            int nx = get<0>(t) + dx[i], ny = get<1>(t) + dy[i];
+            if (nx>0&&nx<c-1&&ny>0&&ny<r-1&&cs[ny][nx]=='.'&&d[ny][nx]==INF) {
+                q.push(make_tuple(nx, ny));
+                d[ny][nx] = d[get<1>(t)][get<0>(t)] + 1;
+            }
         }
     }
-    cout << dist[gy][gx] << endl;
+    cout << d[gy][gx] << endl;
     return 0;
 }

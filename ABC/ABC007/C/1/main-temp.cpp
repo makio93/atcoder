@@ -38,29 +38,12 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+
 int main(){
-    int r, c;
-    cin >> r >> c;
-    int sy, sx, gy, gx;
-    cin >> sy >> sx >> gy >> gx;
-    --sy; --sx; --gy; --gx;
-    vs cb(r);
-    rep(i, r) cin >> cb[i];
-    queue<pii> q;
-    vector<vi> dist(r, vi(c, INF));
-    const vi dy = { -1, 0, 1, 0 }, dx = { 0, 1, 0, -1 };
-    q.emplace(sy, sx);
-    dist[sy][sx] = 0;
-    while (!q.empty()) {
-        pii p = q.front(); q.pop();
-        int y = p.first, x = p.second;
-        rep(i, 4) {
-            int ny = y + dy[i], nx = x + dx[i];
-            if (cb[ny][nx]=='#' || dist[ny][nx]!=INF) continue;
-            q.emplace(ny, nx);
-            dist[ny][nx] = dist[y][x] + 1;
-        }
-    }
-    cout << dist[gy][gx] << endl;
+    // cout << fixed << setprecision(5);
+
+    // Failed to predict input format
     return 0;
 }
+
