@@ -38,32 +38,23 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-int my_binary_search(vi& pp, int v) {
-    int l = 0, r = pp.size();
-    while (r - l > 0) {
-        int c = (r + l) / 2;
-        if (pp[c] == v) return c;
-        if (pp[c] < v) l = c + 1;
-        else r = c;
-    }
-    return r - 1;
-}
-
-int main() {
+int main(){
     int n, m;
     cin >> n >> m;
-    vi p(n+1);
-    rep1(i, n) cin >> p[i];
-    vi pp((n+1)*(n+1));
-    rep(i, n+1) rep(j, n+1) pp[i*(n+1)+j] = p[i] + p[j];
-    sort(all(pp));
-    int mx = 0;
-    rep(a, n+1) rep(b, n+1) {
-        int s = m - p[a] - p[b];
-        if (s < 0) continue;
-        int d = my_binary_search(pp, s);
-        mx = max(mx, p[a] + p[b] + pp[d]);
+    vi p(n);
+    rep(i, n) cin >> p[i];
+    p.pb(0);
+    int n2 = n*n+2*n+1;
+    vi p2(n2);
+    rep(i, n+1) rep(j, n+1) p2[(n+1)*i+j] = p[i] + p[j];
+    VSORT(p2);
+    int ans = -INF;
+    rep(i, n2) {
+        int p2i = p2[i];
+        auto itr = lower_bound(all(p2), m - p2i + 1);
+        if (itr == p2.begin()) continue;
+        ans = max(ans, *(--itr) + p2i);
     }
-    cout << mx << endl;
+    cout << ans << endl;
     return 0;
 }
