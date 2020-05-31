@@ -41,36 +41,22 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 int main(){
     ll n;
     cin >> n;
-    if (n == 1) {
-        cout << 0 << endl;
-        return 0;
-    }
-    map<ll, int> mp;
-    ll t = n;
-    for (int i=2; i<=sqrtl(t); ++i) {
-        while (t%i==0) {
-            t /= i;
-            mp[i]++;
-        }
-        if (t==1) break;
-    }
-    if (t > 1) mp[t]++;
-    priority_queue<ll, vll, greater<ll>> q;
-    for (auto p : mp) {
-        ll a = 1;
-        rep(i, p.second) {
-            a *= p.first;
-            q.emplace(a);
-        }
-    }
     ll ans = 0;
-    while (n > 1) {
-        ll p = q.top(); q.pop();
-        if (p > n) break;
-        if (n%p != 0) continue;
-        n /= p;
+    ll now = 2;
+    while (n>1) {
+        while ((n%now)!=0 && now<=(ll)(sqrt(n)+1)) ++now;
+        /*
+        if ((n%now)!=0) {
+            if (n>1) ++ans;
+            break;
+        }
+        */
+        if (now > n) break;
+        n /= now;
         ++ans;
+        ++now;
     }
+    if (n>1 && now<=n) ++ans;
     cout << ans << endl;
     return 0;
 }
