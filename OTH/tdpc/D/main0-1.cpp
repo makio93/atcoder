@@ -42,33 +42,52 @@ int main(){
     int n;
     ll d;
     cin >> n >> d;
-    vi es;
-    for (int p : { 2, 3, 5 }) {
-        int cnt = 0;
-        while (d%p==0) {
-            d /= p;
-            ++cnt;
-        }
-        es.pb(cnt);
+    vi a(3);
+    while (d%2==0) {
+        d /= 2;
+        a[0]++;
+    }
+    while (d%3==0) {
+        d /= 3;
+        a[1]++;
+    }
+    while (d%5==0) {
+        d /= 5;
+        a[2]++;
     }
     if (d != 1) {
         cout << 0.0 << endl;
         return 0;
     }
-    vector<vector<vector<double>>> dp(es[0]+1, vector<vector<double>>(es[1]+1, vector<double>(es[2]+1, 0.0)));
-    dp[0][0][0] = 1.0;
+    map<vi, ll> dp;
+    dp[{0, 0, 0}] = 1;
     rep(i, n) {
-        vector<vector<vector<double>>> tmp(es[0]+1, vector<vector<double>>(es[1]+1, vector<double>(es[2]+1, 0.0)));
-        rep(ai, es[0]+1) rep(bi, es[1]+1) rep(ci, es[2]+1) {
-            if (dp[ai][bi][ci] == 0.0) continue;
-            const vi da = { 0, 1, 0, 2, 0, 1 }, db = { 0, 0, 1, 0, 0, 1 }, dc = { 0, 0, 0, 0, 1, 0 };
-            rep(j, 6) {
-                int na = min(ai+da[j], es[0]), nb = min(bi+db[j], es[1]), nc = min(ci+dc[j], es[2]);
-                tmp[na][nb][nc] += dp[ai][bi][ci] / 6.0;
-            }
+        map<vi, ll> tmp = dp;
+        for (auto p : dp) {
+            vi tar = p.first; tar[0]++;
+            tmp[tar] += dp[p.first];
+            tar[0]++;
+            tmp[tar] += dp[p.first];
+            tar = p.first; tar[1]++;
+            tmp[tar] += dp[p.first];
+            tar = p.first; tar[2]++;
+            tmp[tar] += dp[p.first];
+            tar = p.first; tar[0]++; tar[1]++;
+            tmp[tar] += dp[p.first];
         }
         swap(dp, tmp);
     }
-    printf("%.10f\n", dp[es[0]][es[1]][es[2]]);
+    ll cnt = 0;
+    for (auto p : dp) {
+        bool ok = true;
+        rep(i, 3) {
+            if (p.first[i] < a[i]) ok = false;
+        }
+        if (!ok) continue;
+        cnt += p.second;
+    }
+    double ans = cnt;
+    rep(i, n) ans /= 6.0;
+    printf("%.10f\n", ans);
     return 0;
 }

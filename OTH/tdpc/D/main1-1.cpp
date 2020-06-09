@@ -42,33 +42,47 @@ int main(){
     int n;
     ll d;
     cin >> n >> d;
-    vi es;
-    for (int p : { 2, 3, 5 }) {
-        int cnt = 0;
-        while (d%p==0) {
-            d /= p;
-            ++cnt;
-        }
-        es.pb(cnt);
+    int a = 0, b = 0, c = 0;
+    while (d%2==0) {
+        d /= 2;
+        ++a;
+    }
+    while (d%3==0) {
+        d /= 3;
+        ++b;
+    }
+    while (d%5==0) {
+        d /= 5;
+        ++c;
     }
     if (d != 1) {
         cout << 0.0 << endl;
         return 0;
     }
-    vector<vector<vector<double>>> dp(es[0]+1, vector<vector<double>>(es[1]+1, vector<double>(es[2]+1, 0.0)));
+    vector<vector<vector<double>>> dp(100, vector<vector<double>>(100, vector<double>(100, 0.0)));
     dp[0][0][0] = 1.0;
     rep(i, n) {
-        vector<vector<vector<double>>> tmp(es[0]+1, vector<vector<double>>(es[1]+1, vector<double>(es[2]+1, 0.0)));
-        rep(ai, es[0]+1) rep(bi, es[1]+1) rep(ci, es[2]+1) {
+        vector<vector<vector<double>>> tmp(100, vector<vector<double>>(100, vector<double>(100, 0.0)));
+        rep(ai, 80) rep(bi, 80) rep(ci, 80) {
             if (dp[ai][bi][ci] == 0.0) continue;
-            const vi da = { 0, 1, 0, 2, 0, 1 }, db = { 0, 0, 1, 0, 0, 1 }, dc = { 0, 0, 0, 0, 1, 0 };
-            rep(j, 6) {
-                int na = min(ai+da[j], es[0]), nb = min(bi+db[j], es[1]), nc = min(ci+dc[j], es[2]);
-                tmp[na][nb][nc] += dp[ai][bi][ci] / 6.0;
-            }
+            tmp[ai][bi][ci] += dp[ai][bi][ci] / 6.0;
+            tmp[ai+1][bi][ci] += dp[ai][bi][ci] / 6.0;
+            tmp[ai+2][bi][ci] += dp[ai][bi][ci] / 6.0;
+            tmp[ai][bi+1][ci] += dp[ai][bi][ci] / 6.0;
+            tmp[ai][bi][ci+1] += dp[ai][bi][ci] / 6.0;
+            tmp[ai+1][bi+1][ci] += dp[ai][bi][ci] / 6.0;
         }
         swap(dp, tmp);
     }
-    printf("%.10f\n", dp[es[0]][es[1]][es[2]]);
+    double ans = 0.0;
+    for (int ai=a; ai<80; ++ai) {
+        for (int bi=b; bi<80; ++bi) {
+            for (int ci=c; ci<80; ++ci) {
+                if (dp[ai][bi][ci] == 0.0) continue;
+                ans += dp[ai][bi][ci];
+            }
+        }
+    }
+    printf("%.10f\n", ans);
     return 0;
 }

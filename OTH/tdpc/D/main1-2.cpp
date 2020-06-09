@@ -42,33 +42,38 @@ int main(){
     int n;
     ll d;
     cin >> n >> d;
-    vi es;
-    for (int p : { 2, 3, 5 }) {
-        int cnt = 0;
-        while (d%p==0) {
-            d /= p;
-            ++cnt;
-        }
-        es.pb(cnt);
+    int a = 0, b = 0, c = 0;
+    while (d%2==0) {
+        d /= 2;
+        ++a;
+    }
+    while (d%3==0) {
+        d /= 3;
+        ++b;
+    }
+    while (d%5==0) {
+        d /= 5;
+        ++c;
     }
     if (d != 1) {
         cout << 0.0 << endl;
         return 0;
     }
-    vector<vector<vector<double>>> dp(es[0]+1, vector<vector<double>>(es[1]+1, vector<double>(es[2]+1, 0.0)));
+    vector<vector<vector<double>>> dp(100, vector<vector<double>>(100, vector<double>(100, 0.0)));
     dp[0][0][0] = 1.0;
     rep(i, n) {
-        vector<vector<vector<double>>> tmp(es[0]+1, vector<vector<double>>(es[1]+1, vector<double>(es[2]+1, 0.0)));
-        rep(ai, es[0]+1) rep(bi, es[1]+1) rep(ci, es[2]+1) {
+        vector<vector<vector<double>>> tmp(100, vector<vector<double>>(100, vector<double>(100, 0.0)));
+        rep(ai, a+1) rep(bi, b+1) rep(ci, c+1) {
             if (dp[ai][bi][ci] == 0.0) continue;
-            const vi da = { 0, 1, 0, 2, 0, 1 }, db = { 0, 0, 1, 0, 0, 1 }, dc = { 0, 0, 0, 0, 1, 0 };
-            rep(j, 6) {
-                int na = min(ai+da[j], es[0]), nb = min(bi+db[j], es[1]), nc = min(ci+dc[j], es[2]);
-                tmp[na][nb][nc] += dp[ai][bi][ci] / 6.0;
-            }
+            tmp[ai][bi][ci] += dp[ai][bi][ci] / 6.0;
+            tmp[min(ai+1,a)][bi][ci] += dp[ai][bi][ci] / 6.0;
+            tmp[min(ai+2,a)][bi][ci] += dp[ai][bi][ci] / 6.0;
+            tmp[ai][min(bi+1,b)][ci] += dp[ai][bi][ci] / 6.0;
+            tmp[ai][bi][min(ci+1,c)] += dp[ai][bi][ci] / 6.0;
+            tmp[min(ai+1,a)][min(bi+1,b)][ci] += dp[ai][bi][ci] / 6.0;
         }
         swap(dp, tmp);
     }
-    printf("%.10f\n", dp[es[0]][es[1]][es[2]]);
+    printf("%.10f\n", dp[a][b][c]);
     return 0;
 }
