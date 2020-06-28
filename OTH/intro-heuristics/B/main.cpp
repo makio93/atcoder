@@ -39,13 +39,24 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    int n;
-    cin >> n;
-    ll ans = 0, i = 1;
-    for (i=1; i<=n; ++i) {
-        ll k = n / i;
-        ans += k*(k+1)/2 * i;
+    int d;
+    cin >> d;
+    vi c(26);
+    rep(i, 26) cin >> c[i];
+    vector<vi> s(d, vi(26));
+    rep(i, d) rep(j, 26) cin >> s[i][j];
+    vi t(d);
+    rep(i, d) {
+        cin >> t[i];
+        t[i]--;
     }
-    cout << ans << endl;
+    vi last(26);
+    ll sum = 0;
+    rep1(i, d) {
+        sum += s[i-1][t[i-1]];
+        last[t[i-1]] = i;
+        rep(j, 26) sum -= c[j] * (i - last[j]);
+        cout << sum << endl;
+    }
     return 0;
 }

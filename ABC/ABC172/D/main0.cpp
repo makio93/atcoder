@@ -46,6 +46,7 @@ int main(){
         ll k = n / i;
         ans += k*(k+1)/2 * i;
     }
+    //ans += (i+n)*(n-i+1)/2;
     cout << ans << endl;
     return 0;
 }

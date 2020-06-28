@@ -38,14 +38,39 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+void func(long long D, std::vector<long long> c, std::vector<std::vector<long long>> s, std::vector<long long> t, long long M, std::vector<long long> d, std::vector<long long> q){
+
+}
+
 int main(){
-    int n;
-    cin >> n;
-    ll ans = 0, i = 1;
-    for (i=1; i<=n; ++i) {
-        ll k = n / i;
-        ans += k*(k+1)/2 * i;
+    // cout << fixed << setprecision(5);
+
+    long long D;
+    scanf("%lld",&D);
+    std::vector<long long> c(26);
+    for(int i = 0 ; i < 26 ; i++){
+        scanf("%lld",&c[i]);
     }
-    cout << ans << endl;
+    std::vector<std::vector<long long>> s(D, std::vector<long long>(26));
+    for(int i = 0 ; i < D ; i++){
+        for(int j = 0 ; j < 26 ; j++){
+            scanf("%lld",&s[i][j]);
+        }
+    }
+    std::vector<long long> t(D);
+    for(int i = 0 ; i < D ; i++){
+        scanf("%lld",&t[i]);
+    }
+    long long M;
+    scanf("%lld",&M);
+    std::vector<long long> d(M);
+    std::vector<long long> q(M);
+    for(int i = 0 ; i < M ; i++){
+        scanf("%lld",&d[i]);
+        scanf("%lld",&q[i]);
+    }
+    func(D, std::move(c), std::move(s), std::move(t), M, std::move(d), std::move(q));
     return 0;
 }
+

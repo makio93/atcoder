@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 総数を1000000007（素数）で割った余り
+const long long mod = 1e9 + 7;
+
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -35,7 +38,7 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const long long mod = 1000000007;
+const long long MOD = 1000000007;
 // auto mod int
 struct mint {
     ll x; // typedef long long ll;
@@ -68,20 +71,27 @@ struct mint {
 };
 istream& operator>>(istream& is, const mint& a) { return is >> a.x; }
 ostream& operator<<(ostream& os, const mint& a) { return os << a.x; }
+// combination mod prime
+struct combination {
+    vector<mint> fact, ifact;
+    combination(int n):fact(n+1),ifact(n+1) {
+        assert(n < mod);
+        fact[0] = 1;
+        for (int i = 1; i <= n; ++i) fact[i] = fact[i-1]*i;
+        ifact[n] = fact[n].inv();
+        for (int i = n; i >= 1; --i) ifact[i-1] = ifact[i]*i;
+    }
+    mint operator()(int n, int k) {
+        if (k < 0 || k > n) return 0;
+        return fact[n]*ifact[n-k]*fact[n]*ifact[n-k]*ifact[k];
+    }
+};
 
 int main(){
     int n, m;
     cin >> n >> m;
-    mint ans = 1;
-    int a = m;
-    rep(i, n) {
-        ans *= a;
-        --a;
-    }
-    ans *= ans;
-    rep1(i, n) {
-        ans /= i;
-    }
+    combination cb(100005);
+    mint ans = cb(m, n);
     cout << ans << endl;
     return 0;
 }

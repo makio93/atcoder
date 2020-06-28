@@ -39,13 +39,10 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    int n;
-    cin >> n;
-    ll ans = 0, i = 1;
-    for (i=1; i<=n; ++i) {
-        ll k = n / i;
-        ans += k*(k+1)/2 * i;
-    }
+    string s, t;
+    cin >> s >> t;
+    int ans = 0;
+    rep(i, sz(s)) ans += (s[i] != t[i]);
     cout << ans << endl;
     return 0;
 }
