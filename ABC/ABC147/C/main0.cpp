@@ -41,33 +41,29 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 int main(){
     int n;
     cin >> n;
-    vi xy(n), xy2(n);
+    vector<vpii> xy(n);
     rep(i, n) {
         int a;
         cin >> a;
+        xy[i] = vpii(a);
         rep(j, a) {
             int x, y;
             cin >> x >> y;
             --x;
-            xy[i] |= y<<(x);
-            xy2[i] |= 1<<(x);
+            xy[i][j] = { x, y };
         }
     }
     int ans = 0;
     rep(i, 1<<n) {
         bool ok = true;
-        rep (j, n) {
-            if (!(i>>j&1)) continue;
-            if ((i ^ xy[j]) & xy2[j] & ((1<<n)-1)) ok = false;
-        }
-        if (ok) {
-            int bits = 0, t = i;
-            rep(j, n) {
-                if (t%2) ++bits;
-                t >>= 1;
+        rep(j, n) {
+            if (!(i&(1<<j))) continue;
+            for (auto k : xy[j]) {
+                int x = k.first, y = k.second;
+                if (((i>>x)&1) ^ y) ok = false;
             }
-            if (bits > ans) ans = bits;
         }
+        if (ok) ans = max(ans, __builtin_popcount(i));
     }
     cout << ans << endl;
     return 0;

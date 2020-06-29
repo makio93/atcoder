@@ -38,34 +38,12 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+
 int main(){
-    int n;
-    cin >> n;
-    vector<vi> g(n, vi(n, -1));
-    rep(i, n) {
-        int a;
-        cin >> a;
-        rep(j, a) {
-            int x, y;
-            cin >> x >> y;
-            g[i][x-1] = y;
-        }
-    }
-    int ans = 0;
-    rep(i, 1<<n) {
-        vi d(n);
-        rep(j, n) if (i&(1<<j)) d[j] = 1;
-        bool ok = true;
-        rep(j, n) {
-            if (d[j]) {
-                rep(k, n) {
-                    if (g[j][k] == -1) continue;
-                    if (g[j][k] != d[k]) ok = false;
-                }
-            }
-        }
-        if (ok) ans = max(ans, __builtin_popcount(i));
-    }
-    cout << ans << endl;
+    // cout << fixed << setprecision(5);
+
+    // Failed to predict input format
     return 0;
 }
+
