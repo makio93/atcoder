@@ -38,14 +38,13 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+ll f(ll n) { return n * (n+1) / 2; }
+
 int main(){
     int n;
     cin >> n;
-    ll ans = 0, i = 1;
-    for (i=1; i<=n; ++i) {
-        ll k = n / i;
-        ans += k*(k+1)/2 * i;
-    }
+    ll ans = 0;
+    rep1(i, n) ans += f(n/i) * i;
     cout << ans << endl;
     return 0;
 }
