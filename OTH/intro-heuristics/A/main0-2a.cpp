@@ -91,7 +91,7 @@ int main(){
         nsum -= (td-tl)*(td-tl-1)*c[tq]/2 + (tr-td)*(tr-td-1)*c[tq]/2;
         nsum += (tr-tl)*(tr-tl-1)*c[tq]/2;
         //cout << sum << endl;
-        if (nsum >= sum) t[td-1] = tq;
+        if (nsum >= sum*1.02) t[td-1] = tq;
     }
     rep(i, d) cout << (t[i] + 1) << endl;
     return 0;
