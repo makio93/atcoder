@@ -45,19 +45,53 @@ int main(){
     rep(i, 26) cin >> c[i];
     vector<vi> s(d, vi(26));
     rep(i, d) rep(j, 26) cin >> s[i][j];
+    vi t(d);
+    rep(i, d) {
+        cin >> t[i];
+        t[i]--;
+    }
+    int m;
+    cin >> m;
+    vpii dq(m);
+    rep(i, m) {
+        cin >> dq[i].first >> dq[i].second;
+        dq[i].first; dq[i].second--;
+    }
     vi last(26);
     ll sum = 0;
     rep1(i, d) {
-        ll cm = 0;
-        rep(j, 26) cm += c[j] * (i - last[j]);
-        pii m(-INF, -1);
-        rep(j, 26) {
-            ll sat = s[i-1][j] - cm + c[j] * (i - last[j]);
-            m = max(m, {sat, j});
+        sum += s[i-1][t[i-1]];
+        last[t[i-1]] = i;
+        rep(j, 26) sum -= c[j] * (i - last[j]);
+    }
+    rep(i, m) {
+        int fq = t[dq[i].first-1], tq = dq[i].second;
+        int td = dq[i].first;
+        int fl = dq[i].first-1, fr = dq[i].first+1, tl = dq[i].first, tr = dq[i].first;
+        while (fl > 0) {
+            if (t[fl-1] == fq) break;
+            --fl;
         }
-        sum += m.first;
-        last[m.second] = i;
-        cout << (m.second + 1) << endl;
+        while (fr <= d) {
+            if (t[fr-1] == fq) break;
+            ++fr;
+        }
+        while (tl > 0) {
+            if (t[tl-1] == tq) break;
+            --tl;
+        }
+        while (tr <= d) {
+            if (t[tr-1] == tq) break;
+            ++tr;
+        }
+        sum -= s[td-1][fq];
+        sum += (td-fl)*(td-fl-1)*c[fq]/2 + (fr-td)*(fr-td-1)*c[fq]/2;
+        sum -= (fr-fl)*(fr-fl-1)*c[fq]/2;
+        sum += s[td-1][tq];
+        sum -= (td-tl)*(td-tl-1)*c[tq]/2 + (tr-td)*(tr-td-1)*c[tq]/2;
+        sum += (tr-tl)*(tr-tl-1)*c[tq]/2;
+        cout << sum << endl;
+        t[td-1] = tq;
     }
     return 0;
 }
