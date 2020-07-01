@@ -41,35 +41,11 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 const string YES = "Yes";
 const string NO = "No";
 
-const vi dx = { 0, 1, 0, -1 }, dy = { -1, 0, 1, 0 };
-
-int hm, wm;
-vs c;
-vector<vector<bool>> seen;
-void dfs(int h, int w) {
-    seen[h][w] = true;
-    rep(i, 4) {
-        int nh = h + dy[i], nw = w + dx[i];
-        if (nh<0 || nh>=hm || nw<0 || nw>=wm) continue;
-        if (c[nh][nw] == '#') continue;
-        if (seen[nh][nw]) continue;
-        dfs(nh, nw);
-    }
-}
 
 int main(){
-    cin >> hm >> wm;
-    c = vs(hm);
-    rep(i, hm) cin >> c[i];
-    int sh = -1, sw = -1, gh = -1, gw = -1;
-    rep(i, hm) rep(j, wm) {
-        if (c[i][j] == 's') sh = i, sw = j;
-        if (c[i][j] == 'g') gh = i, gw = j;
-    }
-    seen = vector<vector<bool>>(hm, vector<bool>(wm));
-    seen[sh][sw] = true;
-    dfs(sh, sw);
-    if (seen[gh][gw]) cout << YES << endl;
-    else cout << NO << endl;
+    // cout << fixed << setprecision(5);
+
+    // Failed to predict input format
     return 0;
 }
+

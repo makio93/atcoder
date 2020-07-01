@@ -41,35 +41,37 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 const string YES = "Yes";
 const string NO = "No";
 
-const vi dx = { 0, 1, 0, -1 }, dy = { -1, 0, 1, 0 };
-
-int hm, wm;
-vs c;
-vector<vector<bool>> seen;
-void dfs(int h, int w) {
-    seen[h][w] = true;
+int h, w;
+vector<vector<char>> c(500, vector<char>(500));
+bool dfs(int y, int x) {
+    if (c[y][x]=='g') return true;
+    c[y][x] = ' ';
+    bool res = false;
     rep(i, 4) {
-        int nh = h + dy[i], nw = w + dx[i];
-        if (nh<0 || nh>=hm || nw<0 || nw>=wm) continue;
-        if (c[nh][nw] == '#') continue;
-        if (seen[nh][nw]) continue;
-        dfs(nh, nw);
+        int dx = 0, dy = 0;
+        if (i/2) dy = (i%2) * 2 - 1;
+        else dx = (i%2) * 2 - 1;
+        int nx = x + dx, ny = y + dy;
+        if (nx>=0&&nx<w&&ny>=0&&ny<h) {
+            if (c[ny][nx]=='#'||c[ny][nx]==' ') continue;
+            if (dfs(ny, nx)) res = true;
+        }
     }
+    return res;
 }
 
 int main(){
-    cin >> hm >> wm;
-    c = vs(hm);
-    rep(i, hm) cin >> c[i];
-    int sh = -1, sw = -1, gh = -1, gw = -1;
-    rep(i, hm) rep(j, wm) {
-        if (c[i][j] == 's') sh = i, sw = j;
-        if (c[i][j] == 'g') gh = i, gw = j;
+    cin >> h >> w;
+    rep(i, h) rep(j, w) {
+        cin >> c[i][j];
     }
-    seen = vector<vector<bool>>(hm, vector<bool>(wm));
-    seen[sh][sw] = true;
-    dfs(sh, sw);
-    if (seen[gh][gw]) cout << YES << endl;
-    else cout << NO << endl;
+    int sx, sy;
+    rep(i, h) rep(j, w) {
+        if (c[i][j] == 's') {
+            sx = j; sy = i;
+        }
+    }
+    bool ans = dfs(sy, sx);
+    cout << (ans?YES:NO) << endl;
     return 0;
 }
