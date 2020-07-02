@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -37,33 +38,25 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-vector<vector<int>> to, cost;
-vi ans;
-void dfs(int v, int c = 0) {
-    ans[v] = c;
-    rep(i, sz(to[v])) {
-        if (ans[to[v][i]] != -1) continue;
-        int nc = (cost[v][i]%2==0 ? c : 1-c);
-        dfs(to[v][i], nc);
-    }
+
+void func(long long N, std::vector<long long> u, std::vector<long long> v, std::vector<long long> w){
+
 }
 
 int main(){
-    int n;
-    cin >> n;
-    to = vector<vector<int>>(n);
-    cost = vector<vector<int>>(n);
-    rep(i, n-1) {
-        int u, v, w;
-        cin >> u >> v >> w;
-        --u; --v;
-        to[u].pb(v);
-        cost[u].pb(w);
-        to[v].pb(u);
-        cost[v].pb(w);
+    // cout << fixed << setprecision(5);
+
+    long long N;
+    scanf("%lld",&N);
+    std::vector<long long> u(N-1);
+    std::vector<long long> v(N-1);
+    std::vector<long long> w(N-1);
+    for(int i = 0 ; i < N-1 ; i++){
+        scanf("%lld",&u[i]);
+        scanf("%lld",&v[i]);
+        scanf("%lld",&w[i]);
     }
-    ans = vi(n, -1);
-    dfs(0);
-    rep(i, n) cout << ans[i] << endl;
+    func(N, std::move(u), std::move(v), std::move(w));
     return 0;
 }
+

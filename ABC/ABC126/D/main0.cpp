@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -38,32 +37,35 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-vector<set<pii>> g;
-vi c;
-int n;
-void dfs(int v, int p, int s) {
-    c[v] = s;
-    for (auto i : g[v]) {
-        if (i.first == p) continue;
-        if (i.second%2==0) dfs(i.first, v, s);
-        else dfs(i.first, v, 1-s);
+struct Edge {
+    int to, weight;
+    Edge(int t, int w) : to(t), weight(w) {}
+};
+
+vector<vector<Edge>> g;
+vi color;
+void dfs(int v, int c = 0) {
+    color[v] = c;
+    for (auto t : g[v]) {
+        if (color[t.to] != -1) continue;
+        int nc = (t.weight%2==0 ? c : 1-c);
+        dfs(t.to, nc);
     }
 }
 
 int main(){
+    int n;
     cin >> n;
-    vector<set<pii>> gl(n);
+    g = vector<vector<Edge>>(n);
     rep(i, n-1) {
-        int u, v, wi;
-        cin >> u >> v >> wi;
+        int u, v, w;
+        cin >> u >> v >> w;
         --u; --v;
-        gl[u].insert({v, wi});
-        gl[v].insert({u, wi});
+        g[u].emplace_back(v, w);
+        g[v].emplace_back(u, w);
     }
-    g = gl;
-    vi cl(n);
-    c = cl;
-    dfs(0, 0, 0);
-    rep(i, n) cout << c[i] << endl;
+    color = vi(n, -1);
+    dfs(0);
+    rep(i, n) cout << color[i] << endl;
     return 0;
 }

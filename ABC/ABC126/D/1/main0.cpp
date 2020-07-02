@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -37,33 +38,32 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-vector<vector<int>> to, cost;
-vi ans;
-void dfs(int v, int c = 0) {
-    ans[v] = c;
-    rep(i, sz(to[v])) {
-        if (ans[to[v][i]] != -1) continue;
-        int nc = (cost[v][i]%2==0 ? c : 1-c);
-        dfs(to[v][i], nc);
+vector<set<pii>> g;
+vi c;
+int n;
+void dfs(int v, int p, int s) {
+    c[v] = s;
+    for (auto i : g[v]) {
+        if (i.first == p) continue;
+        if (i.second%2==0) dfs(i.first, v, s);
+        else dfs(i.first, v, 1-s);
     }
 }
 
 int main(){
-    int n;
     cin >> n;
-    to = vector<vector<int>>(n);
-    cost = vector<vector<int>>(n);
+    vector<set<pii>> gl(n);
     rep(i, n-1) {
-        int u, v, w;
-        cin >> u >> v >> w;
+        int u, v, wi;
+        cin >> u >> v >> wi;
         --u; --v;
-        to[u].pb(v);
-        cost[u].pb(w);
-        to[v].pb(u);
-        cost[v].pb(w);
+        gl[u].insert({v, wi});
+        gl[v].insert({u, wi});
     }
-    ans = vi(n, -1);
-    dfs(0);
-    rep(i, n) cout << ans[i] << endl;
+    g = gl;
+    vi cl(n);
+    c = cl;
+    dfs(0, 0, 0);
+    rep(i, n) cout << c[i] << endl;
     return 0;
 }
