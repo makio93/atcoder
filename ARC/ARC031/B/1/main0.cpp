@@ -41,35 +41,30 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 const string YES = "YES";
 const string NO = "NO";
 
-const vi di = { -1, 0, 1, 0 }, dj = { 0, 1, 0, -1 };
-
-vs b;
+vs a(10), b(10);
 void dfs(int i, int j) {
-    b[i][j] = 'x';
-    rep(k, 4) {
-        int ni = i + di[k], nj = j + dj[k];
-        if (ni<0 || ni>=10 || nj<0 || nj>=10) continue;
-        if (b[ni][nj] == 'x') continue;
-        dfs(ni, nj);
-    }
+    if (i<0||i>=10||j<0||j>=10) return;
+    if (b[i][j]!='o') return;
+    b[i][j] = ' ';
+    dfs(i+1, j);
+    dfs(i-1, j);
+    dfs(i, j+1);
+    dfs(i, j-1);
 }
 
 int main(){
-    vs a(10);
     rep(i, 10) cin >> a[i];
     bool ans = false;
     rep(i, 10) rep(j, 10) {
         b = a;
         b[i][j] = 'o';
-        int cnt = 0;
+        dfs(i, j);
+        bool res = true;
         rep(i2, 10) rep(j2, 10) {
-            if (b[i2][j2] == 'x') continue;
-            dfs(i2, j2);
-            ++cnt;
+            if (b[i2][j2]=='o') res = false;
         }
-        if (cnt == 1) ans = true;
+        if (res) ans = true;
     }
-    if (ans) cout << YES << endl;
-    else cout << NO << endl;
+    cout << (ans?YES:NO) << endl;
     return 0;
 }
