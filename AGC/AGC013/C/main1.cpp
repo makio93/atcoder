@@ -42,27 +42,31 @@ int main(){
     cin >> n >> l >> t;
     vi x(n), w(n);
     rep(i, n) cin >> x[i] >> w[i];
-    vi y(n);
+    vpii y(n);
     rep(i, n) {
-        int s = (w[i]==w[0]?1:-1);
-        y[i] = (x[i] + s * (t % l)) % l;
-        if (y[i]<0) y[i] = (l-y[i])%l;
+        int s = (w[i]==1?1:-1);
+        y[i].first = (x[i] + s * (t % l)) % l;
+        if (y[i].first<0) y[i].first = (l+y[i].first)%l;
+        y[i].second = w[i];
     }
     vi rev;
-    rep1(i, n-1) if (w[0] != w[i]) rev.pb(x[i]);
-    ll cnt = sz(rev) * (t / l) * 2;
+    rep(i, n) if (w[0] != w[i]) rev.pb(x[i]);
+    ll cnt = (ll)(sz(rev)) * (t / l) * 2;
+    int x0 = (w[0]==1?x[0]:x[0]+l);
     for (int val : rev) {
-        if (val<x[0]) val+=l;
-        int dis = val-x[0];
-        if (dis/2.0<=t%l) ++cnt;
-        if (dis/2.0+l/2.0<=t%l) ++cnt;
+        int dis = (w[0]==1?val-x0:x0-val);
+        if (dis<=(t%l)*2) ++cnt;
+        if ((ll)dis+l<=(ll)(t%l)*2) ++cnt;
     }
+    int i2 = (w[0]==1?cnt%n:(n+(-cnt)%n)%n);
+    int y0 = y[0].first;
+    rep(i, n) y[i].second *= -1;
+    VSORT(y);
+    rep(i, n) y[i].second *= -1;
+    int y0i = 0;
+    while (y[y0i].first!=y0||y[y0i].second!=w[0]) ++y0i;
     vi ans(n);
-    rep(i, n) {
-        int i2 = (w[0]==1?(i+cnt)%n:(n-(i-cnt)%n)%n);
-        ans[i2] = y[i];
-    }
-    if (w[0] == 2) rep(i, n) ans[i] = (l-ans[i])%l;
+    rep(i, n) ans[(i2+i)%n] = y[(y0i+i)%n].first;
     rep(i, n) cout << ans[i] << endl;
     return 0;
 }
