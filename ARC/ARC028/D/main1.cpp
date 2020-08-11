@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const long long mod = 1e9 + 7;
-
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -37,31 +35,38 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const long long MOD = 1000000007;
-
-void func(long long N, long long M, long long Q, std::vector<long long> a, std::vector<long long> k, std::vector<long long> x){
-
-}
+const long long mod = 1000000007;
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    long long M;
-    scanf("%lld",&M);
-    long long Q;
-    scanf("%lld",&Q);
-    std::vector<long long> a(N);
-    for(int i = 0 ; i < N ; i++){
-        scanf("%lld",&a[i]);
+    int n, m, q;
+    cin >> n >> m >> q;
+    vi a(n);
+    rep(i, n) cin >> a[i];
+    vector<vi> dp(n+1, vi(m+1, 0));
+    dp[0][0] = 1;
+    rep(i, n) {
+        int sum = 0;
+        rep(j, m+1) {
+            (sum += dp[i][j])%=mod;
+            if (j-a[i]-1>=0) ((sum-=dp[i][j-a[i]-1])+=mod)%=mod;
+            dp[i+1][j] = sum;
+        }
     }
-    std::vector<long long> k(Q);
-    std::vector<long long> x(Q);
-    for(int i = 0 ; i < Q ; i++){
-        scanf("%lld",&k[i]);
-        scanf("%lld",&x[i]);
+    vector<vi> sdp(n, vi(m+1));
+    rep(i, n-1) {
+        int sum = 0;
+        rep(j, m+1) {
+            if (j>=1) (sum+=sdp[i][j-1])%=mod;
+            if (j-a[i]-1>=0) ((sum-=sdp[i][j-a[i]-1])+=mod)%=mod;
+            sdp[i][j] = ((dp[n][j]-sum)+mod)%mod;
+        }
     }
-    func(N, M, Q, std::move(a), std::move(k), std::move(x));
+    sdp[n-1] = dp[n-1];
+    rep(i, q) {
+        int k, x; 
+        cin >> k >> x;
+        --k;
+        cout << sdp[k][m-x] << endl;
+    }
     return 0;
 }
