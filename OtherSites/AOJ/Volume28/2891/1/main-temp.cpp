@@ -38,37 +38,5 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    int n;
-    cin >> n;
-    vector<vi> g(n);
-    vi deg(n);
-    rep(i, n) {
-        int u, v;
-        cin >> u >> v;
-        --u; --v;
-        g[u].pb(v);
-        g[v].pb(u);
-        deg[u]++; deg[v]++;
-    }
-    queue<int> que;
-    vector<bool> ispushed(n, false);
-    rep(i, n) if (deg[i] == 1) que.push(i);
-    while (!que.empty()) {
-        int p = que.front(); que.pop();
-        ispushed[p] = true;
-        for (int t : g[p]) {
-             deg[t]--;
-             if (deg[t] == 1) que.push(t);
-        }
-    }
-    int q;
-    cin >> q;
-    rep(i, q) {
-        int a, b;
-        cin >> a >> b;
-        --a; --b;
-        if (!ispushed[a] && !ispushed[b]) cout << 2 << endl;
-        else cout << 1 << endl;
-    }
     return 0;
 }

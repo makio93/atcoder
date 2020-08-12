@@ -37,29 +37,47 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+vector<vi> g;
+vector<bool> seen, finished;
+stack<int> hist;
+int pos = -1;
+void dfs(int v, int p) {
+    seen[v] = true;
+    hist.push(v);
+    for (int t : g[v]) {
+        if (t == p) continue;
+        if (finished[t]) continue;
+        if (seen[t]) {
+            pos = t;
+            return;
+        }
+        dfs(t, v);
+        if (pos != -1) return;
+    }
+    hist.pop();
+    finished[v] = true;
+}
+
 int main(){
     int n;
     cin >> n;
-    vector<vi> g(n);
-    vi deg(n);
+    g = vector<vi>(n);
     rep(i, n) {
         int u, v;
         cin >> u >> v;
         --u; --v;
         g[u].pb(v);
         g[v].pb(u);
-        deg[u]++; deg[v]++;
     }
-    queue<int> que;
-    vector<bool> ispushed(n, false);
-    rep(i, n) if (deg[i] == 1) que.push(i);
-    while (!que.empty()) {
-        int p = que.front(); que.pop();
-        ispushed[p] = true;
-        for (int t : g[p]) {
-             deg[t]--;
-             if (deg[t] == 1) que.push(t);
-        }
+    seen = vector<bool>(n);
+    finished = vector<bool>(n);
+    dfs(0, -1);
+    set<int> cycle;
+    while (!hist.empty()) {
+        int p = hist.top();
+        hist.pop();
+        cycle.insert(p);
+        if (p == pos) break;
     }
     int q;
     cin >> q;
@@ -67,7 +85,7 @@ int main(){
         int a, b;
         cin >> a >> b;
         --a; --b;
-        if (!ispushed[a] && !ispushed[b]) cout << 2 << endl;
+        if (cycle.count(a) && cycle.count(b)) cout << 2 << endl;
         else cout << 1 << endl;
     }
     return 0;
