@@ -44,10 +44,10 @@ int main(){
     vi v(n), wi(n);
     rep(i, n) cin >> v[i] >> wi[i];
     vector<vi> dp(n+1, vi(w+1, 0));
-    rep(i, n) rep(j, w+1) {
-        if (j>=wi[i]) dp[i+1][j] = max(dp[i][j-wi[i]]+v[i], dp[i][j]);
-        else dp[i+1][j] = dp[i][j];
+    repr(i, n) rep(j, w+1) {
+        if (j < wi[i]) dp[i][j] = dp[i+1][j];
+        else dp[i][j] = max(dp[i+1][j], dp[i+1][j-wi[i]]+v[i]);
     }
-    cout << dp[n][w] << endl;
+    cout << dp[0][w] << endl;
     return 0;
 }
