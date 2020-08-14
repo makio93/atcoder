@@ -36,12 +36,8 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int f(int n) {
-    int res = 0;
-    while (n != 0) {
-        n = n % __builtin_popcount(n);
-        ++res;
-    }
-    return res;
+    if (n == 0) return 0;
+    else return f(n%__builtin_popcount(n))+1;
 }
 
 int main(){
@@ -49,39 +45,25 @@ int main(){
     cin >> n;
     string x;
     cin >> x;
-    int popx = 0;
-    rep(i, n) if (x[i] == '1') ++popx;
-    vi popa(n), popb(n);
-    int xi = 1;
-    rep(i, n) {
-        popa[i] = xi % (popx+1);
-        xi = (xi * 2) % (popx+1);
-    }
-    if (popx-1>0) {
-        xi = 1;
+    vi xi(n);
+    rep(i, n) xi[i] = x[i] - '0';
+    int pc = 0;
+    rep(i, n) if (xi[i] == 1) ++pc;
+    vi ans(n);
+    rep(b, 2) {
+        int npc = (b==0?pc+1:pc-1);
+        if (npc <= 0) continue;
+        int pfx = 0;
         rep(i, n) {
-            popb[i] = xi % (popx-1);
-            xi = (xi * 2) % (popx-1);
+            pfx = (pfx*2)%npc;
+            pfx = (pfx+xi[i])%npc;
+        }
+        int k = 1;
+        repr(i, n) {
+            if (xi[i] == b) ans[i] = (b==0?f((pfx+k)%npc):f((pfx-k+npc)%npc))+1;
+            k = (k*2)%npc;
         }
     }
-    int xmoda = 0, xmodb = 0;
-    rep(i, n) if (x[n-i-1] == '1') {
-        xmoda = (xmoda + popa[i]) % (popx+1);
-        if (popx-1>0) xmodb = (xmodb + popb[i]) % (popx-1);
-    }
-    rep(i, n) {
-        int fxi = 0;
-        if (x[i] == '1') {
-            if (popx-1>0) fxi = (xmodb - popb[n-i-1] + (popx-1)) % (popx-1);
-            else {
-                cout << 0 << endl;
-                continue;
-            }
-        }
-        else {
-            fxi = (xmoda + popa[n-i-1]) % (popx+1);
-        }
-        cout << (1+f(fxi)) << endl;
-    }
+    rep(i, n) cout << ans[i] << endl;
     return 0;
 }
