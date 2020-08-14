@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -37,15 +38,13 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-using Edge = pair<int, pii>;
-
 int main(){
     int n, m;
     ll k;
     cin >> n >> m >> k;
     vi t(n);
     for (int i=1; i<n-1; ++i) cin >> t[i];
-    vector<vector<Edge>> g(n);
+    vector<vector<pair<int, pii>>> g(n);
     rep(i, m) {
         int a, b, c, d;
         cin >> a >> b >> c >> d;
@@ -58,16 +57,14 @@ int main(){
     q.emplace(0, 0);
     dist[0] = 0;
     while (!q.empty()) {
-        auto p = q.top(); q.pop();
-        ll d = p.first; int v = p.second;
-        if (d > dist[v]) continue;
-        d += t[v];
-        for (auto to : g[v]) {
-            int nv = to.first, ci = to.second.first, di = to.second.second;
-            ll nd = (d+(di-1))/di*di + ci;
-            if (dist[nv] <= nd) continue;
-            q.emplace(nd, nv);
-            dist[nv] = nd;
+        int pos = q.top().second; q.pop();
+        for (auto tof : g[pos]) {
+            int to = tof.first, d = tof.second.second;
+            ll cost = t[pos] + (ll)abs((dist[pos]+t[pos]+d-1)/d*d - (dist[pos]+t[pos])) + tof.second.first;
+            if (dist[to] > dist[pos]+cost) {
+                q.emplace(dist[pos]+cost, to);
+                dist[to] = dist[pos] + cost;
+            }
         }
     }
     if (dist[n-1] <= k) cout << dist[n-1] << endl;
