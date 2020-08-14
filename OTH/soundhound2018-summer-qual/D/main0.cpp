@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -31,63 +30,63 @@ using pll = pair<ll, ll>;
 #define pb push_back
 #define mp make_pair
 
-#define INF (1e9)
+#define INF (1e18)
 #define PI (acos(-1))
 #define EPS (1e-7)
 
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+using Edge = pair<int, ll>;
+
 int main(){
     int n, m, s, t;
     cin >> n >> m >> s >> t;
     --s; --t;
-    vector<vector<pair<int, pii>>> g(n);
+    vector<vector<Edge>> g1(n), g2(n);
     rep(i, m) {
         int u, v, a, b;
         cin >> u >> v >> a >> b;
         --u; --v;
-        g[u].emplace_back(v, pii(a, b));
-        g[v].emplace_back(u, pii(a, b));
+        g1[u].emplace_back(v, a);
+        g1[v].emplace_back(u, a);
+        g2[u].emplace_back(v, b);
+        g2[v].emplace_back(u, b);
     }
-    rep(i, n) {
-        priority_queue<pair<ll, int>> q;
-        vll b(n, -1);
-        q.emplace((ll)(1e15), s);
-        b[s] = (ll)(1e15);
-        while (!q.empty()) {
-            auto p = q.top(); q.pop();
-            int vert = p.second;
-            ll money = p.first;
-            if (money < b[vert]) continue;
-            for (auto to : g[vert]) {
-                if (b[to.first] < money-to.second.first) {
-                    q.emplace(money-to.second.first, to.first);
-                    b[to.first] = money-to.second.first;
-                }
-            }
+    priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>>> q1, q2;
+    vll dist1(n, INF), dist2(n, INF);
+    q1.emplace(0, s);
+    dist1[s] = 0;
+    while (!q1.empty()) {
+        auto p = q1.top(); q1.pop();
+        ll d = p.first; int v = p.second;
+        if (d > dist1[v]) continue;
+        for (auto to : g1[v]) {
+            ll nd = d + to.second; int nv = to.first;
+            if (nd >= dist1[nv]) continue;
+            q1.emplace(nd, nv);
+            dist1[nv] = nd;
         }
-        priority_queue<pair<ll, int>> q2;
-        vll a(n, -1);
-        rep(j, n) {
-            if (j < i) continue;
-            q2.emplace(b[j], j);
-            a[j] = b[j];
-        }
-        while (!q2.empty()) {
-            auto p = q2.top(); q2.pop();
-            int vert = p.second;
-            ll money = p.first;
-            if (money < a[vert]) continue;
-            for (auto to : g[vert]) {
-                if (a[vert]==-1 && vert<i) continue;
-                if (a[to.first]<money-to.second.second) {
-                    q2.emplace(money-to.second.second, to.first);
-                    a[to.first] = money-to.second.second;
-                }
-            }
-        }
-        cout << a[t] << endl;
     }
+    q2.emplace(0, t);
+    dist2[t] = 0;
+    while (!q2.empty()) {
+        auto p = q2.top(); q2.pop();
+        ll d = p.first; int v = p.second;
+        if (d > dist2[v]) continue;
+        for (auto to : g2[v]) {
+            ll nd = d + to.second; int nv = to.first;
+            if (nd >= dist2[nv]) continue;
+            q2.emplace(nd, nv);
+            dist2[nv] = nd;
+        }
+    }
+    vll ans(n, 0);
+    ll cost = INF;
+    repr(i, n) {
+        cost = min(cost, dist1[i]+dist2[i]);
+        ans[i] = (ll)(1e15) - cost;
+    }
+    rep(i, n) cout << ans[i] << endl;
     return 0;
 }

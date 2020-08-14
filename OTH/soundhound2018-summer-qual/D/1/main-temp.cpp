@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -66,3 +67,4 @@ int main(){
     func(n, m, s, t, std::move(u), std::move(v), std::move(a), std::move(b));
     return 0;
 }
+
