@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -30,7 +31,7 @@ using pll = pair<ll, ll>;
 #define pb push_back
 #define mp make_pair
 
-#define INF (1e9)
+#define INF (1e8)
 #define PI (acos(-1))
 #define EPS (1e-7)
 
@@ -40,25 +41,29 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 int main(){
     int n, k;
     cin >> n >> k;
-    vector<vi> g(n, vi(n, INF));
-    rep(i, n) g[i][i] = 0;
+    vector<vi> cost(n, vi(n, INF));
+    rep(i, n) cost[i][i] = 0;
     rep(i, k) {
-        int op;
-        cin >> op;
-        if (op == 0) {
+        int cmd;
+        cin >> cmd;
+        if (cmd == 0) {
             int a, b;
             cin >> a >> b;
             --a; --b;
-            cout << ((g[a][b]!=INF)?g[a][b]:-1) << endl;
+            int ans = cost[a][b];
+            if (ans == INF) cout << -1 << endl;
+            else cout << ans << endl;
         }
         else {
             int c, d, e;
             cin >> c >> d >> e;
             --c; --d;
-            if (g[c][d] <= e) continue;
-            rep(i2, n) rep(j2, n) {
-                g[i2][j2] = min(g[i2][j2], g[i2][c]+e+g[d][j2]);
-                g[i2][j2] = min(g[i2][j2], g[i2][d]+e+g[c][j2]);
+            rep(j, n) for (int h=j+1; h<n; ++h) {
+                int val = INF;
+                val = min(val, cost[j][c]+e+cost[d][h]);
+                val = min(val, cost[j][d]+e+cost[c][h]);
+                val = min(val, cost[j][h]);
+                cost[j][h] = cost[h][j] = val;
             }
         }
     }

@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -38,29 +39,5 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    int n, k;
-    cin >> n >> k;
-    vector<vi> g(n, vi(n, INF));
-    rep(i, n) g[i][i] = 0;
-    rep(i, k) {
-        int op;
-        cin >> op;
-        if (op == 0) {
-            int a, b;
-            cin >> a >> b;
-            --a; --b;
-            cout << ((g[a][b]!=INF)?g[a][b]:-1) << endl;
-        }
-        else {
-            int c, d, e;
-            cin >> c >> d >> e;
-            --c; --d;
-            if (g[c][d] <= e) continue;
-            rep(i2, n) rep(j2, n) {
-                g[i2][j2] = min(g[i2][j2], g[i2][c]+e+g[d][j2]);
-                g[i2][j2] = min(g[i2][j2], g[i2][d]+e+g[c][j2]);
-            }
-        }
-    }
     return 0;
 }

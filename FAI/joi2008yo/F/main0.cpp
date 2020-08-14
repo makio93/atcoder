@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -43,9 +42,9 @@ int main(){
     cin >> n >> k;
     vector<vpii> g(n);
     rep(i, k) {
-        int cmd;
-        cin >> cmd;
-        if (cmd == 0) {
+        int x;
+        cin >> x;
+        if (x == 0) {
             int a, b;
             cin >> a >> b;
             --a; --b;
@@ -54,17 +53,17 @@ int main(){
             q.emplace(0, a);
             dist[a] = 0;
             while (!q.empty()) {
-                int pos = q.top().second; q.pop();
-                for (auto to : g[pos]) {
-                    int cost = dist[pos] + to.second;
-                    if (dist[to.first] > cost) {
-                        dist[to.first] = cost;
-                        q.emplace(cost, to.first);
-                    }
+                auto p = q.top(); q.pop();
+                int d = p.first, v = p.second;
+                if (d > dist[v]) continue;
+                for (auto to : g[v]) {
+                    int nv = to.first, nd = d + to.second;
+                    if (nd >= dist[nv]) continue;
+                    q.emplace(nd, nv);
+                    dist[nv] = nd;
                 }
             }
-            if (dist[b] != INF) cout << dist[b] << endl;
-            else cout << -1 << endl;
+            cout << ((dist[b]!=INF)?dist[b]:-1) << endl;
         }
         else {
             int c, d, e;
