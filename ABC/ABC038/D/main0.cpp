@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -42,18 +41,14 @@ int main(){
     int n;
     cin >> n;
     vpii wh(n);
-    rep(i, n) {
-        int w, h;
-        cin >> w >> h;
-        wh[i].first = h;
-        wh[i].second = -w;
-    }
+    rep(i, n) cin >> wh[i].first >> wh[i].second;
+    rep(i, n) wh[i].second *= -1;
     VSORT(wh);
-    int ans = 0, tf = -INF, ts = -INF;
-    rep(i, n) {
-        
-        ++ans;
-    }
-    cout << ans << endl;
+    rep(i, n) wh[i].second *= -1;
+    vi h(n);
+    rep(i, n) h[i] = wh[i].second;
+    vi dp(n, INF);
+    rep(i, n) *lower_bound(all(dp), h[i]) = h[i];
+    cout << (lower_bound(all(dp), INF) - dp.begin()) << endl;
     return 0;
 }

@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -37,46 +38,22 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-struct BIT {
-    int n;
-    vi bit;
-    BIT(int n) : n(n) { bit = vi(n+1); }
-    int query(int i) {
-        int m = 0;
-        while (i > 0) {
-            m = max(m, bit[i]);
-            i -= i & -i;
-        }
-        return m;
-    }
-    void update(int i, int a) {
-        while (i <= n) {
-            bit[i] = max(bit[i], a);
-            i += i & -i;
-        }
-    }
-};
-
 int main(){
     int n;
     cin >> n;
     vpii wh(n);
-    rep(i, n) cin >> wh[i].second >> wh[i].first;
-    VSORT(wh);
-    vi dp(n+1);
-    BIT b(1e5);
-    int now = 0;
     rep(i, n) {
-        if (wh[i].first!=wh[i-1].first) {
-            while (now<i) {
-                ++now;
-                b.update(wh[now-1].second, dp[now]);
-            }
-        }
-        dp[i+1] = b.query(wh[i].second-1) + 1;
+        int w, h;
+        cin >> w >> h;
+        wh[i].first = h;
+        wh[i].second = -w;
     }
-    int ans = 0;
-    rep1(i, n) ans = max(ans, dp[i]);
+    VSORT(wh);
+    int ans = 0, tf = -INF, ts = -INF;
+    rep(i, n) {
+        
+        ++ans;
+    }
     cout << ans << endl;
     return 0;
 }
