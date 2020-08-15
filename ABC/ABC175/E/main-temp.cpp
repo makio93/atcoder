@@ -37,34 +37,28 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+void func(long long R, long long C, long long K, std::vector<long long> r, std::vector<long long> c, std::vector<long long> v){
+
+}
+
 int main(){
-    int r, c, k;
-    cin >> r >> c >> k;
-    vector<vi> vmp(r, vi(c));
-    rep(i, k) {
-        int ri, ci, v;
-        cin >> ri >> ci >> v;
-        --ri; --ci;
-        vmp[ri][ci] = v;
+    // cout << fixed << setprecision(5);
+
+    long long R;
+    scanf("%lld",&R);
+    long long C;
+    scanf("%lld",&C);
+    long long K;
+    scanf("%lld",&K);
+    std::vector<long long> r(K);
+    std::vector<long long> c(K);
+    std::vector<long long> v(K);
+    for(int i = 0 ; i < K ; i++){
+        scanf("%lld",&r[i]);
+        scanf("%lld",&c[i]);
+        scanf("%lld",&v[i]);
     }
-    vector<vector<vll>> dp(r+1, vector<vll>(c+1, vll(4)));
-    rep(i, c+1) rep(j, 4) dp[0][i][j] = 0;
-    rep(i, r+1) rep(j, 4) dp[i][0][j] = 0;
-    rep(i, r+1) rep(j, c+1) dp[i][j][0] = 0;
-    vector<vll> vals(r+1, vll(c+1));
-    rep1(i, r) rep1(j, c) {
-        rep1(t, 3) {
-            if (vmp[i-1][j-1] == 0) dp[i][j][t] = max(vals[i-1][j], dp[i][j-1][t]);
-            else {
-                ll val1 = max(vals[i-1][j]+vmp[i-1][j-1], dp[i][j-1][t-1]+vmp[i-1][j-1]);
-                ll val2 = max(vals[i-1][j], dp[i][j-1][t]);
-                dp[i][j][t] = max(val1, val2);
-            }
-        }
-        rep(t, 4) vals[i][j] = max(vals[i][j], dp[i][j][t]);
-    }
-    ll ans = 0;
-    rep(i, 4) ans = max(ans, dp[r][c][i]);
-    cout << ans << endl;
+    func(R, C, K, std::move(r), std::move(c), std::move(v));
     return 0;
 }
