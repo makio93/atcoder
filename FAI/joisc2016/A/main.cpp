@@ -52,9 +52,9 @@ struct UnionFind {
         d[y] = x;
         return true;
     }
-    bool replace(int x, int y) {
-        if (find(x) == find(y)) return false;
-        d[y] = d[x];
+    bool divide(int x) {
+        if (d[x] < 0) return false;
+        d[find(x)]++;
         d[x] = -1;
         return true;
     }
@@ -74,14 +74,28 @@ int main(){
     rep(i, n) h[i] = rh[i].second;
     vi dp(n, INF), dpi(n, -1);
     UnionFind uf(n);
-    int cnt = 0;
     rep(i, n) {
         int j = lower_bound(all(dp), h[i]) - dp.begin();
-        if (dp[j]==INF && j-1>=0) uf.unite(dpi[j-1], i);
-        else if (j-1 >= 0) uf.replace(dpi[j], i);
+        if (dp[j] != INF) uf.divide(dpi[j]);
+        uf.unite(dpi[j-1], i);
         dp[j] = h[i];
         dpi[j] = i;
     }
-    
+    vi mats(n, -1);
+    rep(i, n) {
+        int rt = uf.find(i);
+        mats[rt] = max(mats[rt], i);
+    }
+    vll rh2;
+    rep(i, n) {
+        if (mats[i] == -1) continue;
+        rh2.pb((ll)rh[mats[i]].first-rh[i].second);
+    }
+    VSORT(rh2);
+    rep(i, q) {
+        ll a, b;
+        cin >> a >> b;
+        cout << (rh2.end() - lower_bound(all(rh2), a-b)) << endl;
+    }
     return 0;
 }
