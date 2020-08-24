@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
-const long long mod = 1e9 + 7;
-
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -40,18 +37,44 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 const long long MOD = 1000000007;
 
-void func(long long N, long long M){
+ll modPow(int a, int b) {
+    if (b == 0) return 1;
+    if (b%2==0) {
+        ll half = modPow(a, b/2);
+        return half * half % MOD;
+    }
+    else return a * modPow(a, b-1) % MOD;
+}
 
+ll calcComb(int a, int b) {
+    if (b == 0) return 1;
+    if (b > a-b) return calcComb(a, a-b);
+    ll num = 1, den = 1;
+    rep(i, b) num = (num * (a-i)) % MOD;
+    rep1(i, b) den = (den * i) % MOD;
+    return num * modPow(den, MOD-2) % MOD;
 }
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    long long M;
-    scanf("%lld",&M);
-    func(N, M);
+    int n, m;
+    cin >> n >> m;
+    vi plis;
+    int na = abs(n);
+    for (int i=2; i*i<=na; ++i) {
+        if (na%i!=0) continue;
+        int cnt = 0;
+        while (na%i==0) {
+            na /= i;
+            ++cnt;
+        }
+        plis.pb(cnt);
+    }
+    if (na!=1) plis.pb(1);
+    ll ans = 1;
+    rep(i, sz(plis)) {
+        ans = (ans * calcComb(plis[i]+m-1, m-1)) % MOD;
+    }
+    ans = (ans * modPow(2, m-1)) % MOD;
+    cout << ans << endl;
     return 0;
 }
-
