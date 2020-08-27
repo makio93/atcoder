@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -38,29 +37,31 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-
-void func(long long N, std::vector<std::vector<long long>> D, long long Q, std::vector<long long> P){
-
-}
-
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    std::vector<std::vector<long long>> D(N, std::vector<long long>(N));
-    for(int i = 0 ; i < N ; i++){
-        for(int j = 0 ; j < N ; j++){
-            scanf("%lld",&D[i][j]);
+    int n, q;
+    cin >> n;
+    vector<vi> d(n, vi(n));
+    rep(i, n) rep(j, n) cin >> d[i][j];
+    vector<vector<vi>> ls(n+1, vector<vi>(n+1, vi(n+1)));
+    rep1(h, n) rep1(i, n) {
+        ls[h][0][i] = ls[h][0][i-1] + d[h-1][i-1];
+        repr(j, i) ls[h][j][i] = ls[h][0][i] - ls[h][0][j];
+    }
+    vi mx(n*n+1);
+    rep(i, n) for (int j=i+1; j<=n; ++j) rep(i2, n) {
+        int sum = 0;
+        for (int j2=i2+1; j2<=n; ++j2) {
+            sum += ls[j2][i][j];
+            int area = (j-i)*(j2-i2);
+            mx[area] = max(mx[area], sum);
         }
     }
-    long long Q;
-    scanf("%lld",&Q);
-    std::vector<long long> P(Q);
-    for(int i = 0 ; i < Q ; i++){
-        scanf("%lld",&P[i]);
+    rep(i, n*n) mx[i+1] = max(mx[i+1], mx[i]);
+    cin >> q;
+    rep(i, q) {
+        int p;
+        cin >> p;
+        cout << mx[p] << endl;
     }
-    func(N, std::move(D), Q, std::move(P));
     return 0;
 }
-
