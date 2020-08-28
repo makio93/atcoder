@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
 const long long mod = 1e9 + 7;
 
 using ll = long long;
@@ -38,17 +37,27 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-
-void func(std::string s){
-
-}
-
 int main(){
-    // cout << fixed << setprecision(5);
-
-    std::string s;
-    std::cin >> s;
-    func(s);
+    string s;
+    cin >> s;
+    int n = sz(s);
+    vector<vi> dp(n+1, vi(n+1));
+    rep1(h, n) for (int i=0; i+h<=n; ++i) {
+        if (h <= 3) {
+            if (s.substr(i, h) == "iwi") dp[i][i+h] = 1;
+            else dp[i][i+h] = 0;
+        }
+        if (h > 3) {
+            for (int k=i+1; k<i+h; ++k) dp[i][i+h] = max(dp[i][i+h], dp[i][k]+dp[k][i+h]);
+            if (h%3==0) {
+                for (int j=i+1; j<i+3; ++j) {
+                    if (dp[j][j+h-3] < (h-3)/3) continue;
+                    string t = s.substr(i, j-i) + s.substr(j+(h-3), 3-(j-i));
+                    if (t == "iwi") dp[i][i+h] = max(dp[i][i+h], h/3);
+                }
+            }
+        }
+    }
+    cout << dp[0][n] << endl;
     return 0;
 }
-
