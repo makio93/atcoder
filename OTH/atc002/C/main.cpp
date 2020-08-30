@@ -46,7 +46,7 @@ public:
             this->val = val, this->l = l, this->r = r, this->s = s;
         }
         const bool operator<(const Node& rhs) const {
-            if (val != rhs.val) return val < rhs.val;
+            if (val != rhs.val) return val < rhs.val
         }
     };
 private:
