@@ -37,32 +37,16 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+void func(std::string S){
+
+}
+
 int main(){
-    string s;
-    cin >> s;
-    int n = sz(s);
-    vi ans(n);
-    vector<pair<pii, int>> rl;
-    bool isr = true;
-    pii cnt = { 0, 0 };
-    rep(i, n) {
-        if (!isr && s[i]=='R') {
-            isr = true;
-            rl.emplace_back(cnt, i);
-            cnt = { 0, 0 };
-        }
-        if (s[i]=='R') ++cnt.first;
-        else {
-            ++cnt.second;
-            isr = false;
-        }
-    }
-    rl.emplace_back(cnt, n);
-    rep(i, sz(rl)) {
-        int ri = rl[i].second - rl[i].first.second - 1, li = ri+1;
-        ans[ri] = (rl[i].first.first+1)/2 + (rl[i].first.second)/2;
-        ans[li] = (rl[i].first.second+1)/2 + (rl[i].first.first)/2;
-    }
-    rep(i, n) printf("%d%c", ans[i], (i<n-1?' ':'\n'));
+    // cout << fixed << setprecision(5);
+
+    std::string S;
+    std::cin >> S;
+    func(S);
     return 0;
 }
