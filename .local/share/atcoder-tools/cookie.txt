@@ -1,9 +1,0 @@
-#LWP-Cookies-2.0
-Set-Cookie3: __passport=AHuyRcasddYNiFrbJAhOXA; path="/"; domain=".arc001.contest.atcoder.jp"; path_spec; expires="2021-03-02 05:32:30Z"; version=0
-Set-Cookie3: __privilege=guest; path="/"; domain=".arc001.contest.atcoder.jp"; path_spec; expires="2021-03-02 05:32:30Z"; version=0
-Set-Cookie3: _issue_time=1583127150; path="/"; domain=".atcoder.jp"; path_spec; expires="2021-03-02 05:32:30Z"; version=0
-Set-Cookie3: _kick_id="2012-04-25+04%3A51"; path="/"; domain=".atcoder.jp"; path_spec; expires="2021-03-02 05:32:30Z"; version=0
-Set-Cookie3: _session="3Q4KbUs8-ibFp5VSl"; path="/"; domain=".atcoder.jp"; path_spec; expires="2021-03-02 05:32:30Z"; version=0
-Set-Cookie3: _user_id=133498; path="/"; domain=".atcoder.jp"; path_spec; expires="2021-03-02 05:32:30Z"; version=0
-Set-Cookie3: _user_name=makio93; path="/"; domain=".atcoder.jp"; path_spec; expires="2021-03-02 05:32:30Z"; version=0
-Set-Cookie3: REVEL_SESSION="f5a11fcca6cd417590bd9c2c9e6e318881341489-%00_TS%3A1605076428%00%00UserName%3Amakio93%00%00a%3Afalse%00%00UserScreenName%3Amakio93%00%00csrf_token%3AQw1uNAoztGKaEsT0H2QSdMZCs6Rx0h33XJr96fZwEC4%3D%00%00SessionKey%3Ad47ad832b9d1adaa5b0601235e3e872f7bd97d2544d5bd8afc476a4774e5246409841c4ed8c9d2-2808556c85631adeee5bb4068fb9a90bbfac17233674728f25815c353dfb237a%00%00Rating%3A829%00%00w%3Afalse%00"; path="/"; domain="atcoder.jp"; path_spec; expires="2020-11-11 06:33:47Z"; HttpOnly=None; version=0

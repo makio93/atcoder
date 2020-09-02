@@ -1,5 +1,8 @@
 /.zsh_history
 
 /.local/share/atcoder-tools/version_cache.txt
-.local/lib/python3.6/site-packages/atcodertools/client/models/__pycache__/contest.cpython-36.pyc
-.local/lib/python3.6/site-packages/atcodertools/client/models/problem_content_backup.py
+.local/lib/python3.6/site-packages/atcodertools/client/
+/.zshrc
+/.local
+/.vscode-server
+/.cache
