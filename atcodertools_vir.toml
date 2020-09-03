@@ -1,0 +1,10 @@
+[codestyle]
+indent_type = 'space'
+indent_width = 4
+workspace_dir = '/mnt/c/pg/VIR/'
+lang = 'cpp'
+template_file='/mnt/c/pg/my_template.cpp'
+[etc]
+download_without_login=false
+parallel_download=false
+save_no_session_cache=false
