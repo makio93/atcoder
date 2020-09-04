@@ -42,11 +42,12 @@ int main(){
     cin >> n;
     if (n%2==1) cout << 0 << endl;
     else {
-        ll ans = n / 10, r = 5*5;
+        ll ans = n / 10, r = 50;
         while (r <= n) {
             ans += n / r;
             r *= 5;
         }
+       ans += n / r;
         cout << ans << endl;
     }
     return 0;
