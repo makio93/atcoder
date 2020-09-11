@@ -38,6 +38,35 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    
+    int n;
+    ll k;
+    cin >> n >> k;
+    vi a(n);
+    rep(i, n) cin >> a[i];
+    vi pos, neg, zero;
+    rep(i, n) {
+        if (a[i] > 0) pos.pb(a[i]);
+        else if (a[i] < 0) neg.pb(a[i]);
+        else zero.pb(a[i]);
+    }
+    int ps = sz(pos), ns = sz(neg), zs = sz(zero);
+    priority_queue<ll, vll, greater<ll>> q;
+    if (k <= (ll)ns*ps) {
+        rep(i, ns) rep(j, ps) {
+            q.push((ll)neg[i]*pos[j]);
+        }
+    }
+    else if (k <= (ll)ns*ps+zs*(ps+ns)+zs*(zs-1)/2) {
+        k = 1;
+        q.push(0);
+    }
+    else {
+        k -= (ll)ns*ps+zs*(ps+ns)+zs*(zs-1)/2;
+        rep(i, ns) for (int j=i+1; j<ns; ++j) q.push((ll)neg[i]*neg[j]);
+        rep(i, ps) for (int j=i+1; j<ps; ++j) q.push((ll)pos[i]*pos[j]);
+    }
+    rep(i, k-1) q.pop();
+    ll ans = q.top();
+    cout << ans << endl;
     return 0;
 }
