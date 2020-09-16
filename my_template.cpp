@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const long long mod = 1e9 + 7;
-
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -54,13 +52,5 @@ void func({{ formal_arguments }}){
 {% endif %}
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    {% if prediction_success %}
-    {{input_part}}
-    func({{ actual_arguments }});
-    {% else %}
-    // Failed to predict input format
-    {% endif %}
     return 0;
 }
