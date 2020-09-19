@@ -45,21 +45,20 @@ int main(){
     VSORT(a);
     ll ans = 0;
     if (n%2==0) {
-        rep(i, n) {
-            if (i==n/2-1) ans -= a[i];
-            else if (i==n/2) ans += a[i];
-            else if (i<n/2-1) ans -= (ll)2*a[i];
-            else ans += (ll)2*a[i];
-        }
+        rep(i, (n-2)/2) ans += (ll)a[i] * (-2);
+        ans += (ll)a[(n-2)/2] * (-1);
+        ans += (ll)a[(n-2)/2+1];
+        rep(i, (n-2)/2) ans += (ll)a[(n-2)/2+2+i] * 2;
     }
     else {
-        rep(i, n) {
-            if (i==n/2-1) continue;
-            if (i==n/2) ans += a[i];
-            else if (i<n/2-1) ans -= (ll)2*a[i];
-            else ans += (ll)2*a[i];
-        }
-        ans -= (ll)a[n/2-1];
+        ll sum1 = 0, sum2 = 0;
+        rep(i, (n-2)/2) sum1 += (ll)a[i] * (-2);
+        sum1 += ((ll)a[(n-2)/2] + (ll)a[(n-2)/2+1]) * (-1);
+        rep(i, (n-1)/2) sum1 += (ll)a[(n-2)/2+2+i] * 2;
+        rep(i, (n-1)/2) sum2 += (ll)a[i] * (-2);
+        sum2 += (ll)a[(n-1)/2] + (ll)a[(n-1)/2+1];
+        rep(i, (n-2)/2) sum2 += (ll)a[(n-1)/2+2+i] * 2;
+        ans = max(sum1, sum2); 
     }
     cout << ans << endl;
     return 0;
