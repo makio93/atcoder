@@ -36,17 +36,18 @@ ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
 int main(){
-    int n;
-    cin >> n;
-    vector<vll> cnt(10, vll(10));
-    rep1(i, n) {
-        int top = to_string(i).front() - '0', bottom = to_string(i).back() - '0';
-        cnt[top][bottom]++;
+    string s;
+    cin >> s;
+    int /* top = s.front() - '0', */ bottom = s.back() - '0', keta = sz(s);
+    int n = stoi(s);
+    if (keta == 1) {
+        cout << n << endl;
+        return 0;
     }
-    ll ans = 0;
-    for (int i=1; i<=9; ++i) for (int j=1; j<=9; ++j) {
-        ans += cnt[i][j] * cnt[j][i];
-    }
+    int cnt = n / 10;
+    ll ans = (ll)cnt * cnt;
+    ans += min(n, 9) - 1;
+    if (bottom > 0) ans += bottom;
     cout << ans << endl;
     return 0;
 }

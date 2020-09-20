@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const long long mod = 1e9 + 7;
+
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -35,18 +37,16 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+void func(long long N){
+
+}
+
 int main(){
-    int n;
-    cin >> n;
-    vector<vll> cnt(10, vll(10));
-    rep1(i, n) {
-        int top = to_string(i).front() - '0', bottom = to_string(i).back() - '0';
-        cnt[top][bottom]++;
-    }
-    ll ans = 0;
-    for (int i=1; i<=9; ++i) for (int j=1; j<=9; ++j) {
-        ans += cnt[i][j] * cnt[j][i];
-    }
-    cout << ans << endl;
+    // cout << fixed << setprecision(5);
+
+    long long N;
+    scanf("%lld",&N);
+    func(N);
     return 0;
 }
