@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
-const long long mod = 1e9 + 7;
-
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -38,12 +35,36 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-
-
 int main(){
-    // cout << fixed << setprecision(5);
-
-    // Failed to predict input format
+    int h, w;
+    cin >> h >> w;
+    vs s(h);
+    rep(i, h) cin >> s[i];
+    int ans = 0;
+    rep(i, h) rep(j, w) {
+        queue<pii> q;
+        vector<vi> dist(h, vi(w, INF));
+        if (s[i][j] == '#') continue;
+        q.emplace(i, j);
+        dist[i][j] = 0;
+        while (!q.empty()) {
+            auto p = q.front(); q.pop();
+            int y = p.first, x = p.second, d = dist[y][x];
+            const vi dy = { -1, 0, 1, 0 }, dx = { 0, 1, 0, -1 };
+            rep(i2, 4) {
+                int ny = y + dy[i2], nx = x + dx[i2], nd = d + 1;
+                if (ny<0 || ny>=h || nx<0 || nx>=w) continue;
+                if (s[ny][nx] == '#') continue;
+                if (dist[ny][nx] <= nd) continue;
+                q.emplace(ny, nx);
+                dist[ny][nx] = nd;
+            }
+        }
+        rep(i2, h) rep(j2, w) {
+            if (dist[i2][j2] == INF) continue;
+            ans = max(ans, dist[i2][j2]);
+        }
+    }
+    cout << ans << endl;
     return 0;
 }
-
