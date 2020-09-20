@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const long long mod = 1e9 + 7;
+
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -35,21 +37,25 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+typedef pii P;
+P f(int x) {
+    int b = x%10;
+    while (x > 9) x /= 10;
+    int a = x;
+    return P(a, b);
+}
+
 int main(){
-    string s;
-    cin >> s;
-    int tnum = s.front() - '0', bnum = s.back() - '0', keta = sz(s);
-    int n = stoi(s);
-    vll tcnt(10), bcnt(10);
-    int ex = 1;
-    rep(i, keta-1) ex *= 10;
-    for (int i=1; i<tnum; ++i) tcnt[i] = ex;
-    tcnt[tnum] = n % ex + 1;
-    rep(i, 10) tcnt[i] += ex / 10;
-    rep(i, 10) bcnt[i] = n / 10;
-    rep(i, bnum+1) bcnt[i]++;
+    int n;
+    cin >> n;
+    map<P, int> cnt;
+    rep1(i, n) cnt[f(i)]++;
     ll ans = 0;
-    rep1(i, 9) ans += tcnt[i] * bcnt[i];
+    rep1(i, n) {
+        P p = f(i);
+        P q = { p.second, p.first };
+        ans += cnt[q];
+    }
     cout << ans << endl;
     return 0;
 }

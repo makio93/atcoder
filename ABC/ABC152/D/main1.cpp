@@ -35,19 +35,26 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+typedef pii P;
+P f(int x) {
+    int b = x%10;
+    while (x > 9) x /= 10;
+    int a = x;
+    return P(a, b);
+}
+
 int main(){
-    string s;
-    cin >> s;
-    int /* top = s.front() - '0', */ bottom = s.back() - '0', keta = sz(s);
-    int n = stoi(s);
-    if (keta == 1) {
-        cout << n << endl;
-        return 0;
+    int n;
+    cin >> n;
+    vector<vi> c(10, vi(10));
+    rep1(i, n) {
+        P ret = f(i);
+        c[ret.first][ret.second]++;
     }
-    int cnt = n / 10;
-    ll ans = (ll)cnt * cnt;
-    ans += min(n, 9) - 1;
-    if (bottom > 0) ans += bottom;
+    ll ans = 0;
+    rep(i, 10) rep(j, 10) {
+        ans += (ll)c[i][j] * c[j][i];
+    }
     cout << ans << endl;
     return 0;
 }
