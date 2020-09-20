@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
-const long long mod = 1e9 + 7;
-
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -38,22 +35,60 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const long long MOD = 1000000007;
+const long long mod = 1000000007;
+// auto mod int
+struct mint {
+    ll x; // typedef long long ll;
+    mint(ll x=0):x((x%mod+mod)%mod){}
+    mint operator-() const { return mint(-x);}
+    mint& operator+=(const mint a) {
+        if ((x += a.x) >= mod) x -= mod;
+        return *this;
+    }
+    mint& operator-=(const mint a) {
+        if ((x += mod-a.x) >= mod) x -= mod;
+        return *this;
+    }
+    mint& operator*=(const mint a) { (x *= a.x) %= mod; return *this;}
+    mint operator+(const mint a) const { return mint(*this) += a;}
+    mint operator-(const mint a) const { return mint(*this) -= a;}
+    mint operator*(const mint a) const { return mint(*this) *= a;}
+    mint pow(ll t) const {
+        if (!t) return 1;
+        mint a = pow(t>>1);
+        a *= a;
+        if (t&1) a *= *this;
+        return a;
+    }
 
-void func(long long N, std::vector<long long> A){
-
-}
+    // for prime mod
+    mint inv() const { return pow(mod-2);}
+    mint& operator/=(const mint a) { return *this *= a.inv();}
+    mint operator/(const mint a) const { return mint(*this) /= a;}
+};
+istream& operator>>(istream& is, mint& a) { return is >> a.x; }
+ostream& operator<<(ostream& os, const mint& a) { return os << a.x; }
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    std::vector<long long> A(N);
-    for(int i = 0 ; i < N ; i++){
-        scanf("%lld",&A[i]);
+    int n;
+    cin >> n;
+    vll a(n);
+    rep(i, n) cin >> a[i];
+    vector<vll> bsum(n+1, vll(60));
+    repr(i, n) rep(j, 60) {
+        bsum[i][j] += bsum[i+1][j] + ((a[i]>>j)&1);
     }
-    func(N, std::move(A));
+    repr(i, n-1) rep(j, 60) {
+        bsum[i+1][j] = llabs((ll)bsum[i+1][j]-((a[i]>>j)&1)*(n-1-i));
+    }
+    mint ans = 0;
+    rep1(i, n-1) {
+        mint two = 1;
+        rep(j, 60) {
+            ans += two * bsum[i][j];
+            two *= 2;
+        }
+    }
+    cout << ans << endl;
     return 0;
 }
-
