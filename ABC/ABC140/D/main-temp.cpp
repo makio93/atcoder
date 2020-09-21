@@ -35,19 +35,20 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+void func(long long N, long long K, std::string S){
+
+}
+
 int main(){
-    int n, k;
-    cin >> n >> k;
-    string s;
-    cin >> s;
-    int val = 0;
-    rep(i, n) {
-        if (i-1>=0 && s[i]=='L' && s[i-1] == 'L') ++val;
-        if (i+1<=n-1 && s[i]=='R' && s[i+1] == 'R') ++val;
-    }
-    int cnt = 0;
-    rep(i, n-1) if (s[i] != s[i+1]) ++cnt;
-    val += min(cnt, 2*k);
-    cout << val << endl;
+    // cout << fixed << setprecision(5);
+
+    long long N;
+    scanf("%lld",&N);
+    long long K;
+    scanf("%lld",&K);
+    std::string S;
+    std::cin >> S;
+    func(N, K, S);
     return 0;
 }
