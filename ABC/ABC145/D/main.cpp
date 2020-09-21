@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 総数を1000000007（素数）で割った余り
-const long long mod = 1e9 + 7;
-
 using ll = long long;
 using pii  = pair<int, int>;
 using pll = pair<ll, ll>;
@@ -38,20 +35,65 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const long long MOD = 1000000007;
+const long long mod = 1000000007;
+// auto mod int
+struct mint {
+    ll x; // typedef long long ll;
+    mint(ll x=0):x((x%mod+mod)%mod){}
+    mint operator-() const { return mint(-x);}
+    mint& operator+=(const mint a) {
+        if ((x += a.x) >= mod) x -= mod;
+        return *this;
+    }
+    mint& operator-=(const mint a) {
+        if ((x += mod-a.x) >= mod) x -= mod;
+        return *this;
+    }
+    mint& operator*=(const mint a) { (x *= a.x) %= mod; return *this;}
+    mint operator+(const mint a) const { return mint(*this) += a;}
+    mint operator-(const mint a) const { return mint(*this) -= a;}
+    mint operator*(const mint a) const { return mint(*this) *= a;}
+    mint pow(ll t) const {
+        if (!t) return 1;
+        mint a = pow(t>>1);
+        a *= a;
+        if (t&1) a *= *this;
+        return a;
+    }
 
-void func(long long X, long long Y){
+    // for prime mod
+    mint inv() const { return pow(mod-2);}
+    mint& operator/=(const mint a) { return *this *= a.inv();}
+    mint operator/(const mint a) const { return mint(*this) /= a;}
+};
+istream& operator>>(istream& is, mint& a) { return is >> a.x; }
+ostream& operator<<(ostream& os, const mint& a) { return os << a.x; }
 
-}
+// combination mod prime
+struct combination {
+    vector<mint> fact, ifact;
+    combination(int n):fact(n+1),ifact(n+1) {
+        assert(n < mod);
+        fact[0] = 1;
+        for (int i = 1; i <= n; ++i) fact[i] = fact[i-1]*i;
+        ifact[n] = fact[n].inv();
+        for (int i = n; i >= 1; --i) ifact[i-1] = ifact[i]*i;
+    }
+    mint operator()(int n, int k) {
+        if (k < 0 || k > n) return 0;
+        return fact[n]*ifact[k]*ifact[n-k];
+    }
+};
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long X;
-    scanf("%lld",&X);
-    long long Y;
-    scanf("%lld",&Y);
-    func(X, Y);
+    int x, y;
+    cin >> x >> y;
+    if (2*y-x>=0 && (2*y-x)%3==0) {
+        combination cb(x);
+        int c = (2*y-x)/3;
+        mint ans = cb((x+c)/2, c);
+        cout << ans << endl;
+    }
+    else cout << 0 << endl;
     return 0;
 }
-
