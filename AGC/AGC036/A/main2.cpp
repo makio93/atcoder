@@ -36,6 +36,8 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+// 解説PDFより：ベクトルの外積を利用して計算
+
 const int mod = (int)(1e9);
 
 int main(){

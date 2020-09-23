@@ -36,6 +36,8 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+// 解説放送より：ベクトルの外積を利用して面積を計算する解法
+
 int main(){
     ll s;
     cin >> s;
