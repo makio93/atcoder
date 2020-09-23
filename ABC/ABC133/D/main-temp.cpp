@@ -35,25 +35,20 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+
+void func(long long N, std::vector<long long> A){
+
+}
+
 int main(){
-    int n;
-    cin >> n;
-    vi a(n);
-    rep(i, n) cin >> a[i];
-    int mx = 0;
-    rep(i, n) mx = max(mx, a[i]);
-    int l = 0, h = mx + 1;
-    while (l+1<h) {
-        ll c = (l + h) / 2, toc = c;
-        rep(i, n) toc = a[i] - toc;
-        if (toc < c) h = c;
-        else l = c;
+    // cout << fixed << setprecision(5);
+
+    long long N;
+    scanf("%lld",&N);
+    std::vector<long long> A(N);
+    for(int i = 0 ; i < N ; i++){
+        scanf("%lld",&A[i]);
     }
-    vi ans(n);
-    rep(i, n) {
-        ans[i] = l * 2;
-        l = a[i] - l;
-    }
-    rep(i, n) printf("%d%c", ans[i], (i<n-1?' ':'\n'));
+    func(N, std::move(A));
     return 0;
 }
