@@ -3,7 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:\\\\pg\\path\\to\\ac-library\\**"
             ],
             "defines": [
                 "_DEBUG",
