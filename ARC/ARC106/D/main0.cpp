@@ -63,20 +63,30 @@ int main(){
     cin >> n >> k;
     vi a(n);
     rep(i, n) cin >> a[i];
-    vector<vector<mint>> psum(k+1, vector<mint>(n, 1));
-    vector<vector<mint>> ksum(k, vector<mint>(n+1, 0));
+    vector<vector<mint>> psum(k+1, vector<mint>(n+1, 0));
+    psum[0] = vector<mint>(n+1, 1);
+    psum[0][n] = 0;
     rep1(i, k) {
+        rep(j, n) {
+            psum[i][j] = psum[i-1][j] * a[j];
+        }
+    }
+    vector<vector<mint>> sum(k+1, vector<mint>(n+1, 0));
+    rep(i, k+1) {
         repr(j, n) {
-            psum[i][j] *= psum[i-1][j] * a[j];
-            if (j+1<n) psum[i][j] += psum[i][j+1];
+            sum[i][j] = psum[i][j] + sum[i][j+1];
         }
     }
     combination cb(k);
     rep1(i, k) {
-        ksum[i][n-1] = psum[i][n-1];
-        repr(j, n-1) {
-            ksum[i][j] = psum[i][j] + 
+        mint val = 0;
+        rep(j, n-1) {
+            val += psum[i][j] * (n-j-1);
+            rep1(j2, i) {
+                val += cb(i, j2) * psum[i-j2][j] * sum[j2][j+1];
+            }
         }
+        cout << val.val() << endl;
     }
     return 0;
 }
