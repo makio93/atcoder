@@ -41,45 +41,7 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-// 本番終了後での自力研究
 
 int main(){
-    int n;
-    cin >> n;
-    vi a(n), b(n);
-    rep(i, n) cin >> a[i];
-    rep(i, n) cin >> b[i];
-    map<int, int> danger, safe;
-    rep(i, n) {
-        if (b[i] < a[i]) safe[a[i]-b[i]] = a[i];
-        else danger[a[i]] = b[i] - (a[i]-1);
-    }
-    for (auto p : safe) {
-        auto itrl = danger.lower_bound(p.first);
-        auto itrr = danger.upper_bound(p.second);
-        danger.erase(itrl, itrr);
-    }
-    if (danger.empty()) {
-        cout << 0 << endl;
-        return 0;
-    }
-    if (sz(danger) == 1) {
-        cout << 1 << endl;
-        return 0;
-    }
-    vi wls;
-    for (auto p : danger) wls.pb(p.second);
-    VSORT(wls);
-    vll swls(sz(wls)+1);
-    rep(i, sz(wls)) swls[i+1] = swls[i] + wls[i];
-    int d = distance(swls.begin(), upper_bound(all(swls), sz(danger))) - 1;
-    d = min(d, sz(danger)/2);
-    ll ans = sz(danger) - d;
-    int cnti = 0;
-    for (auto itr=danger.begin(); itr!=danger.end(); ++itr) {
-        ans = min(ans, (ll)itr->second+sz(danger)-cnti-1);
-        ++cnti;
-    }
-    cout << ans << endl;
     return 0;
 }
