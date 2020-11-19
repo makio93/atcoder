@@ -41,7 +41,35 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+// 解説ページでの解法　各DPテーブルを2行分だけにして空間計算量を節約
+
+//const long long mod = 1000000007;
+using mint = modint1000000007;
 
 int main(){
+    int h, w;
+    cin >> h >> w;
+    vs s(h);
+    rep(i, h) cin >> s[i];
+    vector<vector<mint>> dp(2, vector<mint>(w));
+    vector<mint> x(w+1);
+    vector<vector<mint>> y(2, vector<mint>(w));
+    vector<vector<mint>> z(2, vector<mint>(w+1));
+    dp[0][0] = 1;
+    rep(i, h) {
+        rep(j, w) {
+            if (i==0 && j==0) continue;
+            if (s[i][j] == '#') continue;
+            if (j-1>=0) x[j] = x[j-1] + dp[i%2][j-1];
+            if (i-1>=0) y[i%2][j] = y[(i-1)%2][j] + dp[(i-1)%2][j];
+            if (i-1>=0 && j-1>=0) z[i%2][j] = z[(i-1)%2][j-1] + dp[(i-1)%2][j-1];
+            dp[i%2][j] = x[j] + y[i%2][j] + z[i%2][j];
+        }
+        x = vector<mint>(w+1);
+        y[(i+1)%2] = vector<mint>(w);
+        z[(i+1)%2] = vector<mint>(w+1);
+        dp[(i+1)%2] = vector<mint>(w);
+    }
+    cout << dp[(h-1)%2][w-1].val() << endl;
     return 0;
 }

@@ -41,55 +41,27 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-// 本番中のコード　TLEによる誤答
+// 本番提出コード
 
-//const long long mod = 1000000007;
-using mint = modint1000000007;
-
-int h, w;
-vs s;
-vector<vector<mint>> dp;
-vector<vector<bool>> visited;
-mint dfs(int i, int j) {
-    if (visited[i][j]) return dp[i][j];
-    if (i==h-1 && j==w-1) {
-        visited[i][j] = true;
-        dp[i][j] = mint(1);
-        return mint(1);
-    }
-    if (s[i][j] == '#') {
-        visited[i][j] = true;
-        dp[i][j] = mint(0);
-        return mint(0);
-    }
-    mint res = 0;
-    for (int j2=j+1; j2<w; ++j2) {
-        if (s[i][j2] == '#') break;
-        if (visited[i][j2]) res += dp[i][j2];
-        else res += dfs(i, j2);
-    }
-    for (int i2=i+1,j2=j+1; i2<h&&j2<w; ++i2,++j2) {
-        if (s[i2][j2] == '#') break;
-        if (visited[i2][j2]) res += dp[i2][j2];
-        else res += dfs(i2, j2);
-    }
-    for (int i2=i+1; i2<h; ++i2) {
-        if (s[i2][j] == '#') break;
-        if (visited[i2][j]) res += dp[i2][j];
-        else res += dfs(i2, j);
-    }
-    visited[i][j] = true;
-    dp[i][j] = res;
-    return res;
-}
+const string YES = "Yes";
+const string NO = "No";
 
 int main(){
-    cin >> h >> w;
-    s = vs(h);
-    rep(i, h) cin >> s[i];
-    dp = vector<vector<mint>>(h, vector<mint>(w, 0));
-    visited = vector<vector<bool>>(h, vector<bool>(w, false));
-    mint ans = dfs(0, 0);
-    cout << ans.val() << endl;
+    int n;
+    ll w;
+    cin >> n >> w;
+    vi s(n), t(n);
+    vll p(n);
+    rep(i, n) cin >> s[i] >> t[i] >> p[i];
+    vll sum((int)(2e5+5));
+    rep(i, n) {
+        sum[s[i]] += p[i];
+        sum[t[i]] -= p[i];
+    }
+    rep(i, sz(sum)) sum[i+1] += sum[i];
+    bool ok = true;
+    rep(i, sz(sum)) if (sum[i] > w) ok = false;
+    if (ok) cout << YES << endl;
+    else cout << NO << endl;
     return 0;
 }

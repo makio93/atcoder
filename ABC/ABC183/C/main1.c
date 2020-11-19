@@ -1,3 +1,4 @@
+/*
 #include <bits/stdc++.h>
 #include <atcoder/all>
 using namespace std;
@@ -40,56 +41,47 @@ using pll = pair<ll, ll>;
 
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
+*/
 
-// 本番中のコード　TLEによる誤答
+// 解説ページのC言語による解法　次の順列を作る関数を自作する
 
-//const long long mod = 1000000007;
-using mint = modint1000000007;
+#include <stdio.h>
 
-int h, w;
-vs s;
-vector<vector<mint>> dp;
-vector<vector<bool>> visited;
-mint dfs(int i, int j) {
-    if (visited[i][j]) return dp[i][j];
-    if (i==h-1 && j==w-1) {
-        visited[i][j] = true;
-        dp[i][j] = mint(1);
-        return mint(1);
+int p[7];
+
+int nexp(int* a, int len) {
+    int res = 0;
+    int l = len-1, r = len-1;
+    int tmp = 0;
+    while (l>=0 && a[l]>=a[l+1]) --l;
+    if (l >= 0) {
+        res = 1;
+        while (r>l && a[l]>=a[r]) --r;
+        tmp = a[l]; a[l] = a[r]; a[r] = tmp;
+        for (++l,r=len-1; l<r; ++l,--r) {
+            tmp = a[l]; a[l] = a[r]; a[r] = tmp;
+        }
     }
-    if (s[i][j] == '#') {
-        visited[i][j] = true;
-        dp[i][j] = mint(0);
-        return mint(0);
-    }
-    mint res = 0;
-    for (int j2=j+1; j2<w; ++j2) {
-        if (s[i][j2] == '#') break;
-        if (visited[i][j2]) res += dp[i][j2];
-        else res += dfs(i, j2);
-    }
-    for (int i2=i+1,j2=j+1; i2<h&&j2<w; ++i2,++j2) {
-        if (s[i2][j2] == '#') break;
-        if (visited[i2][j2]) res += dp[i2][j2];
-        else res += dfs(i2, j2);
-    }
-    for (int i2=i+1; i2<h; ++i2) {
-        if (s[i2][j] == '#') break;
-        if (visited[i2][j]) res += dp[i2][j];
-        else res += dfs(i2, j);
-    }
-    visited[i][j] = true;
-    dp[i][j] = res;
     return res;
 }
 
 int main(){
-    cin >> h >> w;
-    s = vs(h);
-    rep(i, h) cin >> s[i];
-    dp = vector<vector<mint>>(h, vector<mint>(w, 0));
-    visited = vector<vector<bool>>(h, vector<bool>(w, false));
-    mint ans = dfs(0, 0);
-    cout << ans.val() << endl;
+    int n, k;
+    int t[8][8];
+    int i, j;
+    int ans = 0;
+    int tot = 0;
+    scanf("%d%d", &n, &k);
+    for (i=0; i<n; ++i) for (j=0; j<n; ++j) {
+        scanf("%d", &t[i][j]);
+    }
+    for (i=0; i<n-1; ++i) p[i] = i+1;
+    do {
+        tot = t[0][p[0]];
+        for (i=0; i+1<n-1; ++i) tot += t[p[i]][p[i+1]];
+        tot += t[p[n-2]][0];
+        if (tot == k) ++ans;
+    } while (nexp(p, n-1));
+    printf("%d\n", ans);
     return 0;
 }

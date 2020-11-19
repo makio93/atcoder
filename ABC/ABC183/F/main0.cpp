@@ -41,20 +41,8 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+// 本番中作成分
+
 int main(){
-    int n, k;
-    cin >> n >> k;
-    vector<vi> t(n, vi(n));
-    rep(i, n) rep(j, n) cin >> t[i][j];
-    vi ord;
-    rep1(i, n-1) ord.pb(i);
-    int ans = 0;
-    do {
-        int sum = t[0][ord[0]];
-        rep(i, n-2) sum += t[ord[i]][ord[i+1]];
-        sum += t[ord[n-2]][0];
-        if (sum == k) ++ans;
-    } while (next_permutation(all(ord)));
-    cout << ans << endl;
     return 0;
 }

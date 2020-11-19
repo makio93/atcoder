@@ -41,55 +41,28 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-// 本番中のコード　TLEによる誤答
+// 解説ページでの解法　３方向からの特殊な累積和を計算しながら高速化
 
 //const long long mod = 1000000007;
 using mint = modint1000000007;
 
-int h, w;
-vs s;
-vector<vector<mint>> dp;
-vector<vector<bool>> visited;
-mint dfs(int i, int j) {
-    if (visited[i][j]) return dp[i][j];
-    if (i==h-1 && j==w-1) {
-        visited[i][j] = true;
-        dp[i][j] = mint(1);
-        return mint(1);
-    }
-    if (s[i][j] == '#') {
-        visited[i][j] = true;
-        dp[i][j] = mint(0);
-        return mint(0);
-    }
-    mint res = 0;
-    for (int j2=j+1; j2<w; ++j2) {
-        if (s[i][j2] == '#') break;
-        if (visited[i][j2]) res += dp[i][j2];
-        else res += dfs(i, j2);
-    }
-    for (int i2=i+1,j2=j+1; i2<h&&j2<w; ++i2,++j2) {
-        if (s[i2][j2] == '#') break;
-        if (visited[i2][j2]) res += dp[i2][j2];
-        else res += dfs(i2, j2);
-    }
-    for (int i2=i+1; i2<h; ++i2) {
-        if (s[i2][j] == '#') break;
-        if (visited[i2][j]) res += dp[i2][j];
-        else res += dfs(i2, j);
-    }
-    visited[i][j] = true;
-    dp[i][j] = res;
-    return res;
-}
-
 int main(){
+    int h, w;
     cin >> h >> w;
-    s = vs(h);
+    vs s(h);
     rep(i, h) cin >> s[i];
-    dp = vector<vector<mint>>(h, vector<mint>(w, 0));
-    visited = vector<vector<bool>>(h, vector<bool>(w, false));
-    mint ans = dfs(0, 0);
-    cout << ans.val() << endl;
+    vector<vector<mint>> dp(h, vector<mint>(w));
+    vector<vector<mint>> x(h, vector<mint>(w+1));
+    vector<vector<mint>> y(h+1, vector<mint>(w));
+    vector<vector<mint>> z(h+1, vector<mint>(w+1));
+    dp[0][0] = 1;
+    rep(i, h) rep(j, w) {
+        if (s[i][j] == '#') continue;
+        if (j-1>=0) x[i][j] += x[i][j-1] + dp[i][j-1];
+        if (i-1>=0) y[i][j] += y[i-1][j] + dp[i-1][j];
+        if (i-1>=0 && j-1>=0) z[i][j] += z[i-1][j-1] + dp[i-1][j-1];
+        dp[i][j] += x[i][j] + y[i][j] + z[i][j];
+    }
+    cout << dp[h-1][w-1].val() << endl;
     return 0;
 }

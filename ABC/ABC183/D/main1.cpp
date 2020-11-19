@@ -41,55 +41,30 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-// 本番中のコード　TLEによる誤答
+// 解説放送での解法　値を配列とかに格納しない
 
-//const long long mod = 1000000007;
-using mint = modint1000000007;
+const string YES = "Yes";
+const string NO = "No";
 
-int h, w;
-vs s;
-vector<vector<mint>> dp;
-vector<vector<bool>> visited;
-mint dfs(int i, int j) {
-    if (visited[i][j]) return dp[i][j];
-    if (i==h-1 && j==w-1) {
-        visited[i][j] = true;
-        dp[i][j] = mint(1);
-        return mint(1);
-    }
-    if (s[i][j] == '#') {
-        visited[i][j] = true;
-        dp[i][j] = mint(0);
-        return mint(0);
-    }
-    mint res = 0;
-    for (int j2=j+1; j2<w; ++j2) {
-        if (s[i][j2] == '#') break;
-        if (visited[i][j2]) res += dp[i][j2];
-        else res += dfs(i, j2);
-    }
-    for (int i2=i+1,j2=j+1; i2<h&&j2<w; ++i2,++j2) {
-        if (s[i2][j2] == '#') break;
-        if (visited[i2][j2]) res += dp[i2][j2];
-        else res += dfs(i2, j2);
-    }
-    for (int i2=i+1; i2<h; ++i2) {
-        if (s[i2][j] == '#') break;
-        if (visited[i2][j]) res += dp[i2][j];
-        else res += dfs(i2, j);
-    }
-    visited[i][j] = true;
-    dp[i][j] = res;
-    return res;
-}
+const int MAX_T = 2e5+5;
 
 int main(){
-    cin >> h >> w;
-    s = vs(h);
-    rep(i, h) cin >> s[i];
-    dp = vector<vector<mint>>(h, vector<mint>(w, 0));
-    visited = vector<vector<bool>>(h, vector<bool>(w, false));
-    mint ans = dfs(0, 0);
-    cout << ans.val() << endl;
+    int n, w;
+    cin >> n >> w;
+    vll sum(MAX_T);
+    rep(i, n) {
+        int s, t, p;
+        cin >> s >> t >> p;
+        sum[s] += p;
+        sum[t] -= p;
+    }
+    rep(i, MAX_T-1) sum[i+1] += sum[i];
+    rep(i, MAX_T) {
+        if (sum[i] > w) {
+            cout << NO << endl;
+            return 0;
+        }
+    }
+    cout << YES << endl;
     return 0;
 }
