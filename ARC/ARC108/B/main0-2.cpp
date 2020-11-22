@@ -41,7 +41,7 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-// 1つ目のコードとは違う実装法で書いたが、見落としているパターンがそのままなのでWA
+// 1つ目のコードとは違う実装法で書こうとしたが、そもそもやりたいことできてなかったのでWA
 
 const string tar = "fox";
 

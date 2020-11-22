@@ -41,20 +41,32 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-// 本番中に作成途中でコンテスト終了
+// 本番中に作成途中だったコードに加筆して自力で完成させたもの　自力AC完了
 
 int n, m;
 vector<vpii> g;
 vi val;
-bool ok = true;
-void dfs(int v) {
-    if (!ok) return;
+bool ans = true;
+void dfs(int v, int p=-1) {
+    if (!ans) return;
     int cval = 1;
-    for (auto p : g[v]) {
-        int to = p.first, toval = p.second;
-        if (val[to] != to) {
-            cval = toval;
+    for (auto pr : g[v]) {
+        int to = pr.first, eval = pr.second;
+        if (val[to]==0 || to!=p) continue;
+        if (val[to] != eval) cval = eval;
+        else if (cval == eval) ++cval;
+        if (cval > n) {
+            ans = false;
+            return;
         }
+        break;
+    }
+    val[v] = cval;
+    for (auto pr : g[v]) {
+        int to = pr.first, toval = val[to];
+        if (toval != 0) continue;
+        dfs(to, v);
+        if (!ans) return;
     }
 }
 
@@ -70,5 +82,9 @@ int main(){
         g[v].emplace_back(u, c);
     }
     dfs(0);
+    if (ans) {
+        rep(i, n) cout << val[i] << endl;
+    }
+    else cout << "No" << endl;
     return 0;
 }
