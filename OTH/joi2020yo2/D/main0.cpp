@@ -41,6 +41,8 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+// バチャ本番中のコードその1
+
 //const int CNT = 1e6+5;
 
 int main(){

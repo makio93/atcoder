@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-//#include <atcoder/all>
+#include <atcoder/all>
 using namespace std;
-//using namespace atcoder;
+using namespace atcoder;
 
 using ll = long long;
 using pii  = pair<int, int>;
@@ -41,20 +41,10 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+// バチャ本番中のコード
+
+const long long mod = 1000000007;
+
 int main(){
-    int n;
-    cin >> n;
-    vi dp(n+1);
-    rep1(i, n) {
-        dp[i]++;
-        int add = 0, tmp = i;
-        while (tmp > 0) {
-            add += tmp % 10;
-            tmp /= 10;
-        }
-        if (i+add > n) continue;
-        dp[i+add] += dp[i];
-    }
-    cout << dp[n] << endl;
     return 0;
 }

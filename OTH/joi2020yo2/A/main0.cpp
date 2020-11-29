@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-#include <atcoder/all>
+//#include <atcoder/all>
 using namespace std;
-using namespace atcoder;
+//using namespace atcoder;
 
 using ll = long long;
 using pii  = pair<int, int>;
@@ -41,8 +41,31 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const long long mod = 1000000007;
+// バチャ本番中のコード
 
 int main(){
+    int n;
+    cin >> n;
+    vs s(n), t(n);
+    rep(i, n) cin >> s[i];
+    rep(i, n) cin >> t[i];
+    vector<vs> t2(4);
+    t2[0] = t;
+    rep1(i1, 3) {
+        vs tmp(n, string(n, '0'));
+        rep(i, n) rep(j, n) {
+            tmp[j][n-i-1] = t2[i1-1][i][j];
+        }
+        t2[i1] = tmp;
+    }
+    int ans = INF;
+    rep(i1, 4) {
+        int cnt = min(i1, 4-i1);
+        rep(i, n) rep(j, n) {
+            if (s[i][j] != t2[i1][i][j]) ++cnt;
+        }
+        ans = min(ans, cnt);
+    }
+    cout << ans << endl;
     return 0;
 }
