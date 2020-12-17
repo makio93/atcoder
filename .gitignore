@@ -1,8 +1,12 @@
 /.zsh_history
 
 /.local/share/atcoder-tools/version_cache.txt
-.local/lib/python3.6/site-packages/atcodertools/client/
+/.local/lib/python3.6/site-packages/atcodertools/client/
 /.zshrc
 /.local
 /.vscode-server
 /.cache
+/.python_history
+/.zcompdump
+/data
+/.viminfo
