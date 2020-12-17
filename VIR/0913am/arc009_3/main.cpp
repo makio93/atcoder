@@ -35,7 +35,7 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-const ull mod = 1777777777LL;
+const ll mod = 1777777777LL;
 // auto mod int
 struct mint {
     ll x; // typedef long long ll;
@@ -88,7 +88,15 @@ struct combination {
 int main(){
     ll n, k;
     cin >> n >> k;
-    ll ans = 1;
-    
+    combination cb(k);
+    mint ans = cb.fact[k], sig = 0;
+    for (int i=2; i<=k; ++i) {
+        mint s = (i%2==0?1:-1);
+        sig += s / cb.fact[i];
+    }
+    ans *= sig;
+    rep(i, k) ans *= (n - i) % mod;
+    ans /= cb.fact[k];
+    cout << ans << endl;
     return 0;
 }
