@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
+#include <atcoder/all>
 using namespace std;
-
-const long long mod = 1e9 + 7;
+using namespace atcoder;
 
 using ll = long long;
 using pii  = pair<int, int>;
@@ -20,6 +20,9 @@ using pll = pair<ll, ll>;
 #define repr(i, n) for (int i = ((int)(n)-1); i >= 0; i--)
 #define rep1r(i, n) for (int i = ((int)(n)); i >= 1; i--)
 
+#define snuke(c, itr) for (__typeof((c).begin()) itr = (c).begin(); itr != (c).end(); itr++)
+#define snuker(c, itr) for (__typeof((c).rbegin()) itr = (c).rbegin(); itr != (c).rend(); itr++)
+
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
@@ -28,37 +31,36 @@ using pll = pair<ll, ll>;
 #define VSORT(v) sort(v.begin(), v.end());
 #define RSORT(x) sort(rall(x));
 #define pb push_back
-#define mp make_pair
+//#define mp make_pair
 
 #define INF (1e9)
+#define INF2 (1e18)
 #define PI (acos(-1))
 #define EPS (1e-7)
 
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-
-void func(long long N, long long Q, std::vector<long long> c, std::vector<long long> l, std::vector<long long> r){
-
-}
+// きまぐれ精進時、自力提出分
+// mapどうしの差集合を計算する方針だがTLEに
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    long long Q;
-    scanf("%lld",&Q);
-    std::vector<long long> c(N);
-    for(int i = 0 ; i < N ; i++){
-        scanf("%lld",&c[i]);
+    int n, q;
+    cin >> n >> q;
+    vi c(n);
+    rep(i, n) cin >> c[i];
+    vector<map<int, int>> cnt(n+1);
+    rep(i, n) {
+        cnt[i+1] = cnt[i];
+        cnt[i+1][c[i]]++;
     }
-    std::vector<long long> l(Q);
-    std::vector<long long> r(Q);
-    for(int i = 0 ; i < Q ; i++){
-        scanf("%lld",&l[i]);
-        scanf("%lld",&r[i]);
+    rep(i, q) {
+        int l, r;
+        cin >> l >> r;
+        --l;
+        map<int, int> ans;
+        set_difference(all(cnt[r]), all(cnt[l]), inserter(ans, ans.end()));
+        cout << sz(ans) << endl;
     }
-    func(N, Q, std::move(c), std::move(l), std::move(r));
     return 0;
 }
