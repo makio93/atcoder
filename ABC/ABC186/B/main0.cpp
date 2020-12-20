@@ -41,6 +41,8 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+// 本番提出コード
+
 int main(){
     int h, w;
     cin >> h >> w;

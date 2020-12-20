@@ -41,9 +41,20 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
+// 本番提出コード
+
 int main(){
-    int n, w;
-    cin >> n >> w;
-    cout << (n / w) << endl;
+    int n;
+    cin >> n;
+    vi a(n);
+    rep(i, n) cin >> a[i];
+    VSORT(a);
+    vll sum(n+1);
+    rep(i, n) sum[i+1] = sum[i] + a[i];
+    ll ans = 0;
+    for (int i=n-1; i>=1; --i) {
+        ans += (ll)a[i] * i - sum[i];
+    }
+    cout << ans << endl;
     return 0;
 }

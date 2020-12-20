@@ -41,45 +41,26 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-using mint = modint;
+// 本番提出コード
 
 int main(){
-    int t;
-    cin >> t;
-    rep(i1, t) {
-        ll n, s, k;
-        cin >> n >> s >> k;
-        if (gcd(n, k) != 1) {
-            if (n%k == 0) {
-                if ((n-s)%k == 0) cout << ((n-s) / k) << endl;
-                else cout << -1 << endl;
-            }
-            else {
-                ll val = s;
-                ll cnt = (n - val) / k;
-                val += (n - val) / k * k;
-                ll minus = (k - n % k), plus = n % k;
-                ll add = min((val)/minus, (n-(val+k)%n)/k+1);
-                cnt += add;
-                /*
-                while (cnt<=n && val%n!=0) {
-                    val += k;
-                    ++cnt;
-                    val %= n;
-                    cnt += (n - val) / k;
-                    val += ((n - val) / k * k);
-                }
-                */
-                //if (cnt > n) cout << -1 << endl;
-                cout << cnt << endl;
-            }
+    int n;
+    cin >> n;
+    int ans = 0;
+    rep1(i, n) {
+        bool ok = true;
+        int tval = i;
+        while (tval > 0) {
+            if (tval%10 == 7) ok = false;
+            tval /= 10;
         }
-        else {
-            mint::set_mod(n);
-            mint val = n - s;
-            val /= k;
-            cout << val.val() << endl;
+        tval = i;
+        while (tval > 0) {
+            if (tval%8 == 7) ok = false;
+            tval /= 8;
         }
+        if (ok) ++ans;
     }
+    cout << ans << endl;
     return 0;
 }
