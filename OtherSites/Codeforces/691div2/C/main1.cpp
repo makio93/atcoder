@@ -41,37 +41,20 @@ using pll = pair<ll, ll>;
 ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
 ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 
-// 本番中の提出コード
+// 本番参加後に解説を見てから提出したコード
 
 int main(){
     int n, m;
     cin >> n >> m;
-    set<ull> a;
-    rep(i, n) {
-        ull ai;
-        cin >> ai;
-        a.insert(ai);
+    vector<ull> a(n), b(m);
+    rep(i, n) cin >> a[i];
+    rep(i, m) cin >> b[i];
+    if (n <= 1) rep(i, m) printf("%llu%c", (a[0]+b[i]), ((i<m-1)?' ':'\n'));
+    else {
+        RSORT(a);
+        ull g = a[0] - a.back();
+        for (int i=1; i<n-1; ++i) g = gcd(g, a[i]-a.back());
+        rep(i, m) printf("%llu%c", gcd(g,a.back()+b[i]), ((i<m-1)?' ':'\n'));
     }
-    map<ull, ull> used;
-    vector<ull> ans;
-    rep(i, m) {
-        ull bi;
-        cin >> bi;
-        ull res = 0;
-        if (used.find(bi) != used.end()) res = used[bi];
-        else {
-            res = *(a.rbegin()) + bi;
-            auto aitr = a.rbegin();
-            aitr++;
-            for (; aitr!=a.rend(); ++aitr) {
-                if (res == 1) break;
-                res = gcd(res, (*aitr)+bi);
-            }
-        }
-        ans.pb(res);
-        used[bi] = res;
-    }
-    rep(i, m-1) cout << ans[i] << ' ';
-    cout << ans.back() << endl;
     return 0;
 }
