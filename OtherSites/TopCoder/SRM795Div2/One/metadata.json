@@ -1,0 +1,17 @@
+{
+ "code_filename": "main.cpp",
+ "judge": {
+  "judge_type": "normal"
+ },
+ "time": 1,
+ "lang": "cpp",
+ "problem": {
+  "alphabet": "One",
+  "contest": {
+   "contest_id": "SRM795DIV2"
+  },
+  "problem_id": "srm795div2_one"
+ },
+ "sample_in_pattern": "in_*.txt",
+ "sample_out_pattern": "out_*.txt"
+}
