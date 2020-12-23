@@ -44,48 +44,57 @@ ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
 // 過去問練習、自力ACできなかった
 
 vector<vector<vll>> dp;
+vector<vector<map<int, ll>>> memo;
+ll calc(int u, int v, int val) {
+    if (memo[u][v].find(val) != memo[u][v].end()) return memo[u][v][val];
+    if (__builtin_popcount(val) == 0) return (memo[u][v][val] = 0);
+    else if (__builtin_popcount(val) == 1) {
+        int k = 0;
+        while (val > 0) {
+            if (val & 1) break;
+            ++k;
+            val >>= 1;
+        }
+        return (memo[u][v][val] = dp[u][v][k]);
+    }
+    else {
+        int tval = val;
+        int k = 0;
+        while (tval > 0) {
+            if (tval & 1) break;
+            ++k;
+            tval >>= 1;
+        }
+        ll res = INF2;
+        int n = sz(dp);
+        rep(u2, n) {
+            res = min(res, dp[u][u2][k]+calc(u2, v, val&(~(1<<k))));
+        }
+        return (memo[u][v][val] = res);
+    }
+}
 class AtLeastKDays {
 public:
     ll sumOfMinCosts(vs costs, int minDays) {
         int n = sz(costs), kmax = 0;
         while ((1<<kmax) < minDays) ++kmax;
         if (kmax < 1) kmax = 1;
-        dp = vector<vector<vll>>(n, vector<vll>(n, vll(kmax+1, INF2)));
+        dp = vector<vector<vll>>(n, vector<vll>(n, vll(kmax+2, INF2)));
         rep(u, n) rep(v, n) {
             if (u != v) dp[u][v][0] = costs[u][v] - '0';
         }
-        rep(u, n) rep(v, n) dp[u][u][0] = min(dp[u][u][0], dp[u][v][0]+dp[v][u][0]);
-        rep(k, kmax) {
+        rep(k, kmax+1) {
             rep(u, n) rep(v, n) {
-                rep(u2, n) dp[u][v][k+1] = min(dp[u][v][k+1], dp[u][u2][k]+dp[u2][v][k]);
+                rep(u2, n) dp[u][v][k+1] = min(dp[u][v][k+1], min((ll)(INF2), dp[u][u2][k]+dp[u2][v][k]));
             }
         }
-        repr(k, kmax) rep(u, n) rep(v, n) dp[u][v][k] = min(dp[u][v][k], dp[u][v][k+1]);
+        repr(k, kmax+1) rep(u, n) rep(v, n) dp[u][v][k] = min(dp[u][v][k], dp[u][v][k+1]);
+        rep(k, kmax+1) rep(u, n) rep(v, n) {
+            rep(u2, n) dp[u][v][k+1] = min(dp[u][v][k+1], dp[u][u2][k]+dp[u2][v][k]);
+        }
+        memo = vector<vector<map<int, ll>>>(n, vector<map<int, ll>>(n));
         ll res = 0;
-        vi ord;
-        int k = 0;
-        while (minDays > 0) {
-            if (minDays & 1) ord.pb(k);
-            minDays >>= 1;
-            ++k;
-        }
-        rep(i, sz(ord)) {
-            if (i==0) rep(u, n) {
-                ll tval = INF2;
-                rep(v, n) tval = min(tval, dp[u][v][ord[i]]);
-                res += tval * n;
-            }
-            else if (i==sz(ord)-1) rep(v, n) {
-                ll tval = INF2;
-                rep(u, n) tval = min(tval, dp[u][v][ord[i]]);
-                res += tval * n;
-            }
-            else {
-                ll tval = INF2;
-                rep(u, n) rep(v, n) tval = min(tval, dp[u][v][ord[i]]);
-                res += tval * n * n;
-            }
-        }
+        rep(u, n) rep(v, n) res += calc(u, v, minDays);
         return res;
     }
 };
