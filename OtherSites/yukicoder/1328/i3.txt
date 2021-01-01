@@ -1,0 +1,11 @@
+10
+B B 0
+R R 2
+R B 3
+R B 1
+R B 3
+R B 3
+R R 1
+B B 2
+R R 0
+B R 4
