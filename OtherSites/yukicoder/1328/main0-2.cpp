@@ -32,54 +32,52 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
-// yukicoderアドカレ2020y:Greedyでしてみたが解けない
+// yukicoderアドカレ2020y:DFSで書いてみる、解けない
+
+v(int) c, x, y;
+vp(int) sid;
+set<int> unused;
+v(int) cnt(2);
+bool dfs(int v, v(int)& ans) {
+    if (v == sz(ans)) return true;
+    auto itr = unused.begin();
+    v(bool) ng(2);
+    while (itr != unused.end()) {
+        int tid = *itr;
+        int id = sid[tid].second, ci = c[id], xi = x[id], yi = y[id];
+        if (cnt[xi] > yi) return false;
+        if (cnt[xi] != yi) {
+            if (ng[0] && ng[1]) return false;
+            ng[xi] = true;
+            ++itr;
+            continue;
+        }
+        ans[v] = id+1; cnt[ci]++; itr = unused.erase(itr);
+        bool res = dfs(v+1, ans);
+        if (res) return true;
+        ans[v] = 0; cnt[ci]--;
+        itr = unused.insert(itr, tid);
+        ++itr;
+    }
+    return false;
+}
 
 int main(){
     int n;
     cin >> n;
-    v(int) c(n), x(n), y(n);
+    c = v(int)(n); x = v(int)(n); y = v(int)(n);
     rep(i, n) {
         char ci, xi;
         cin >> ci >> xi >> y[i];
         c[i] = (ci=='R'?0:1);
         x[i] = (xi=='R'?0:1);
     }
-    set<p(int)> y2;
-    rep(i, n) y2.emplace(y[i], i);
-    bool res = true;
+    sid = vp(int)(n);
+    rep(i, n) sid[i] = { y[i], i };
+    VSORT(sid);
+    rep(i, n) unused.insert(i);
     v(int) ans(n);
-    while (!y2.empty()) {
-        int now = 0;
-        v(int) cnt(2);
-        auto itr = y2.begin();
-        bool moved = false;
-        while (itr != y2.end()) {
-            while (ans[now] != 0) {
-                int tid = ans[now] - 1;
-                cnt[x[tid]]++;
-                ++now;
-            }
-            int yi = itr->first, id = itr->second;
-            int xi = x[id], ci = c[id];
-            if (yi != cnt[xi]) {
-                if (yi < cnt[xi]) {
-                    res = false;
-                    break;
-                }
-                ++itr;
-                moved = true;
-                continue;
-            }
-            ans[now] = id + 1;
-            ++now;
-            cnt[ci]++;
-            itr = y2.erase(itr);
-            moved = true;
-        }
-        if (!moved) res = false;
-        if (!res) break;
-    }
-    if (res) {
+    if (dfs(0, ans)) {
         cout << "Yes" << endl;
         rep(i, n) printf("%d%c", ans[i], (i<n-1?' ':'\n'));
     }
