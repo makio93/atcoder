@@ -13,5 +13,5 @@
  },
  "sample_in_pattern": "in_*.txt",
  "sample_out_pattern": "out_*.txt",
- "time": 1
+ "time": 10
 }
