@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+    int n;
+    cin >> n;
+    cout << (s.substr(0, n)) << endl;
+    return 0;
+}
