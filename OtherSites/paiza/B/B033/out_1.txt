@@ -1,5 +1,0 @@
-| id | name       |
-|----|------------|
-| 1  | ito        |
-| 2  | sakakibara |
-| 3  | takahashi  |

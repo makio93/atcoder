@@ -1,7 +1,0 @@
-6 8 6
-My#name#
-is#paiza
-.#I#like
-#program
-ming#ver
-y#much.#
