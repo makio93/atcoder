@@ -34,7 +34,27 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 解説AC
+
+using mint = modint1000000007;
+
+mint comb(int n, int r) {
+    if (r > n) return 0;
+    if (n-r < r) r = n-r;
+    if (r == 0) return 1;
+    mint num = 1, den = 1;
+    rep2r(i, n-r+1, n) num *= i;
+    rep2(i, 1, r) den *= i;
+    return (num / den);
+}
+
 int main(){
-    
+    int n, m;
+    cin >> n >> m;
+    v(int) a(n);
+    rep(i, n) cin >> a[i];
+    int sum = 0;
+    rep(i, n) sum += a[i];
+    cout << comb(n+m, n+sum).val() << endl;
     return 0;
 }
