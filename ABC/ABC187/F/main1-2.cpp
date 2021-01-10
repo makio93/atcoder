@@ -34,7 +34,7 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
-// 解説を見てから実装、結果はTLE
+// 解説を見てから実装、高速化しようとした、TLE
 
 int n;
 v(v(bool)) g;
@@ -56,11 +56,14 @@ int dp(int s) {
     if (comp) return (memo[s] = 1);
     else {
         int m = sz(vl), res = n;
-        rep2(i, 1, (1<<m)-2) {
-            int t = s;
-            rep(j, m) if ((i>>j)&1) t -= (1<<vl[j]);
+        v(bool) memoi(((1<<m)-2)/2+1);
+        rep2(i, 1, ((1<<m)-2)/2) {
+            if (memoi[i]) break;
+            memoi[i] = true;
+            int t = 0;
+            rep(j, m) if ((i>>j)&1) t |= (1<<vl[j]);
             if (s==0 || s-t==0) continue;
-            res = min(res, dp(t)+dp(s-t));
+            res = min(res, dp(t)+dp(s^t));
         }
         return (memo[s] = res);
     }

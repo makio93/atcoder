@@ -34,56 +34,28 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
-// 解説を見てから実装、結果はTLE
-
-int n;
-v(v(bool)) g;
-v(int) memo;
-int dp(int s) {
-    if (memo[s] != -1) return memo[s];
-    if (s == 0) return (memo[s] = 0);
-    v(int) vl;
-    rep(i, n) if ((s>>i)&1) vl.pb(i);
-    if (sz(vl) == 1) return (memo[s] = 1);
-    bool comp = true;
-    rep(i, sz(vl)) {
-        rep2(j, i+1, sz(vl)-1) {
-            if (!g[vl[i]][vl[j]]) comp = false;
-            if (!comp) break;
-        }
-        if (!comp) break;
-    }
-    if (comp) return (memo[s] = 1);
-    else {
-        int m = sz(vl), res = n;
-        rep2(i, 1, (1<<m)-2) {
-            int t = s;
-            rep(j, m) if ((i>>j)&1) t -= (1<<vl[j]);
-            if (s==0 || s-t==0) continue;
-            res = min(res, dp(t)+dp(s-t));
-        }
-        return (memo[s] = res);
-    }
-}
+// 解説を見てから実装、計算量がきついのでメモ化再帰をやめた、AC
 
 int main(){
-    int m;
+    int n, m;
     cin >> n >> m;
-    if (m == 0) {
-        cout << n << endl;
-        return 0;
-    }
-    g = v(v(bool))(n, v(bool)(n));
-    rep(i, n) g[i][i] = true;
+    v(int) g(n);
     rep(i, m) {
         int a, b;
         cin >> a >> b;
         --a; --b;
-        g[a][b] = g[b][a] = true;
+        g[a] |= 1<<b;
+        g[b] |= 1<<a;
     }
-    memo = v(int)((1<<n), -1);
-    memo[0] = 0;
-    int ans = dp((1<<n)-1);
-    cout << ans << endl;
+    v(int) dp(1<<n, INF);
+    dp[0] = 1;
+    rep(i, n) rep(j, (1<<i)) if (dp[j] == 1) {
+        if ((g[i] & j) == j) dp[(1<<i)|j] = 1;
+    }
+    rep(i, (1<<n)) if (dp[i] != 1) rep2r(j, 0, i-1) {
+        j &= i;
+        dp[i] = min(dp[i], dp[j]+dp[j^i]);
+    }
+    cout << dp[(1<<n)-1] << endl; 
     return 0;
 }
