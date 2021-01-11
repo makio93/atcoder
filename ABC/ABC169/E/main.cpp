@@ -1,60 +1,55 @@
 #include <bits/stdc++.h>
+#include <atcoder/all>
 using namespace std;
-
-// 総数を1000000007（素数）で割った余り
-const long long mod = 1e9 + 7;
+using namespace atcoder;
 
 using ll = long long;
-using pii  = pair<int, int>;
-using pll = pair<ll, ll>;
-#define ull unsigned long long
-#define ld long double
-#define vi vector<int>
-#define vll vector<ll>
-#define vc vector<char>
-#define vs vector<string>
-#define vpii vector<pii>
-#define vpll vector<pll>
+using ull = unsigned long long;
+#define v(t) vector<t>
+#define p(t) pair<t, t>
+#define p2(t, s) pair<t, s>
+#define vp(t) v(p(t))
 
-#define rep(i, n) for (int i = 0, i##_len = (n); i < i##_len; i++)
-#define rep1(i, n) for (int i = 1, i##_len = (n); i <= i##_len; i++)
-#define repr(i, n) for (int i = ((int)(n)-1); i >= 0; i--)
-#define rep1r(i, n) for (int i = ((int)(n)); i >= 1; i--)
+#define rep(i, n) for (int i=0,i##_len=((int)(n)); i<i##_len; ++i)
+#define rep2(i, a, n) for (int i=((int)(a)),i##_len=((int)(n)); i<=i##_len; ++i)
+#define repr(i, n) for (int i=((int)(n)-1); i>=0; --i)
+#define rep2r(i, a, n) for (int i=((int)(n)),i##_len=((int)(a)); i>=i##_len; --i)
+
+#define repi(itr, c) for (__typeof((c).begin()) itr=(c).begin(); itr!=(c).end(); ++itr)
+#define repir(itr, c) for (__typeof((c).rbegin()) itr=(c).rbegin(); itr!=(c).rend(); ++itr)
 
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 
-#define SORT(v, n) sort(v, v + n);
+#define SORT(v, n) sort(v, v+n);
 #define VSORT(v) sort(v.begin(), v.end());
 #define RSORT(x) sort(rall(x));
 #define pb push_back
-#define mp make_pair
+#define eb emplace_back
 
 #define INF (1e9)
+#define LINF (1e18)
 #define PI (acos(-1))
 #define EPS (1e-7)
+#define DEPS (1e-10)
 
-ull gcd(ull a, ull b) { return b ? gcd(b, a % b) : a; }
-ull lcm(ull a, ull b) { return a / gcd(a, b) * b; }
-
-
-void func(long long N, std::vector<long long> A, std::vector<long long> B){
-
-}
+// きまぐれ精進、自力AC
 
 int main(){
-    // cout << fixed << setprecision(5);
-
-    long long N;
-    scanf("%lld",&N);
-    std::vector<long long> A(N);
-    std::vector<long long> B(N);
-    for(int i = 0 ; i < N ; i++){
-        scanf("%lld",&A[i]);
-        scanf("%lld",&B[i]);
+    int n;
+    cin >> n;
+    v(int) a(n), b(n);
+    rep(i, n) cin >> a[i] >> b[i];
+    VSORT(a);
+    RSORT(b);
+    if (n%2==1) {
+        int ans = (b[(n-1)/2] - a[(n-1)/2] + 1);
+        cout << ans << endl;
     }
-    func(N, std::move(A), std::move(B));
+    else {
+        int ans = (b[(n-1)/2]+b[(n-1)/2+1]) - (a[(n-1)/2]+a[(n-1)/2+1]) + 1;
+        cout << ans << endl;
+    }
     return 0;
 }
-
