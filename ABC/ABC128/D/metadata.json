@@ -3,6 +3,7 @@
  "judge": {
   "judge_type": "normal"
  },
+ "time": 1,
  "lang": "cpp",
  "problem": {
   "alphabet": "D",
