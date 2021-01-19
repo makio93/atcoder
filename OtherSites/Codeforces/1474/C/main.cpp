@@ -32,6 +32,8 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 本番終了後、自主研究、自力AC
+
 int main(){
     int t;
     cin >> t;
@@ -44,18 +46,15 @@ int main(){
             cin >> ai;
             a[ai]++;
         }
-        if (a.rbegin()->second > 1) {
-            cout << "NO" << endl;
-            continue;
-        }
         bool isyes = false;
         vp(int) alst;
         repir(itr, a) {
-            if (itr == a.rbegin()) continue;
+            if (itr==a.rbegin() && itr->second<=1) continue;
             auto ta = a;
             vp(int) alst2;
             alst2.eb(a.rbegin()->first, itr->first);
-            ta.erase(a.rbegin()->first);
+            ta[a.rbegin()->first]--;
+            if (ta[a.rbegin()->first] == 0) ta.erase(a.rbegin()->first);
             ta[itr->first]--;
             if (ta[itr->first] == 0) ta.erase(itr->first);
             auto itr2 = ta.rbegin();
@@ -70,7 +69,7 @@ int main(){
                     ok = false;
                     break;
                 }
-                alst2.eb(itr2->first, nval-(itr2->first));
+                alst2.eb(nval-(itr2->first), itr2->first);
                 int pval1 = itr2->first, pval2 = nval-(itr2->first);
                 nval = itr2->first;
                 ta[pval1]--;
