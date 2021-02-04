@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "Day1"
+		},
+		{
+			"path": "DayXX"
+		},
+		{
+			"path": "Day2"
+		},
+		{
+			"path": "Day3"
+		},
+		{
+			"path": "Day4"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.html": "html",
+			"vector": "cpp"
+		}
+	}
+}
