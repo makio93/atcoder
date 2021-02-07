@@ -22,7 +22,7 @@ public:
         }
         int mval = 0;
         for (auto p : cnt) mval = max(mval, p.first);
-        if ((int)(cnt.size()) > 1) ++mval;
+        if ((int)(cnt.size())>1 || cnt.rbegin()->second>1) ++mval;
         return mval;
     }
 };
