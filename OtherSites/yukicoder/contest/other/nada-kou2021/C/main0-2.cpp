@@ -32,7 +32,7 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
-// 解説を見てから提出、AC
+// 自主研究分、WA
 
 int main(){
     int n, m, s, t;
@@ -48,25 +48,30 @@ int main(){
         g[ai].pb(bi);
         g[bi].pb(ai);
     }
-    set<int> visited;
-    priority_queue<p(int)> que;
-    int yval = 0, xval = pi[s];
-    que.emplace(pi[s], s);
+    vp(int) dist(n, {-1,-1});
+    priority_queue<p2(p(int),int)> que;
+    que.emplace(make_pair(pi[s],0), s);
+    dist[s] = { pi[s], 0 };
     while (!que.empty()) {
         auto p1 = que.top(); que.pop();
-        int vi = p1.second, vpi = p1.first;
-        if (pi[vi] != vpi) continue;
-        if (visited.find(vi) != visited.end()) continue;
-        visited.insert(vi);
-        if (xval > vpi) {
-            xval = vpi;
-            ++yval;
-        }
+        int vx = p1.first.first, vy = p1.first.second, vi = p1.second;
+        if (dist[vi] != p(int){vx,vy}) continue;
         rep(i, sz(g[vi])) {
-            if (visited.find(g[vi][i]) != visited.end()) continue;
-            que.emplace(pi[g[vi][i]], g[vi][i]);
+            int ni = g[vi][i], ny, nx;
+            if (vx > pi[ni]) {
+                ny = vy + 1;
+                nx = pi[ni];
+            }
+            else {
+                ny = vy;
+                nx = vx;
+            }
+            if (dist[ni].second<ny||(dist[ni].second>=ny&&dist[ni].first<nx)) {
+                que.emplace(make_pair(nx, ny), ni);
+                dist[ni] = { nx, ny };
+            }
         }
     }
-    cout << yval << endl;
+    cout << dist[t].second << endl;
     return 0;
 }
