@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 自力AC分
+
 class Solution {
 public:
     int maxArea(vector<int>& height) {
