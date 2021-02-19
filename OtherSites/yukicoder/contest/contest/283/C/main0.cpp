@@ -32,46 +32,40 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 本番提出分、TLE
+
 int main(){
-    int n, k;
-    cin >> n >> k;
-    v(int) a(n);
-    rep(i, n) cin >> a[i];
-    multiset<int> lst;
-    rep(i, k) lst.insert(a[i]);
-    auto titr = next(lst.begin(), (k+1)/2-1);
-    int mval = *titr, nval = *titr;
-    rep2(i, k, n-1) {
-        int j = i-k, sub = 0;
-        if (a[j] < nval) {
-            lst.erase(lst.find(a[j]));
-            ++sub;
-        }
-        else if (a[j] > nval) {
-            lst.erase(lst.find(a[j]));
-            --sub;
-        }
-        else {
-            titr = lst.erase(titr);
-            --sub;
-        }
-        if (a[i] < nval) {
-            lst.insert(a[i]);
-            --sub;
-        }
-        else if (a[i] > nval) {
-            lst.insert(a[i]);
-            ++sub;
-        }
-        else {
-            lst.insert(titr, a[i]);
-            --sub;
-        }
-        if (sub > 0) titr = next(titr, sub);
-        else if (sub < 0) titr = prev(titr, abs(sub));
-        nval = *titr;
-        mval = max(mval, nval);
+    int vi;
+    ll d;
+    cin >> vi >> d;
+    v(string) e(vi);
+    rep(i, vi) cin >> e[i];
+    int bcnt = 0;
+    for (int i=0; (d>>i)>0LL; ++i) ++bcnt;
+    v(v(v(bool))) dp(bcnt, v(v(bool))(vi, v(bool)(vi)));
+    rep(i, vi) rep(j, vi) {
+        if (e[i][j] == '1') dp[0][i][j] = true;
     }
-    cout << mval << endl;
+    rep(k, bcnt-1) rep(i, vi) rep(j, vi) {
+        if (!dp[k][i][j]) continue;
+        rep(j2, vi) dp[k+1][i][j2] = dp[k+1][i][j2] || dp[k][j][j2];
+    }
+    bool ans = true;
+    rep(i1, vi) {
+        v(bool) ok = dp[0][i1];
+        rep(i, bcnt) if ((d>>i)&1) {
+            v(bool) nok(vi);
+            rep(j, vi) if (ok[j]) rep(j2, vi) {
+                nok[j2] = nok[j2] || dp[i][j][j2];
+            }
+            swap(ok, nok);
+        }
+        rep(i, vi) if (!ok[i]) {
+            ans = false;
+        }
+        if (!ans) break;
+    }
+    if (ans) cout << "Yes" << endl;
+    else cout << "No" << endl;
     return 0;
 }

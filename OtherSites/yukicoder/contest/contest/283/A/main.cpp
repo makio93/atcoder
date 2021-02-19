@@ -33,45 +33,26 @@ using ull = unsigned long long;
 #define DEPS (1e-10)
 
 int main(){
-    int n, k;
-    cin >> n >> k;
-    v(int) a(n);
-    rep(i, n) cin >> a[i];
-    multiset<int> lst;
-    rep(i, k) lst.insert(a[i]);
-    auto titr = next(lst.begin(), (k+1)/2-1);
-    int mval = *titr, nval = *titr;
-    rep2(i, k, n-1) {
-        int j = i-k, sub = 0;
-        if (a[j] < nval) {
-            lst.erase(lst.find(a[j]));
-            ++sub;
-        }
-        else if (a[j] > nval) {
-            lst.erase(lst.find(a[j]));
-            --sub;
-        }
-        else {
-            titr = lst.erase(titr);
-            --sub;
-        }
-        if (a[i] < nval) {
-            lst.insert(a[i]);
-            --sub;
-        }
-        else if (a[i] > nval) {
-            lst.insert(a[i]);
-            ++sub;
-        }
-        else {
-            lst.insert(titr, a[i]);
-            --sub;
-        }
-        if (sub > 0) titr = next(titr, sub);
-        else if (sub < 0) titr = prev(titr, abs(sub));
-        nval = *titr;
-        mval = max(mval, nval);
+    int w, h, x;
+    cin >> w >> h >> x;
+    int mcnt = max(1,w%3) * max(1,h%3);
+    if (x > mcnt*9) {
+        cout << -1 << endl;
+        return 0;
     }
-    cout << mval << endl;
+    v(string) ans(h, string(w, '0')), s1(3, string(3, '0'));
+    char n1 = (char)((x/mcnt)+1+'0');
+    int cmd = x % mcnt, ncnt = 0;
+    const v(int) lval = { 2, 1, 1 }, rval = { 2, 1, 2 };
+    int l = lval[w%3], r = rval[w%3], u = lval[h%3], d = rval[h%3];
+    rep(i, 3) rep(j, 3) {
+        if (i>=u&&i<=d && j>=l&&j<=r) {
+            ++ncnt;
+            char tc = (ncnt<=cmd)?n1:(n1-1);
+            s1[i][j] = tc;
+        }
+    }
+    rep(i, h) rep(j, w) ans[i][j] = s1[(i+1)%3][(j+1)%3];
+    rep(i, h) cout << ans[i] << endl;
     return 0;
 }
