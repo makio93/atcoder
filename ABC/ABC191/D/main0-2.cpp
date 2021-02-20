@@ -34,6 +34,8 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 本番後自力研究分、WA
+
 int main(){
     ll x, y, r;
     double x2, y2, r2;
