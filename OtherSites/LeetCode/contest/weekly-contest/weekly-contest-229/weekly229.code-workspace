@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "Q1"
+		},
+		{
+			"path": "Q2"
+		},
+		{
+			"path": "QX"
+		},
+		{
+			"path": "Q3"
+		},
+		{
+			"path": "Q4"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.html": "html",
+			"*.cpp": "cpp",
+			"chrono": "cpp",
+			"limits": "cpp",
+			"valarray": "cpp"
+		}
+	}
+}
