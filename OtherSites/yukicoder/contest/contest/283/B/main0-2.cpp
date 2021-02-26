@@ -32,7 +32,17 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 本番終了後、再考察、AC
+
 int main(){
-    
+    int vi, d;
+    cin >> vi >> d;
+    v(string) e(vi);
+    if (d == 1) rep(i, vi) e[i] = string(vi, '1');
+    else {
+        e[0] = string(vi, '1');
+        rep2(i, 1, vi-1) e[i] = "1" + string(vi-1, '0');
+    }
+    rep(i, vi) cout << e[i] << endl;
     return 0;
 }
