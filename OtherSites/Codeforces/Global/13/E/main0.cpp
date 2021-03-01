@@ -32,6 +32,8 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 本番中に書いたソース、WA
+
 bool isfib(int n) {
     bool res = false;
     ll nval = 1, nval2 = 1;
