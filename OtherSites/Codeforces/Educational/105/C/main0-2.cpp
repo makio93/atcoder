@@ -32,6 +32,8 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 本番中書き直し、WA
+
 int main(){
     int t;
     cin >> t;
