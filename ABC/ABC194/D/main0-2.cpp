@@ -34,6 +34,8 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 終了後、ヒント情報だけみて考察、AC
+
 int main(){
     int n;
     cin >> n;
