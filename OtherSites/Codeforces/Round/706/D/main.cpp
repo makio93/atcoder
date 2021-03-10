@@ -85,6 +85,7 @@ int main(){
                 if ((i-1<0||slen[i-1].second<amax) && (i+1>=sz(slen)||slen[i+1].first<amax)) ++acnt;
             }
         }
+        if (acnt >= 2) acnt = 0;
         cout << acnt << endl;
     }
     else cout << 0 << endl;
