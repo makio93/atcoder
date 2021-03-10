@@ -1,21 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// コンテスト後に自力研究、ヒントだけ見て実装、WA
+// コンテスト後に自力研究、もう1つヒントを見て実装、AC、一部修正
 
 class Solution {
     struct Tree {
-        long long val;
+        int val;
         Tree *left, *right;
-        Tree(long long val_=0LL) {
+        Tree(int val_=0) {
             val = val_;
             left = NULL; right = NULL;
         }
     };
-    void add(long long tval, int d, Tree* vnode) {
-        if (d == 33) vnode->val = tval;
+    void add(int tval, int d, Tree* vnode) {
+        if (d == 31) vnode->val = tval;
         else {
-            if ((tval>>d)&1LL) {
+            if ((tval>>(30-d))&1) {
                 if (vnode->right == NULL) vnode->right = new Tree(0);
                 add(tval, d+1, vnode->right);
             }
@@ -25,17 +25,17 @@ class Solution {
             }
         }
     }
-    long long dfs(long long tar, int d, Tree* root) {
-        if (d == 33) return root->val;
+    int dfs(int tar, int d, Tree* vnode) {
+        if (d == 31) return vnode->val;
         else {
-            if (root->left==NULL && root->right==NULL) return -1;
-            if ((tar>>d)&1LL) {
-                if (root->right != NULL) return dfs(tar, d+1, root->right);
-                else return dfs(tar, d+1, root->left);
+            if (vnode->left==NULL && vnode->right==NULL) return -1;
+            if ((tar>>(30-d))&1) {
+                if (vnode->right != NULL) return dfs(tar, d+1, vnode->right);
+                else return dfs(tar, d+1, vnode->left);
             }
             else {
-                if (root->left != NULL) return dfs(tar, d+1, root->left);
-                else return dfs(tar, d+1, root->right);
+                if (vnode->left != NULL) return dfs(tar, d+1, vnode->left);
+                else return dfs(tar, d+1, vnode->right);
             }
         }
     }
@@ -43,7 +43,7 @@ public:
     vector<int> maximizeXor(vector<int>& nums, vector<vector<int>>& queries) {
         int n = nums.size(), m = queries.size();
         sort(nums.begin(), nums.end());
-        vector<pair<int, pair<int,int>>> queries2(m);
+        vector<pair<int, pair<int, int>>> queries2(m);
         for (int i=0; i<m; ++i) {
             queries2[i].first = queries[i][1];
             queries2[i].second = { queries[i][0], i };
@@ -54,11 +54,11 @@ public:
         int id = 0;
         for (int i=0; i<m; ++i) {
             while (id<n && nums[id]<=queries2[i].first) {
-                add((long long)nums[id], 0, root);
+                add(nums[id], 0, root);
                 ++id;
             }
-            long long res = dfs(((1LL<<33)-1)^((long long)queries2[i].second.first), 0, root);
-            ans[queries2[i].second.second] = (int)((res==-1LL)?(res):(res^(long long)queries2[i].second.first));
+            int res = dfs((~(1<<31))^(queries2[i].second.first), 0, root);
+            ans[queries2[i].second.second] = (res==-1)?(res):(res^queries2[i].second.first);
         }
         return ans;
     }

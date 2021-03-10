@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// コンテスト後に自力研究、ヒントだけ見て実装、WA
+// コンテスト後に自力研究、もう1つヒントを見て実装、AC
 
 class Solution {
     struct Tree {
@@ -15,7 +15,7 @@ class Solution {
     void add(long long tval, int d, Tree* vnode) {
         if (d == 33) vnode->val = tval;
         else {
-            if ((tval>>d)&1LL) {
+            if ((tval>>(32-d))&1LL) {
                 if (vnode->right == NULL) vnode->right = new Tree(0);
                 add(tval, d+1, vnode->right);
             }
@@ -29,7 +29,7 @@ class Solution {
         if (d == 33) return root->val;
         else {
             if (root->left==NULL && root->right==NULL) return -1;
-            if ((tar>>d)&1LL) {
+            if ((tar>>(32-d))&1LL) {
                 if (root->right != NULL) return dfs(tar, d+1, root->right);
                 else return dfs(tar, d+1, root->left);
             }
