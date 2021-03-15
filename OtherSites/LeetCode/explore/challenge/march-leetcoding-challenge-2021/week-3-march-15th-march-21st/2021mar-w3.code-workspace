@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "Day15"
+		},
+		{
+			"path": "DayXX"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.html": "html",
+			"*.cpp": "cpp",
+			"string": "cpp"
+		}
+	}
+}
