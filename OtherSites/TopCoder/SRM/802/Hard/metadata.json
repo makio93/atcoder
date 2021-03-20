@@ -1,7 +1,9 @@
 {
  "code_filename": "main.cpp",
  "judge": {
-  "judge_type": "normal"
+  "diff": 1e-09,
+  "error_type": "absolute_or_relative",
+  "judge_type": "decimal"
  },
  "time": 1,
  "lang": "cpp",

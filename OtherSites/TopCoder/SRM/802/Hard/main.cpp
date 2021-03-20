@@ -1,27 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 本番後、自主研究、よくわからない
+
 class DisjointDiceValues {
-    long long calc(int a, int b) {
-        if (b > a) return 0LL;
-        if (a-b < b) return calc(a, a-b);
-        long long res = 1;
-        for (int i=a; i>a-b; --i) res *= i;
-        for (int i=1; i<=b; ++i) res /= i;
+    double pm(int a, int b) {
+        if (a < b) return 0.0;
+        double res = 1.0;
+        for (int i=a; i>a-b; --i) res *= (double)i;
+        return res;
+    }
+    double cb(int a, int b) {
+        if (b > a) return 0.0;
+        if (a-b < b) return cb(a, a-b);
+        double res = 1.0;
+        for (int i=a; i>a-b; --i) res *= (double)i;
+        for (int i=1; i<=b; ++i) res /= (double)i;
         return res;
     }
 public:
     double getProbability(int A, int B) {
         double res = 0.0;
+        vector<double> adp(min(A,6)+1);
         for (int i=1; i<=min(A,6); ++i) {
-            double aval = 1.0, bval = 1.0;
-            for (int j=0; j<i; ++j) aval *= (double)(i-j);
-            if (A-i > 0) aval *= (double)calc(A-1, i-1);
-            aval *= (double)calc(6, i);
-            bval = ((double)pow(6.0, (double)B) - (double)pow((double)(6-i), (double)B));
-            res += aval * bval;
+            double aval = 1.0;
+            for (int j=0; j<A; ++j) aval *= (double)i / 6.0;
+            aval *= cb(6, i);
+            adp[i] = aval - adp[i-1];
         }
-        res /= (double)pow(6.0, (double)(A+B));
+        for (int i=1; i<=min(A,6); ++i) {
+            double bval = 1.0;
+            bval = ((double)pow(6.0, (double)B) - (double)pow((double)(6-i), (double)B)) / pow(6.0, (double)B);
+            res += adp[i] * bval;
+        }
         return res;
     }
 };
@@ -30,6 +41,6 @@ int main(){
     DisjointDiceValues cl;
     int A, B;
     cin >> A >> B;
-    cout << cl.getProbability(A, B) << endl;
+    cout << fixed << setprecision(10) << cl.getProbability(A, B) << endl;
     return 0;
 }
