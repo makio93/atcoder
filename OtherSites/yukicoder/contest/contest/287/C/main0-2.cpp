@@ -32,7 +32,7 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
-// 本番中に書いた分
+// 終了後、自主研究、WA
 
 int main(){
     int h, w, x;
@@ -45,42 +45,71 @@ int main(){
         cout << -1 << endl;
         return 0;
     }
-    if ((h+1)/2%2!=0 || (w+1)/2%2!=0) {
-        int mxval = ((h+1)/2*(w+1)/2-1);
-        if (x > mxval*2) {
+    int h2 = (h+1)/2, w2 = (w+1)/2, x2 = x / 2, mxval = (h2*w2-1);
+    if (h2%2==0 && w2%2==0 && x2>(h2-1)*(w2-1)+(w2-2)) {
+        if (x2 > mxval-1) {
+            cout << -1 << endl;
+            return 0;
+        }
+        int add = x2 - (h2+w2-2), add2 = (add - (w2-2) * (h2-1)) / 2;
+        v(string) ans(h, string(w, '.'));
+        rep(i, h) rep(j, w) if (i%2!=0&&j%2!=0) ans[i][j] = '#';
+        if ((add-(w2-2)*(h2-1))%2 != 0) {
+            cout << -1 << endl;
+            return 0;
+        }
+        int len1 = (w2-2) / 2;
+        for (int i=0; i<h-1; i+=2) ans[i][1] = '#';
+        for (int i=0; i<len1; ++i) {
+            int i2 = 2 + 4*i;
+            for (int j=h-1; j>=1; j-=2) ans[j][i2+1] = '#';
+            if (i+1<len1) for (int j=0; j<h-1; j+=2) ans[j][i2+3] = '#';
+        }
+        if (add2 > 0) {
+            for (int i=0; i<add2; ++i) {
+                int i2 = i*4;
+                ans[i2+1][w-3] = '#';
+                ans[i2+3][w-1] = '#';
+            }
+            for (int i=add2*4; i+1<=h-1; i+=2) ans[i+1][w-3] = '#';
+        }
+        rep(i, h) cout << ans[i] << endl;
+    }
+    else {
+        if (x2 > mxval) {
             cout << -1 << endl;
             return 0;
         }
         bool r = false;
-        if ((h+1)/2%2!=0 && (w+1)/2%2!=0) r = (h>=w);
-        else r = ((w+1)/2%2 == 0);
-        int h2 = (h+1)/2, w2 = (w+1)/2, x2 = x/2 + 1;
-        int add = x2 - (h2+w2-1);
+        if (h2%2!=0 && w2%2!=0) r = (h2>=w2);
+        else if (h2%2==0 && w2%2==0) r = true;
+        else r = (w2%2 != 0); // r==true : 上下方向にジグザグする、そうじゃなかったら縦横を後で交換
+        int add = x2 - (h2+w2-2);
         if (add%2 != 0) {
             cout << -1 << endl;
             return 0;
         }
-        if (!r) swap(h, w);
+        if (!r) {
+            swap(h2, w2);
+            swap(h, w);
+        }
         v(string) ans(h, string(w, '.'));
         rep(i, h) rep(j, w) if (i%2!=0&&j%2!=0) ans[i][j] = '#';
         int len1 = add / ((h2-1)*2), len2 = add % ((h2-1)*2) / 2;
-        for (int i=0; i<h-2; i+=2) ans[i][1] = '#';
+        for (int i=0; i<h-1; i+=2) ans[i][1] = '#';
         for (int i=0; i<len1; ++i) {
             int i2 = 2 + 4*i;
-            for (int j=h-1; j>=2; j-=2) ans[j][i2+1] = '#';
-            for (int j=0; j<h-2; j+=2) ans[j][i2+3] = '#';
+            for (int j=h-1; j>=1; j-=2) ans[j][i2+1] = '#';
+            for (int j=0; j<h-1; j+=2) ans[j][i2+3] = '#';
         }
         int i3 = 2 + 4*len1;
-        for (int i=h-1; i>h-2*len2-1; i-=2) ans[i][i3+1] = '#';
-        for (int i=h-1-2*len2; i<h-2; i+=2) ans[i][i3+3] = '#';
         if (len2 > 0) {
-            ans[h-1-2*len2-2][i3] = ans[h-1-2*len2-2][i3+2] = '#';
+            for (int i=h-1; i>=0; i-=2) if (i!=(h-1)-2*len2) ans[i][i3+1] = '#';
+            if (i3+3 < w) for (int i=0; i<=h-1; i+=2) ans[i][i3+3] = '#';
+            i3 += 4;
         }
-        for (int i=h-1-2*len2-2; i>=0; i-=2) ans[i][i3+1] = ans[i][i3+3] = '#';
-        for (int i=i3; i<w; i+=2) {
-            ans[i][h-2] = '#';
-            if (i+1>=w) continue;
-            for (int j=0; j<h-2; ++j) ans[j][i+1] = '#';
+        for (int j=i3; j<w; j+=2) {
+            if (j+1 < w) for (int i=h-3; i>=0; i-=2) ans[i][j+1] = '#';
         }
         if (r) rep(i, h) cout << ans[i] << endl;
         else {
@@ -91,6 +120,5 @@ int main(){
             }
         }
     }
-    else cout << -1 << endl;
     return 0;
 }
