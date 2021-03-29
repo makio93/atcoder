@@ -32,6 +32,8 @@ using ull = unsigned long long;
 #define EPS (1e-7)
 #define DEPS (1e-10)
 
+// 本番終了後、？？？？
+
 int main(){
     int t;
     cin >> t;
@@ -41,7 +43,43 @@ int main(){
         cin >> n >> w;
         v(ll) wi(n);
         rep(i, n) cin >> wi[i];
-        
+        map<ll, int> wcnt;
+        rep(i, n) wcnt[wi[i]]++;
+        set<ll> blst;
+        rep(i, 30) if ((w>>i)&1LL) blst.insert(1LL<<i);
+        int pbit = 0;
+        rep(i, 30) {
+            if (blst.find(1LL<<i) != blst.end()) {
+                rep2(j, pbit, i-1) {
+                    if (wcnt.find(1LL<<j) != wcnt.end()) {
+                        ll mul = 1LL<<(i-j);
+                        wcnt[1LL<<i] += ((wcnt[1LL<<j]+(mul-1))/mul);
+                        wcnt.erase(1LL<<j);
+                    }
+                }
+                pbit = i + 1;
+            }
+        }
+        int ans = 0;
+        if (sz(wcnt) == 1) {
+            ll dcnt = (w / wcnt.begin()->first);
+            ans = (wcnt.begin()->second + (dcnt-1)) / dcnt / 2;
+            cout << ans << endl;
+            continue;
+        }
+        auto itr = prev(wcnt.end()), itr2 = wcnt.begin();
+        while (!wcnt.empty()) {
+            ll sum = itr->first;
+            itr->second--;
+            if (itr->second == 0) itr = prev(wcnt.erase(itr));
+            while (!wcnt.empty() && sum+itr2->first<=w) {
+                sum += itr2->first;
+                itr2->second--;
+                while (!wcnt.empty() && itr2->second==0) itr2 = wcnt.erase(itr2);
+            }
+            ++ans;
+        }
+        cout << ans << endl;
     }
     return 0;
 }
